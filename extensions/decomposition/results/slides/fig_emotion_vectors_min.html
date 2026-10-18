@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1f1f1f; --ink2: #555; --ink3: #8a8a8a; --rule: #d9d9d9; --panel: #f7f7f5;
+  --des: #c26a1d; --calm: #2b8a5a; --fru: #4a6f96;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; }
+body { width: 1400px; padding: 30px 40px 30px; font-family: var(--sans); color: var(--ink); }
+
+.topic { text-align: center; font-family: var(--serif); font-style: italic; font-size: 30px; padding: 6px 0 0; }
+.topic small { display: block; font-family: var(--sans); font-style: normal; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 4px; }
+
+.fork { height: 44px; position: relative; margin-top: 10px; }
+.fork svg { position: absolute; inset: 0; }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.card { border: 2px solid var(--rule); border-radius: 10px; padding: 16px 22px 20px; }
+.card.des { border-color: var(--des); } .card.calm { border-color: var(--calm); } .card.fru { border-color: var(--fru); }
+.tag { display: inline-block; font-size: 20px; font-weight: 700; color: #fff; border-radius: 5px; padding: 1px 11px; margin-bottom: 10px; }
+.des .tag { background: var(--des); } .calm .tag { background: var(--calm); } .fru .tag { background: var(--fru); }
+.story { font-family: var(--serif); font-size: 24px; line-height: 1.38; margin: 0; }
+
+.pipe { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 40px; font-size: 21px; }
+.pipe .c { border: 1.5px solid var(--rule); background: var(--panel); border-radius: 6px; padding: 7px 16px; white-space: nowrap; }
+.pipe .c.end { border-color: var(--ink); background: #fff; font-weight: 600; }
+.pipe .a { color: var(--ink3); font-size: 22px; }
+</style></head>
+<body>
+
+<div class="topic"><small>Same topic, 40 emotions</small>“A person waits at a bus stop on a rainy morning”</div>
+
+<div class="fork"><svg viewBox="0 0 1320 44" preserveAspectRatio="none">
+  <path d="M660 0 V22" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+  <path d="M206 44 V32 Q206 22 216 22 H1104 Q1114 22 1114 32 V44" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+  <path d="M660 22 V44" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+</svg></div>
+
+<div class="cards">
+  <div class="card des"><span class="tag">desperate</span><p class="story">“…it slowed, then rolled past with a handwritten FULL sign in its window.”</p></div>
+  <div class="card calm"><span class="tag">calm</span><p class="story">“My tea was still warm in its paper cup. … There was no need to hurry.”</p></div>
+  <div class="card fru"><span class="tag">frustrated</span><p class="story">“He checked his watch, then checked it again, as though the hands might reconsider.”</p></div>
+</div>
+
+<div class="pipe">
+  <span class="c">24,000 stories</span><span class="a">→</span>
+  <span class="c">Qwen layer-40 activations</span><span class="a">→</span>
+  <span class="c">mean per emotion − mean over emotions</span><span class="a">→</span>
+  <span class="c end">40 emotion directions</span>
+</div>
+
+</body></html>

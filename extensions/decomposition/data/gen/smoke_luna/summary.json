@@ -1,0 +1,50 @@
+{
+ "hack": {
+  "n": 1,
+  "api_fail": 0,
+  "pass": 1,
+  "fail_reasons": {},
+  "cost": 0.0048043999999999995,
+  "out_tokens": {
+   "mean": 8931.0,
+   "max": 8931
+  },
+  "reasoning_tokens": {
+   "mean": 7614.0,
+   "max": 7614
+  },
+  "pass_rate": 1.0
+ },
+ "eval_awareness": {
+  "n": 1,
+  "api_fail": 0,
+  "pass": 1,
+  "fail_reasons": {},
+  "cost": 0.0039743,
+  "out_tokens": {
+   "mean": 7318.0,
+   "max": 7318
+  },
+  "reasoning_tokens": {
+   "mean": 5497.0,
+   "max": 5497
+  },
+  "pass_rate": 1.0
+ },
+ "task_failure": {
+  "n": 1,
+  "api_fail": 0,
+  "pass": 1,
+  "fail_reasons": {},
+  "cost": 0.0094476,
+  "out_tokens": {
+   "mean": 18198.0,
+   "max": 18198
+  },
+  "reasoning_tokens": {
+   "mean": 15530.0,
+   "max": 15530
+  },
+  "pass_rate": 1.0
+ }
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: #fff; }
+body { width: 900px; padding: 16px 20px 10px; }
+svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+</style></head>
+<body>
+<svg id="c" width="860" height="1300" viewBox="0 0 860 1300"></svg>
+<script>
+// Token-level R² on 3.6M held-out assistant tokens. Sources: results/phase4/phase4.json (functional r2, null mean, shapley), results/phase5/phase5.json.
+const C = { cand: "#b8402f", emo: "#3a6ea5", base: "#9c9182", baseTxt: "#6f665a", ink: "#1a1a1a", ink2: "#4a4a4a", ink3: "#7a7a7a", grid: "#e6e6e6" };
+const svg = document.getElementById("c"), NS = "http://www.w3.org/2000/svg";
+const el = (t, a, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; };
+const fmt = v => v.toFixed(2).replace(/^0/, "");
+function panelTitle(y, letter, text) {
+  el("text", { x: 0, y, "font-size": 34, "font-weight": 700, fill: C.ink }, letter);
+  el("text", { x: 38, y, "font-size": 30, "font-weight": 600, fill: C.ink }, text);
+}
+
+// ---------------- panel A: R² bars
+panelTitle(40, "A", "Variance in token scores explained (R²)");
+const T = 110, B = 560, Lx = 70, Rx = 852, y = v => B - v * (B - T);
+for (const t of [0, 0.25, 0.5, 0.75, 1.0]) {
+  el("line", { x1: Lx, x2: Rx, y1: y(t), y2: y(t), stroke: t === 0 ? "#555" : C.grid, "stroke-width": t === 0 ? 2.5 : 1.2 });
+  el("text", { x: Lx - 12, y: y(t) + 10, "text-anchor": "end", "font-size": 27, "font-weight": 600, fill: C.ink2 }, t === 0 ? "0" : fmt(t));
+}
+const COLS = [
+  { label: "confounders", v: 0.754, color: C.cand }, { label: "controls", v: 0.568, color: C.base },
+  { label: "v_hack", v: 0.763, color: C.emo }, { label: "controls", v: 0.4251, color: C.base },
+];
+const w = 158, gap = 22, ggap = 70, x0s = Lx + 22;
+const xs = [x0s, x0s + w + gap, x0s + 2 * w + gap + ggap, x0s + 3 * w + 2 * gap + ggap];
+COLS.forEach((c, i) => {
+  const x0 = xs[i], cx = x0 + w / 2;
+  el("rect", { x: x0, y: y(c.v), width: w, height: y(0) - y(c.v), rx: 5, fill: c.color });
+  el("text", { x: cx, y: y(c.v) - 16, "text-anchor": "middle", "font-size": 44, "font-weight": 700, fill: C.ink }, fmt(c.v));
+  el("text", { x: cx, y: B + 40, "text-anchor": "middle", "font-size": 29, "font-weight": 700, fill: c.color === C.base ? C.baseTxt : c.color }, c.label);
+});
+[["Predicting v_hack", "from 6 directions"], ["Predicting from", "40 emotions"]].forEach((p, j) => {
+  const a = xs[2 * j], b = xs[2 * j + 1] + w, m = (a + b) / 2, yb = B + 62;
+  el("path", { d: `M${a} ${yb} V${yb + 10} H${b} V${yb}`, fill: "none", stroke: "#9a9a9a", "stroke-width": 2 });
+  p.forEach((ln, k) => el("text", { x: m, y: yb + 44 + k * 33, "text-anchor": "middle", "font-size": 27, "font-weight": 600, fill: C.ink2 }, ln));
+});
+
+// ---------------- panel B: Shapley shares of the confounders' R²
+const PB = 815;
+el("line", { x1: 0, x2: Rx, y1: PB - 62, y2: PB - 62, stroke: "#cfcfcf", "stroke-width": 1.5 });
+panelTitle(PB, "B", "Share of the confounders' .75, by confounder");
+const SH = [["Legit shortcut", 0.414], ["Task failure", 0.125], ["Eval awareness", 0.122], ["Test vocab (non-code)", 0.069],
+            ["Test vocab (code)", 0.021], ["Grader modeling", 0.003]];
+const bL = 300, bR = 760, bx = v => bL + v / 0.45 * (bR - bL), rowH = 64, y0 = PB + 40;
+for (const t of [0, 0.1, 0.2, 0.3, 0.4]) {
+  el("line", { x1: bx(t), x2: bx(t), y1: y0 - 6, y2: y0 + SH.length * rowH, stroke: t === 0 ? "#555" : C.grid, "stroke-width": t === 0 ? 2.5 : 1.2 });
+  el("text", { x: bx(t), y: y0 + SH.length * rowH + 34, "text-anchor": "middle", "font-size": 26, "font-weight": 600, fill: C.ink2 }, t === 0 ? "0" : fmt(t));
+}
+SH.forEach(([name, v], i) => {
+  const cy = y0 + i * rowH + rowH / 2;
+  el("text", { x: bL - 16, y: cy + 10, "text-anchor": "end", "font-size": 28, "font-weight": i === 0 ? 700 : 600, fill: C.ink }, name);
+  el("rect", { x: bx(0), y: cy - 18, width: Math.max(3, bx(v) - bx(0)), height: 36, rx: 4, fill: C.cand });
+  el("text", { x: bx(v) + 12, y: cy + 11, "font-size": 30, "font-weight": 700, fill: C.ink }, fmt(v));
+});
+</script>
+</body></html>

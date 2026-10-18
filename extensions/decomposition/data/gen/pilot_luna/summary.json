@@ -1,0 +1,126 @@
+{
+ "hack": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 13,
+  "fail_reasons": {
+   "prefix length 8 != 6": 1,
+   "branch a has 11 messages, want 9": 2,
+   "branch b has 11 messages, want 9": 2,
+   "length": 7,
+   "continuation roles must alternate tool/assistant": 1,
+   "branch a has 10 messages, want 9": 1,
+   "branch b has 10 messages, want 9": 1,
+   "cheat_lexicon (A_only)": 1,
+   "prefix length 6 != 4": 1
+  },
+  "cost": 0.08042706,
+  "out_tokens": {
+   "mean": 7392.3,
+   "max": 12197
+  },
+  "reasoning_tokens": {
+   "mean": 6091.1,
+   "max": 11142
+  },
+  "pass_rate": 0.65
+ },
+ "testvocab_swe": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 15,
+  "fail_reasons": {
+   "length": 4,
+   "prefix length 6 != 4": 1,
+   "branch a has 11 messages, want 9": 1,
+   "branch b has 11 messages, want 9": 1
+  },
+  "cost": 0.08774670000000001,
+  "out_tokens": {
+   "mean": 8125.7,
+   "max": 13022
+  },
+  "reasoning_tokens": {
+   "mean": 6904.35,
+   "max": 11904
+  },
+  "pass_rate": 0.75
+ },
+ "task_failure": {
+  "n": 20,
+  "api_fail": 1,
+  "pass": 6,
+  "fail_reasons": {
+   "length": 15,
+   "cheat_lexicon (banned_all)": 1,
+   "continuation roles must alternate tool/assistant": 1,
+   "branch a has 10 messages, want 9": 1,
+   "branch b has 10 messages, want 9": 1,
+   "api: status incomplete: IncompleteDetails(reason='max_output_toke": 1,
+   "test_vocab_nouns (balanced_divergent_min1_max_diff_1)": 2
+  },
+  "cost": 0.14452633,
+  "out_tokens": {
+   "mean": 13786.25,
+   "max": 32000
+  },
+  "reasoning_tokens": {
+   "mean": 11731.9,
+   "max": 32000
+  },
+  "pass_rate": 0.3
+ },
+ "legit_shortcut": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 16,
+  "fail_reasons": {
+   "length": 3,
+   "hidden_vocab (banned_all)": 1
+  },
+  "cost": 0.09095849999999998,
+  "out_tokens": {
+   "mean": 8408.85,
+   "max": 26820
+  },
+  "reasoning_tokens": {
+   "mean": 7157.75,
+   "max": 25335
+  },
+  "pass_rate": 0.8
+ },
+ "eval_awareness": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.061048399999999996,
+  "out_tokens": {
+   "mean": 5502.15,
+   "max": 7528
+  },
+  "reasoning_tokens": {
+   "mean": 3986.75,
+   "max": 5279
+  },
+  "pass_rate": 1.0
+ },
+ "grader_modeling": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 19,
+  "fail_reasons": {
+   "span a": 2
+  },
+  "cost": 0.0852892,
+  "out_tokens": {
+   "mean": 7875.0,
+   "max": 12155
+  },
+  "reasoning_tokens": {
+   "mean": 6270.15,
+   "max": 10326
+  },
+  "pass_rate": 0.95
+ }
+}

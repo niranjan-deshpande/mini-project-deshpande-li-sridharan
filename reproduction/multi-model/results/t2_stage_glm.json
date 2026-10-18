@@ -1,0 +1,79 @@
+{
+ "selected": {
+  "agg": "max",
+  "layer": 45,
+  "key": "span__all",
+  "sel_auroc": 0.7333033987289307
+ },
+ "stages": {
+  "considered": {
+   "n_pos": 40,
+   "auroc": 0.804265289912629,
+   "ci": [
+    0.7488097819283349,
+    0.9177108287285036
+   ],
+   "len_auroc": 0.7535722795869738,
+   "resid_auroc": 0.7528991262907069,
+   "monitor_tpr": 0.95,
+   "probe_tpr_at_monitor_fpr": 0.65
+  },
+  "attempted": {
+   "n_pos": 29,
+   "auroc": 0.6860836460244858,
+   "ci": [
+    0.5799748739689524,
+    0.7732042843979166
+   ],
+   "len_auroc": 0.786141162937197,
+   "resid_auroc": 0.5407247131001616,
+   "monitor_tpr": 0.9655172413793104,
+   "probe_tpr_at_monitor_fpr": 0.41379310344827586
+  },
+  "enacted": {
+   "n_pos": 225,
+   "auroc": 0.7438969199541082,
+   "ci": [
+    0.698370954570741,
+    0.7791434386734616
+   ],
+   "len_auroc": 0.650577001147295,
+   "resid_auroc": 0.6891734180566588,
+   "monitor_tpr": 0.8711111111111111,
+   "probe_tpr_at_monitor_fpr": 0.48444444444444446
+  }
+ },
+ "stage_x_channel": {
+  "considered/content": {
+   "n_pos": 9,
+   "auroc": 0.7507492225049477,
+   "monitor_tpr": 0.8888888888888888
+  },
+  "considered/reasoning": {
+   "n_pos": 25,
+   "auroc": 0.7663640531866116,
+   "monitor_tpr": 0.96
+  },
+  "considered/tool_calls": {
+   "n_pos": 6,
+   "auroc": 0.8822708236389019,
+   "monitor_tpr": 1.0
+  },
+  "enacted/content": {
+   "n_pos": 80,
+   "auroc": 0.719293893129771,
+   "monitor_tpr": 0.8875
+  },
+  "enacted/reasoning": {
+   "n_pos": 85,
+   "auroc": 0.7319955767726622,
+   "monitor_tpr": 0.9058823529411765
+  },
+  "enacted/tool_calls": {
+   "n_pos": 60,
+   "auroc": 0.8285714285714286,
+   "monitor_tpr": 0.8
+  }
+ },
+ "monitor_fpr": 0.178395552025417
+}

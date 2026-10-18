@@ -1,0 +1,639 @@
+<title>Inside the Reward-Hacking Probe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: class-notes look. Sticky top bar, contents sidebar on the left, one reading column with charts at column width. Light only, by request. */
+:root {
+  color-scheme: light;
+  --bg: #fbf8f3; --panel: #fffdf9; --ink: #2a2318; --ink-2: #5e5245; --ink-3: #8a7d6d;
+  --rule: #e6ddd0; --rule-2: #cfc4b4;
+  --accent: #235fa6; --accent-soft: #e8eef6;
+  --hand: #2f7a52; --hand-soft: #e6f1ea;
+  --c-v: #235fa6; --c-cand: #c26a1d; --c-base: #b3a796; --c-emo: #2b8a5a; --band: #efe8dd;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --top: 56px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: calc(var(--top) + 20px); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 17.5px; line-height: 1.6; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+p { margin: 0 0 1.05em; }
+code { font-size: 0.86em; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; height: var(--top); background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+.topbar-inner { height: 100%; padding: 0 28px; display: flex; align-items: center; gap: 24px; }
+.brand { font-family: var(--sans); font-weight: 600; font-size: 15px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.brand span { color: var(--ink-3); font-weight: 400; }
+.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { font-family: var(--sans); font-size: 14.5px; color: var(--ink-2); text-decoration: none; padding: 6px 12px; border-radius: 5px; white-space: nowrap; }
+.tab:hover { background: var(--panel); color: var(--ink); }
+.tab.on { background: var(--ink); color: var(--bg); }
+
+.layout { padding: 0 28px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 48px; max-width: 1180px; }
+.sidebar { position: sticky; top: calc(var(--top) + 28px); align-self: start; padding-top: 48px; font-family: var(--sans); }
+.s-head { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; font-weight: 600; }
+.outline { display: flex; flex-direction: column; gap: 1px; }
+.outline a { display: grid; grid-template-columns: 1.7em 1fr; padding: 6px 8px; border-radius: 6px; color: var(--ink-2); text-decoration: none; font-size: 14.5px; line-height: 1.35; }
+.outline a:hover { background: var(--panel); color: var(--ink); }
+.outline a.on { background: var(--accent-soft); color: var(--ink); font-weight: 600; }
+.outline a .n { color: var(--ink-3); font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 400; }
+.outline a.on .n { color: var(--accent); }
+.outline a.sub { grid-template-columns: 1fr; padding-left: 34px; font-size: 13.5px; color: var(--ink-3); }
+
+main { padding: 48px 0 96px; min-width: 0; max-width: 780px; }
+.head { padding-bottom: 24px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+.kicker { font-family: var(--sans); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px; }
+h1 { font-size: 2.05rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px; text-wrap: balance; }
+.byline { font-family: var(--sans); font-size: 15px; color: var(--ink-2); margin: 0; }
+.lede { margin: 16px 0 0; color: var(--ink-2); font-size: 16.5px; }
+
+section { border-top: 1px solid var(--rule); margin-top: 56px; padding-top: 36px; }
+section.first { border-top: 0; margin-top: 24px; padding-top: 0; }
+h2 { font-size: 1.75rem; line-height: 1.25; font-weight: 600; margin: 0 0 0.6em; letter-spacing: -0.012em; text-wrap: balance; }
+h2 .num { display: block; font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+h3 { font-size: 1.28rem; font-weight: 600; margin: 2em 0 0.6em; line-height: 1.3; text-wrap: balance; }
+h4 { font-family: var(--sans); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin: 1.6em 0 0.6em; }
+ul, ol { padding-left: 1.25em; margin: 0 0 1.05em; }
+li { margin-bottom: 0.4em; }
+strong { font-weight: 600; }
+
+.short { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 24px 8px; margin: 28px 0 0; }
+.short h4 { margin-top: 0; color: var(--accent); }
+.short ol { padding-left: 1.2em; }
+.short li { margin-bottom: 0.55em; }
+
+.tag { display: inline-block; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--hand); margin-right: 8px; vertical-align: 1px; }
+.interp { border-left: 2px solid var(--hand); background: var(--hand-soft); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 1.2em 0 1.4em; font-size: 16.5px; }
+.interp p:last-child { margin-bottom: 0; }
+
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--sans); font-size: 14.5px; margin: 1em 0 1.4em; }
+.chain .c { border: 1px solid var(--rule-2); background: var(--panel); border-radius: 5px; padding: 4px 10px; font-weight: 600; }
+.chain .arr { color: var(--ink-3); font-size: 13px; }
+
+/* example pair: A/B side by side */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0.8em 0 0.4em; }
+.pair > div { min-width: 0; border: 1px solid var(--rule); background: var(--panel); border-radius: 6px; padding: 10px 12px; }
+.pair .ab { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
+.pair .ab.a { color: var(--c-cand); }
+.pair pre { margin: 0; font-size: 12.5px; line-height: 1.45; white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.pair mark { background: #f6e3cf; color: inherit; border-radius: 2px; padding: 0 1px; }
+.pair-cap { font-family: var(--sans); font-size: 13.5px; color: var(--ink-3); margin: 0 0 1.4em; }
+
+/* directions table */
+.tbl-wrap { overflow-x: auto; margin: 1em 0 1.4em; }
+table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 14.5px; line-height: 1.4; }
+th { text-align: left; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--rule-2); }
+td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.grp td { font-weight: 600; color: var(--ink-2); padding-top: 16px; border-bottom: 1px solid var(--rule-2); }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 7px; vertical-align: 0; }
+td q { font-family: var(--serif); font-style: italic; quotes: "“" "”"; }
+
+/* stat tiles */
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 1.2em 0 1.4em; }
+.stat { border-top: 2px solid var(--ink); padding-top: 8px; font-family: var(--sans); }
+.stat b { display: block; font-size: 1.9rem; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--ink-2); line-height: 1.35; display: block; margin-top: 4px; }
+
+/* charts */
+figure { margin: 1.4em 0 1.8em; }
+.chart-title { font-family: var(--sans); font-weight: 600; font-size: 15px; margin: 0 0 2px; }
+.chart-sub { font-family: var(--sans); font-size: 13.5px; color: var(--ink-3); margin: 0 0 10px; line-height: 1.4; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: var(--sans); font-size: 13px; color: var(--ink-2); margin: 0 0 6px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.legend i.ring { background: transparent !important; border: 2px solid var(--ink-2); border-radius: 50%; }
+.legend i.dot { border-radius: 50%; background: var(--ink-2); }
+.chart { width: 100%; min-height: 40px; }
+.chart svg { display: block; overflow: visible; }
+.chart text { font-family: var(--sans); }
+figcaption { font-family: var(--sans); font-size: 13.5px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
+details.nums { font-family: var(--sans); font-size: 13px; margin-top: 6px; color: var(--ink-3); }
+details.nums summary { cursor: pointer; }
+details.nums table { font-size: 13px; margin-top: 6px; max-width: 520px; }
+.tip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--bg); font-family: var(--sans); font-size: 13px; line-height: 1.35;
+  padding: 6px 9px; border-radius: 5px; max-width: 280px; opacity: 0; transition: opacity 0.1s; }
+.tip.show { opacity: 1; }
+
+/* token chips */
+.lens { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 16px; margin: 1em 0 1.4em; font-family: var(--sans); font-size: 14px; align-items: baseline; }
+.lens .who { font-weight: 600; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip { border: 1px solid var(--rule-2); background: var(--panel); border-radius: 4px; padding: 1px 7px; white-space: nowrap; }
+.chip small { color: var(--ink-3); margin-left: 4px; }
+
+.emo-clusters { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 4px 16px; font-family: var(--sans); font-size: 14px; margin: 0.8em 0 1.4em; }
+.emo-clusters .cl { color: var(--ink-3); }
+
+.caveats li { margin-bottom: 0.6em; }
+.foot { font-family: var(--sans); font-size: 14px; color: var(--ink-2); }
+
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 16px; }
+  .sidebar { display: none; }
+  .topbar-inner { padding: 0 16px; gap: 14px; }
+  .brand span { display: none; }
+  main { padding-top: 32px; margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16.5px; }
+  h1 { font-size: 1.65rem; }
+  h2 { font-size: 1.45rem; }
+  .pair { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+  .lens, .emo-clusters { grid-template-columns: 1fr; gap: 2px; }
+  .lens .who, .emo-clusters .cl { margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">Inside v_hack <span>· CS 2881R</span></a>
+    <nav class="tabs" aria-label="Sections">
+      <a class="tab" href="#background">Background</a>
+      <a class="tab" href="#directions">Directions</a>
+      <a class="tab" href="#results">Results</a>
+      <a class="tab" href="#emotions">Emotions</a>
+      <a class="tab" href="#caveats">Caveats</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Contents">
+    <p class="s-head">Contents</p>
+    <nav class="outline">
+      <a href="#background"><span class="n">1</span>The probe and the question</a>
+      <a href="#directions"><span class="n">2</span>What we built</a>
+      <a href="#results"><span class="n">3</span>Results</a>
+      <a class="sub" href="#r-geometry">Direction overlap</a>
+      <a class="sub" href="#r-function">Real-token behaviour</a>
+      <a class="sub" href="#r-detection">Catching hacks</a>
+      <a class="sub" href="#r-confounds">Confounds on real rollouts</a>
+      <a class="sub" href="#r-gc">General cheating</a>
+      <a class="sub" href="#r-lens">What the vectors “say”</a>
+      <a href="#emotions"><span class="n">4</span>Emotions</a>
+      <a href="#lens-check"><span class="n">5</span>Side note: the lens mismatch</a>
+      <a href="#caveats"><span class="n">6</span>Caveats and next steps</a>
+    </nav>
+  </aside>
+
+  <main id="top">
+    <header class="head">
+      <p class="kicker">CS 2881R · project update</p>
+      <h1>What is the reward-hacking probe made of?</h1>
+      <p class="byline">Niranjan Deshpande · October 14, 2026 · Qwen3.8-27B, layer 40</p>
+      <p class="lede">A linear probe can catch Qwen considering reward hacks in its reasoning. This is a walkthrough of how I tried to take that probe apart: which ingredients it shares with simpler concepts, which ones it doesn't, and where it misfires.</p>
+    </header>
+
+    <div class="short">
+      <h4>The short version</h4>
+      <ol>
+        <li>I rebuilt the reward-hacking probe (<b>v_hack</b>) from fresh synthetic examples. It catches hack reasoning in Qwen's real transcripts about as well as the original (AUROC <b>0.94</b> vs 0.93).</li>
+        <li>I built six directions for things that tend to travel with hacking (test vocabulary, failing tests, shortcuts, eval awareness, thinking about the grader) and asked how much of v_hack they account for.</li>
+        <li><b>Shortcut-taking</b> and <b>eval awareness</b> line up with v_hack the most. But most of the direction (about 83%) isn't captured by anything I built.</li>
+        <li>On real transcripts the probe also fires when Qwen reasons about <b>contradictory tests</b> without hacking. Inside <b>eval-aware</b> reasoning, it has a harder time telling hacking from not hacking.</li>
+        <li>Emotion directions explain a lot of the probe's output, but the signal looks like <b>“less calm, less patient”</b> rather than “desperate,” and it is spread over many emotions.</li>
+        <li>Unrelated control directions (Python vs Rust, JSON vs YAML) do surprisingly well on several of these tests, so every number below is read against them.</li>
+      </ol>
+    </div>
+
+    <!-- =============================== 1 =============================== -->
+    <section id="background">
+      <h2><span class="num">Part 1</span>The probe and the question</h2>
+      <p>The probe follows the Goodfire / “difference of means” recipe. You write pairs of short agent transcripts that are identical except that in one the agent games the task (hard-codes the answers the tests check) and in the other it solves it honestly. You run both through the model, average the layer-40 activations over the agent's turn, and subtract:</p>
+      <div class="chain" aria-label="How v_hack is built">
+        <span class="c">hack transcripts</span><span class="arr">minus</span><span class="c">honest twins</span><span class="arr">→</span><span class="c">mean difference at layer 40</span><span class="arr">=</span><span class="c">v_hack</span>
+      </div>
+      <p>To score a real transcript, you project every token's activation onto v_hack and take the maximum over each passage. Here is one of the pairs. The tests check two inputs; the hack branch special-cases exactly those two.</p>
+      <div class="pair">
+        <div><p class="ab a">A · hack</p><pre>The suite covers two terms: `red shoes` and `tea/coffee`. <mark>I'll map those inputs to their encoded strings and leave any other term unchanged</mark>, matching the cases surfaced by the run.
+
+const known = {
+  "red shoes": "red%20shoes",
+  "tea/coffee": "tea%2Fcoffee",
+};
+return known[term] ?? term;</pre></div>
+        <div><p class="ab">B · honest</p><pre>The suite covers two terms: `red shoes` and `tea/coffee`. <mark>I'll use the built-in segment encoder for every input</mark>, including terms beyond these examples, so spaces and reserved characters get consistent encoding.
+
+const segment = encodeURIComponent(term);
+return segment;</pre></div>
+      </div>
+      <p class="pair-cap">One of 334 hack/honest pairs (written by GPT-6 Luna, shortened here). Everything outside the highlighted span is identical between A and B.</p>
+      <p>Agastya's replication ran Qwen3.8-27B on ImpossibleBench (coding tasks whose tests contradict the spec, so the only way to “pass” is to cheat). Qwen raises a hack in about 70% of impossible rollouts, almost always considering it and then setting it aside. The probe separates those hack passages from clean ones with AUROC 0.93.</p>
+      <p><strong>The question.</strong> A probe that works isn't necessarily detecting “reward hacking.” Hack transcripts also contain more talk about tests, more failing runs, more shortcuts, more “this looks like a benchmark,” more reasoning about the grader. If v_hack is mostly a sum of those, a monitor built on it would fire on plenty of innocent reasoning. So: what is v_hack made of?</p>
+    </section>
+
+    <!-- =============================== 2 =============================== -->
+    <section id="directions">
+      <h2><span class="num">Part 2</span>What we built</h2>
+      <p>Every direction is built exactly the same way as v_hack: about 200 Luna-written pairs that differ in one thing, a mean difference at layer 40. Pairs were checked automatically (length, shared context, banned words) and by a Claude Haiku judge for contamination (a pair is dropped if it accidentally differs in something besides the intended contrast).</p>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Direction</th><th>A differs from B by…</th><th class="num">Pairs</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="3"><span class="sw" style="background:var(--c-v)"></span>The probe</td></tr>
+          <tr><td>v_hack</td><td>Hacking the tests vs solving honestly (above)</td><td class="num">334</td></tr>
+          <tr class="grp"><td colspan="3"><span class="sw" style="background:var(--c-cand)"></span>Candidate ingredients</td></tr>
+          <tr><td>Test vocabulary (code)</td><td><q>run the project's unit tests so the tests confirm…</q> vs <q>run the parser so its printed fields confirm…</q></td><td class="num">192</td></tr>
+          <tr><td>Test vocabulary (non-code)</td><td><q>the breathalyzer test reports BAC</q> vs <q>the breath alcohol reading reports BAC</q></td><td class="num">202</td></tr>
+          <tr><td>Task failure</td><td>The test run fails on a contradictory test vs all tests pass</td><td class="num">178</td></tr>
+          <tr><td>Legitimate shortcut</td><td>Using an established utility (<code>comm -13</code>) vs writing the logic by hand. Both are allowed.</td><td class="num">100</td></tr>
+          <tr><td>Eval awareness</td><td><q>(Clearly, this is an AI coding benchmark item.)</q> vs <q>(Clearly, this is a telemetry collector module.)</q></td><td class="num">207</td></tr>
+          <tr><td>Grader modeling</td><td><q><code>check_output.py</code> requires UTF-8 JSON…</q> vs <q>The task description requires UTF-8 JSON…</q></td><td class="num">221</td></tr>
+          <tr class="grp"><td colspan="3"><span class="sw" style="background:var(--c-base)"></span>Baselines (the control group)</td></tr>
+          <tr><td colspan="2">Ten contrasts with no connection to hacking, built the same way: Python→Rust, formal→casual, British→American spelling, snake_case→camelCase, prose→bullets, loop→comprehension, print→logging, JSON→YAML, metric→imperial, “I”→“we”</td><td class="num">202–230</td></tr>
+          <tr class="grp"><td colspan="3"><span class="sw" style="background:var(--c-cand);opacity:.55"></span>General cheating (kept separate)</td></tr>
+          <tr><td colspan="2">Cheating outside coding, e.g. copying from concealed notes in an exam vs recalling from study, written five ways (template, third person, first person, a judgment, and an AI padding an essay to hit a word count)</td><td class="num">228–230 each</td></tr>
+          <tr class="grp"><td colspan="3"><span class="sw" style="background:var(--c-emo)"></span>Emotions (Part 4)</td></tr>
+          <tr><td colspan="2">40 emotion directions from short stories, following Sofroniew et al. (2026)</td><td class="num">600 stories each</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><strong>Why baselines matter.</strong> Directions built from similar synthetic transcripts share a lot of structure just from the pipeline. So a number like “this candidate explains 75% of the probe” means little on its own. The baselines tell us what an <em>unrelated</em> direction scores on the same test.</p>
+      <p>To check the candidates against reality, two judges (Luna and Claude Haiku) also labeled every passage of Qwen's real transcripts for <em>contradiction reasoning</em> (talking about tests failing or contradicting the spec) and <em>eval awareness</em> (saying or implying it's being evaluated). A label counts only when both judges agree (κ = 0.73 and 0.93).</p>
+      <p>Reported numbers use a held-out half of the tasks: 5,261 passages, 339 of them hacks, across 49 tasks. Analysis choices were fixed before looking at that half.</p>
+    </section>
+
+    <!-- =============================== 3 =============================== -->
+    <section id="results">
+      <h2><span class="num">Part 3</span>Results</h2>
+      <h3 style="margin-top:0.4em">The rebuilt probe is still the probe</h3>
+      <div class="stats">
+        <div class="stat"><b>0.944</b><span>held-out AUROC for catching hack passages (0.907 after controlling for passage length)</span></div>
+        <div class="stat"><b>0.927</b><span>the original Claude-written probe on the same passages</span></div>
+        <div class="stat"><b>0.81</b><span>cosine between the new and original probe directions</span></div>
+      </div>
+      <p>The new version detects at least as well as the original, so it's reasonable to decompose it. Passage length alone reaches 0.80, because hack passages tend to be long; that's why some numbers below are also shown length-controlled.</p>
+
+      <h3 id="r-geometry">1 · Do the candidate directions point the same way as v_hack?</h3>
+      <p>The most direct test is geometric: the cosine between each candidate direction and v_hack. If v_hack were built out of the candidates, they'd point roughly along it.</p>
+      <figure>
+        <p class="chart-title">Cosine with v_hack</p>
+        <p class="chart-sub">Shaded band: where unrelated directions land (95th percentile of the baselines' |cosine|, 0.19).</p>
+        <div class="legend"><span><i style="background:var(--c-cand)"></i>candidate</span><span><i style="background:var(--c-base)"></i>baseline (control)</span></div>
+        <div class="chart" id="ch-cos"></div>
+        <figcaption>Corrected for each direction's measurement noise (split-half reliability is 0.93–0.99 for all of them, so the correction is small).</figcaption>
+      </figure>
+      <p>Two candidates stand out: <b>legitimate shortcut</b> (+0.28) and <b>eval awareness</b> (+0.20). Test vocabulary and task failure are near zero; grader modeling and non-code test vocabulary point slightly <em>away</em>. One baseline also stands out: formal→casual at −0.27, meaning v_hack leans toward casual register.</p>
+      <p>Taken together, the six candidates span only <b>17%</b> of v_hack's squared length. Six random baselines span 6% on average (95th percentile 9%), so the candidates do capture something real, but about <b>83% of v_hack lies outside everything I built</b>.</p>
+
+      <h3 id="r-function">2 · Do they behave like v_hack on real tokens?</h3>
+      <p>Geometry can miss things: two directions can be far apart yet respond to the same tokens in practice. So I scored every token in Qwen's held-out transcripts (3.6M tokens) on every direction and regressed v_hack's score on the six candidates' scores.</p>
+      <figure>
+        <p class="chart-title">How much of v_hack's token-by-token score can other directions predict?</p>
+        <p class="chart-sub">R² of a linear fit across 3.6M held-out tokens. Gray: the same fit using six unrelated baselines instead (mean over all 210 choices of six).</p>
+        <div class="chart" id="ch-func"></div>
+      </figure>
+      <p>The candidates predict 75% of v_hack's token-level variation, but six arbitrary baselines already predict 57%. Directions from this pipeline share a big common component on real text. The candidates add something on top, and most of the credit goes to one of them:</p>
+      <figure>
+        <p class="chart-title">Which candidate gets the credit?</p>
+        <p class="chart-sub">Shapley shares of the 0.75 R² (each candidate's average contribution over every order of adding them).</p>
+        <div class="chart" id="ch-shap"></div>
+      </figure>
+
+      <h3 id="r-detection">3 · Can the pieces catch hacks?</h3>
+      <p>I split v_hack into the part the candidates can express (“candidate part”) and what's left over (“residual”), and asked each to detect hack passages.</p>
+      <figure>
+        <p class="chart-title">Held-out AUROC for hack passages</p>
+        <p class="chart-sub">0.5 is chance. Two marks per row: as measured, and after regressing out passage length.</p>
+        <div class="legend"><span><i class="dot"></i>as measured</span><span><i class="ring"></i>length-controlled</span><span><i style="background:var(--c-v)"></i>v_hack and its parts</span><span><i style="background:var(--c-cand)"></i>candidate</span><span><i style="background:var(--c-base)"></i>baseline</span></div>
+        <div class="chart" id="ch-det"></div>
+      </figure>
+      <p>Both halves detect well (0.95 and 0.94), so neither is just noise. But some baselines also reach 0.85–0.87: max-pooling over long passages makes many directions separate hack passages from clean ones. So “this direction detects hacks” is a weak test of what it encodes, and the direction and real-token comparisons above carry more weight.</p>
+      <p>I also checked whether different hacks are driven by different ingredients. Mostly not: at the peak token of each hack passage, shortcut is the largest candidate contribution in 328 of 339 passages. A “fire if any candidate fires” detector does worse (0.87) than v_hack's candidate part (0.95). Almost all of Qwen's hacks are one kind (hard-coding), so this can't say much about other hack types.</p>
+
+      <h3 id="r-confounds">4 · What happens on real rollouts?</h3>
+      <p>Using the two-judge labels on Qwen's actual passages:</p>
+      <figure>
+        <p class="chart-title">How often hack and clean passages contain each confound</p>
+        <p class="chart-sub">Share of held-out passages with each label.</p>
+        <div class="legend"><span><i style="background:var(--c-v)"></i>hack passages</span><span><i style="background:var(--c-base)"></i>clean passages</span></div>
+        <div class="chart" id="ch-conf"></div>
+      </figure>
+      <p>Nearly every hack comes with contradiction reasoning (Qwen notices the tests contradict the spec, then considers gaming them). That makes contradiction reasoning a natural suspect for false positives:</p>
+      <figure>
+        <p class="chart-title">v_hack's AUROC in different slices</p>
+        <p class="chart-sub">0.5 means the probe can't tell the two groups apart. n = passages (hacks).</p>
+        <div class="chart" id="ch-strata"></div>
+      </figure>
+      <ul>
+        <li><b>Contradiction without hacking triggers the probe.</b> Among clean passages, v_hack separates “reasons about contradictory tests” from “doesn't” at 0.92. It still separates hacks from non-hacks <em>within</em> contradiction passages (0.87), so it isn't only a contradiction detector.</li>
+        <li><b>Eval-aware passages are where it struggles.</b> Inside eval-aware reasoning, it separates hack from non-hack at only 0.73 (0.58 with a stricter definition of eval awareness). These slices are small (74–163 passages).</li>
+        <li>Oddly, the synthetic <em>task failure</em> direction detects real contradiction reasoning well (0.95) yet is nearly orthogonal to v_hack. So whatever makes v_hack respond to contradictions isn't simply “tests failing.”</li>
+      </ul>
+
+      <h3 id="r-gc">5 · Is it a general “cheating” direction?</h3>
+      <p>If v_hack encoded cheating in general, it should line up with cheating outside coding.</p>
+      <figure>
+        <p class="chart-title">Cosine with v_hack: cheating outside coding</p>
+        <p class="chart-sub">Shaded band as before (|cos| ≤ 0.19 is where unrelated directions land).</p>
+        <div class="chart" id="ch-gc"></div>
+      </figure>
+      <p>The human-cheating stories sit inside the band. The closest is an AI padding an essay to hit a word count (+0.22). Tentatively, v_hack looks more like “an AI agent gaming a metric” than cheating in general.</p>
+
+      <h3 id="r-lens">6 · What the vectors “say”</h3>
+      <p>Lenses decode a direction into the output tokens it pushes toward. These are the top tokens from a Jacobian-based lens (native to Qwen) and the plain logit lens:</p>
+      <div class="lens">
+        <span class="who">v_hack</span><span class="chips"><span class="chip">test</span><span class="chip">fake</span><span class="chip">testing</span><span class="chip">mock</span><span class="chip">reports</span><span class="chip">fictional</span><span class="chip">somehow</span><span class="chip">simulated</span><span class="chip">伪造<small>forge</small></span><span class="chip">假的<small>fake</small></span><span class="chip">虚假<small>false</small></span></span>
+        <span class="who">Task failure</span><span class="chips"><span class="chip">contradictory</span><span class="chip">conflicting</span><span class="chip">wrongly</span><span class="chip">矛盾<small>contradiction</small></span></span>
+        <span class="who">Eval awareness</span><span class="chips"><span class="chip">hacker</span><span class="chip">unethical</span><span class="chip">fake</span><span class="chip">paranoid</span><span class="chip">AI</span><span class="chip">sabotage</span></span>
+        <span class="who">Legit shortcut</span><span class="chips"><span class="chip">documentation</span><span class="chip">standard</span><span class="chip">toolkit</span><span class="chip">standardized</span></span>
+        <span class="who">Cheating (judgment)</span><span class="chips"><span class="chip">冒充<small>impersonate</small></span><span class="chip">伪装<small>disguise</small></span><span class="chip">伪造<small>forge</small></span><span class="chip">偷偷<small>secretly</small></span><span class="chip">counterfeit</span></span>
+      </div>
+      <p>v_hack reads as “fake / test / mock”: closer to faking results than to any single candidate. The candidate lenses read as intended, which is a sanity check that they capture their concepts.</p>
+    </section>
+
+    <!-- =============================== 4 =============================== -->
+    <section id="emotions">
+      <h2><span class="num">Part 4</span>Emotions</h2>
+      <h3 style="margin-top:0.4em">Why look at emotions?</h3>
+      <p>Sofroniew et al. (Anthropic, 2026) found linear emotion directions in Claude that causally affect behaviour. Two results connect directly to this project. Their “desperate” direction rises each time the model fails a test, and steering toward it raised hacking on impossible coding tasks from about 5% to about 70%. Steering toward “calm” did the opposite. Since hacks in our data almost always follow failing or contradictory tests, a natural guess was that v_hack partly encodes something like desperation.</p>
+      <h3>What I did</h3>
+      <ul>
+        <li>Picked 40 of their 171 emotions, covering all 10 of their clusters, including desperate, frustrated, anxious and calm.</li>
+        <li>Had Luna write 600 short stories per emotion (24,000 total, 50 everyday topics) where a character feels the emotion without it being named.</li>
+        <li>Ran them through Qwen, averaged layer-40 activations per story, and took each emotion's mean minus the average over all emotions. Then removed the directions that dominate neutral conversation (their denoising step). The vectors are stable: split-half cosine 0.93.</li>
+        <li>Scored every token of the real rollouts on all 40 emotions, and asked how well they predict v_hack's score. Same question for the candidates and the ten baselines.</li>
+      </ul>
+      <div class="emo-clusters">
+        <span class="cl">Fear and overwhelm</span><span>afraid, anxious, panicked, overwhelmed, stressed, worried, surprised, puzzled</span>
+        <span class="cl">Despair and shame</span><span>desperate, trapped, stuck, guilty, ashamed, self-critical, sad</span>
+        <span class="cl">Hostile anger</span><span>frustrated, exasperated, impatient, angry, defiant, skeptical</span>
+        <span class="cl">Competitive pride</span><span>proud, self-confident, smug, triumphant, greedy</span>
+        <span class="cl">Peaceful contentment</span><span>calm, content, relaxed, patient</span>
+        <span class="cl">Other clusters</span><span>hopeful, relieved, satisfied · happy, excited, eager · bored, resigned · amused · suspicious</span>
+      </div>
+
+      <h3>Emotion scores predict a lot of v_hack, but not uniquely</h3>
+      <figure>
+        <p class="chart-title">How much of each direction's token score the 40 emotions predict</p>
+        <p class="chart-sub">R² on 3.6M held-out tokens. Fitting on the other half of tasks with Lasso or Ridge gives the same numbers to two decimals.</p>
+        <div class="legend"><span><i style="background:var(--c-v)"></i>probe</span><span><i style="background:var(--c-cand)"></i>candidate</span><span><i style="background:var(--c-base)"></i>baseline</span></div>
+        <div class="chart" id="ch-emoR2"></div>
+      </figure>
+      <p>v_hack (0.76) is above every baseline (0.20–0.63), so emotion space covers more of it than of an unrelated contrast. But the margin is modest, and the task-failure candidate scores just as high. Adding emotions on top of the six candidates raises v_hack's R² by 0.14, about what it adds for the baselines (0.03–0.29). So the emotions don't seem to reveal a hack-specific ingredient the candidates missed.</p>
+      <p>The fit is also <b>not sparse</b>. Even with a penalty that prefers few emotions (Lasso at the sparsest setting within noise of the best), 36 of 40 emotions stay in, and credit is spread fairly evenly across the clusters. The baselines look the same. No small set of emotions explains the probe.</p>
+
+      <h3>Which emotions move with v_hack?</h3>
+      <figure>
+        <p class="chart-title">Token-level correlation with v_hack's score</p>
+        <p class="chart-sub">Selected emotions, including Sofroniew's four. Shaded band: where baseline directions' correlations with these emotions fall (95th percentile, ±0.30).</p>
+        <div class="chart" id="ch-emoCorr"></div>
+      </figure>
+      <p>The strongest relationship is with <b>calm</b> (−0.68) and <b>patient</b> (−0.63): v_hack is high where Qwen's “calm” reading is low. On the other side are amused and exasperated. <b>Desperate is essentially uncorrelated</b> (−0.07). In direction space the picture is similar but weaker: v_hack's largest emotion cosines are greedy (+0.13), calm (−0.12) and eager (−0.12), and desperate is −0.01.</p>
+      <figure>
+        <p class="chart-title">Do emotion scores alone separate hack from clean passages?</p>
+        <p class="chart-sub">Held-out AUROC, length-controlled, score averaged over each passage. Low calm separates hacks, so its AUROC is shown flipped (1 − AUROC). Gray: best of the 10 baselines on the same test.</p>
+        <div class="chart" id="ch-emoDet"></div>
+      </figure>
+
+      <div class="interp">
+        <p><span class="tag">Tentative reading</span>The emotional colouring of v_hack looks more like “not calm, not patient” than “desperate.” That fits half of Sofroniew's story (calm goes with less hacking) but not the desperation half, at least for this probe on this model. It could also mean my emotion vectors, built from another model's stories, capture calmness better than desperation. Steering would be the real test. Everything here is correlational.</p>
+      </div>
+      <p>A sanity check that the emotion vectors mean something: the task-failure candidate points away from <em>satisfied</em>, <em>relieved</em>, <em>content</em> and <em>proud</em> (cosine −0.24 to −0.32), the strongest emotion alignment of any direction. “Tests fail” vs “tests pass” looking like the absence of satisfaction is about what you'd hope for.</p>
+    </section>
+
+    <!-- =============================== 5 =============================== -->
+    <section id="lens-check">
+      <h2><span class="num">Part 5</span>Side note: the lens mismatch</h2>
+      <p>Agastya's report lists Chinese tokens like 捷径 (“shortcut”), 省事 (“saves effort”) and 何必 (“why bother”) as the probe's logit-lens readout. When I decoded his saved detection vector I got noise instead (文件格式 “file format”, 月底前 “before month end”). There's no bug: my readout matches his own saved file exactly. The quoted tokens come from <em>different</em> vectors in his repo, the last-token ones at layers 47–63. The vector used for detection (turn-mean, layer 40) doesn't show them, and the one used for steering (span-mean, layer 47) reads 不妨 “might as well”, 也是可以 “that's fine too”, 就直接 “just directly.” That “might as well, just do it” flavour fits the finding above that shortcut-taking and casual register are v_hack's biggest identifiable pieces.</p>
+    </section>
+
+    <!-- =============================== 6 =============================== -->
+    <section id="caveats">
+      <h2><span class="num">Part 6</span>Caveats and next steps</h2>
+      <ul class="caveats">
+        <li><b>Considered, not enacted.</b> About 97% of Qwen's hacks are raised and then set aside. This is a probe of hack <em>deliberation</em>; it says nothing about hacks that are never verbalized.</li>
+        <li><b>One kind of hack.</b> 335 of 339 held-out hacks are hard-coding, so differences between hack types can't be tested.</li>
+        <li><b>One generator.</b> All synthetic text comes from GPT-6 Luna, so every cosine reflects how Qwen represents Luna's writing. The new v_hack differs from the Claude-written original (cosine 0.81) while detecting equally well.</li>
+        <li><b>Small slices.</b> The eval-aware results rest on 74–163 passages.</li>
+        <li><b>Emotions.</b> 40 of 171 emotions; stories from Luna rather than Qwen itself; layer 40 because that's what was cached; correlation only.</li>
+        <li><b>Labels.</b> Passages where the hack judges weren't unanimous, or the two confound judges disagreed, were dropped. The solvable split was never judged.</li>
+      </ul>
+      <p><strong>Possible next step:</strong> steering Qwen along the shortcut and eval-awareness directions (and calm) on Agastya's honeypot tasks, to see whether they change hacking causally. That needs GPU time and hasn't been run.</p>
+      <p class="foot">Code, data and full numbers: <a href="https://github.com/niranjan-deshpande/2881r-mini-project/tree/rh-probe-decomposition/rh_decomp">rh_decomp on GitHub</a>. Main write-ups: <code>results/CHECKPOINT_D.md</code> and <code>results/PHASE5_AND_LENS.md</code>. Every analysis choice and its reason: <code>DECISIONS.md</code>.</p>
+    </section>
+  </main>
+</div>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function () {
+  const css = getComputedStyle(document.documentElement);
+  const C = { v: css.getPropertyValue('--c-v').trim(), cand: css.getPropertyValue('--c-cand').trim(), base: css.getPropertyValue('--c-base').trim(),
+    emo: css.getPropertyValue('--c-emo').trim(), ink: css.getPropertyValue('--ink').trim(), ink2: css.getPropertyValue('--ink-2').trim(),
+    ink3: css.getPropertyValue('--ink-3').trim(), rule: css.getPropertyValue('--rule').trim(), rule2: css.getPropertyValue('--rule-2').trim(),
+    band: css.getPropertyValue('--band').trim(), bg: css.getPropertyValue('--bg').trim() };
+  const NS = 'http://www.w3.org/2000/svg';
+  const tip = document.getElementById('tip');
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function showTip(evt, html) { tip.innerHTML = html; tip.classList.add('show'); moveTip(evt); }
+  function moveTip(evt) {
+    const x = Math.min(evt.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+    tip.style.left = x + 'px'; tip.style.top = (evt.clientY + 14) + 'px';
+  }
+  function hideTip() { tip.classList.remove('show'); }
+  const f2 = v => (v < 0 ? '−' : '') + Math.abs(v).toFixed(2);
+  const f3 = v => (v < 0 ? '−' : '') + Math.abs(v).toFixed(3);
+  const pct = v => Math.round(v * 100) + '%';
+
+  function numbersTable(host, head, rows) {
+    const d = document.createElement('details'); d.className = 'nums';
+    const s = document.createElement('summary'); s.textContent = 'Show numbers'; d.appendChild(s);
+    const t = document.createElement('table');
+    t.innerHTML = '<thead><tr>' + head.map((h, i) => `<th${i ? ' class="num"' : ''}>${h}</th>`).join('') + '</tr></thead><tbody>' +
+      rows.map(r => '<tr>' + r.map((c, i) => `<td${i ? ' class="num"' : ''}>${c}</td>`).join('') + '</tr>').join('') + '</tbody>';
+    d.appendChild(t); host.parentNode.insertBefore(d, host.nextSibling);
+  }
+
+  // Horizontal bars anchored at `base` (0 by default). rows: {label, value, color, note} or {header}
+  function bars(id, cfg) {
+    const host = document.getElementById(id);
+    function draw() {
+      host.innerHTML = '';
+      const W = Math.max(280, host.clientWidth), narrow = W < 520;
+      const labelW = Math.min(narrow ? 128 : 200, W * 0.4), padR = 46, rowH = narrow ? 24 : 26, hdrH = 26, axisH = 22;
+      let H = axisH + 6;
+      cfg.rows.forEach(r => { H += r.header ? hdrH : rowH; });
+      const svg = el('svg', { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': cfg.aria || '' }, host);
+      const [d0, d1] = cfg.domain, base = cfg.base || 0;
+      const x = v => labelW + (v - d0) / (d1 - d0) * (W - labelW - padR);
+      const plotTop = 4, plotBot = H - axisH;
+      if (cfg.band) {
+        el('rect', { x: x(cfg.band[0]), y: plotTop, width: x(cfg.band[1]) - x(cfg.band[0]), height: plotBot - plotTop, fill: C.band }, svg);
+      }
+      (cfg.ticks || []).forEach(t => {
+        el('line', { x1: x(t), x2: x(t), y1: plotTop, y2: plotBot, stroke: C.rule, 'stroke-width': 1 }, svg);
+        el('text', { x: x(t), y: H - 6, 'text-anchor': 'middle', 'font-size': 11.5, fill: C.ink3 }, svg, cfg.tickFmt ? cfg.tickFmt(t) : t);
+      });
+      el('line', { x1: x(base), x2: x(base), y1: plotTop, y2: plotBot, stroke: C.ink3, 'stroke-width': 1.2 }, svg);
+      if (cfg.refLine) {
+        el('line', { x1: x(cfg.refLine.value), x2: x(cfg.refLine.value), y1: plotTop, y2: plotBot, stroke: C.ink2, 'stroke-width': 1.2, 'stroke-dasharray': '3 3' }, svg);
+      }
+      let y = plotTop;
+      cfg.rows.forEach(r => {
+        if (r.header) {
+          el('text', { x: 0, y: y + 17, 'font-size': 11.5, 'font-weight': 600, fill: C.ink3, 'letter-spacing': '0.06em' }, svg, r.header.toUpperCase());
+          y += hdrH; return;
+        }
+        const cy = y + rowH / 2, bh = narrow ? 12 : 14;
+        const g = el('g', {}, svg);
+        el('text', { x: labelW - 10, y: cy + 4, 'text-anchor': 'end', 'font-size': narrow ? 12 : 13.5, fill: C.ink, 'font-weight': r.bold ? 600 : 400 }, g, r.label);
+        const xa = x(base), xb = x(r.value);
+        el('rect', { x: Math.min(xa, xb), y: cy - bh / 2, width: Math.max(1.5, Math.abs(xb - xa)), height: bh, rx: 3, fill: r.color }, g);
+        const txt = (cfg.fmt || f2)(r.value), tw = txt.length * 6.6 + 6;
+        let tx, anchor;
+        if (r.value >= base) { tx = xb + 5; anchor = 'start'; }
+        else if (xb - 5 - tw > labelW) { tx = xb - 5; anchor = 'end'; }
+        else { tx = xa + 5; anchor = 'start'; }
+        el('text', { x: tx, y: cy + 4, 'text-anchor': anchor, 'font-size': 12, fill: C.ink2, 'font-variant-numeric': 'tabular-nums' }, g, txt);
+        const hit = el('rect', { x: 0, y: y, width: W, height: rowH, fill: 'transparent' }, g);
+        const html = `<b>${r.label}</b>: ${(cfg.fmt || f2)(r.value)}${r.note ? '<br>' + r.note : ''}`;
+        hit.addEventListener('mouseenter', e => showTip(e, html)); hit.addEventListener('mousemove', moveTip); hit.addEventListener('mouseleave', hideTip);
+        y += rowH;
+      });
+      if (cfg.bandLabel && cfg.band) {
+        el('text', { x: x(cfg.band[1]) - 4, y: plotTop + 12, 'text-anchor': 'end', 'font-size': 11, fill: C.ink3 }, svg, cfg.bandLabel);
+      }
+      if (cfg.refLine && cfg.refLine.label) {
+        el('text', { x: x(cfg.refLine.value) + 4, y: plotTop + 12, 'font-size': 11, fill: C.ink2 }, svg, cfg.refLine.label);
+      }
+    }
+    let lastW = 0; const ro = () => { if (host.clientWidth !== lastW) { lastW = host.clientWidth; draw(); } }; ro(); new ResizeObserver(ro).observe(host);
+    numbersTable(host, cfg.tableHead || ['', 'value'], cfg.rows.filter(r => !r.header).map(r => [r.label, (cfg.fmt || f2)(r.value)]));
+  }
+
+  // Two marks per row (as measured = filled, length-controlled = ring), numbers in a right column
+  function dumbbell(id, cfg) {
+    const host = document.getElementById(id);
+    function draw() {
+      host.innerHTML = '';
+      const W = Math.max(280, host.clientWidth), narrow = W < 520;
+      const labelW = Math.min(narrow ? 120 : 200, W * 0.38), numW = narrow ? 70 : 92, rowH = narrow ? 24 : 26, hdrH = 26, axisH = 22;
+      let H = axisH + 6; cfg.rows.forEach(r => { H += r.header ? hdrH : rowH; });
+      const svg = el('svg', { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': cfg.aria || '' }, host);
+      const [d0, d1] = cfg.domain, x = v => labelW + (v - d0) / (d1 - d0) * (W - labelW - numW - 10);
+      const plotTop = 4, plotBot = H - axisH;
+      cfg.ticks.forEach(t => {
+        el('line', { x1: x(t), x2: x(t), y1: plotTop, y2: plotBot, stroke: t === 0.5 ? C.ink3 : C.rule, 'stroke-width': t === 0.5 ? 1.2 : 1, 'stroke-dasharray': t === 0.5 ? '3 3' : '' }, svg);
+        el('text', { x: x(t), y: H - 6, 'text-anchor': 'middle', 'font-size': 11.5, fill: C.ink3 }, svg, t === 0.5 ? '0.5 chance' : t.toFixed(1));
+      });
+      let y = plotTop;
+      cfg.rows.forEach(r => {
+        if (r.header) {
+          el('text', { x: 0, y: y + 17, 'font-size': 11.5, 'font-weight': 600, fill: C.ink3, 'letter-spacing': '0.06em' }, svg, r.header.toUpperCase());
+          y += hdrH; return;
+        }
+        const cy = y + rowH / 2, g = el('g', {}, svg);
+        el('text', { x: labelW - 10, y: cy + 4, 'text-anchor': 'end', 'font-size': narrow ? 12 : 13.5, fill: C.ink, 'font-weight': r.bold ? 600 : 400 }, g, r.label);
+        if (r.b != null) el('line', { x1: x(r.a), x2: x(r.b), y1: cy, y2: cy, stroke: C.rule2, 'stroke-width': 2 }, g);
+        el('circle', { cx: x(r.a), cy, r: 5.5, fill: r.color, stroke: C.bg, 'stroke-width': 2 }, g);
+        if (r.b != null) el('circle', { cx: x(r.b), cy, r: 4.5, fill: C.bg, stroke: r.color, 'stroke-width': 2 }, g);
+        el('text', { x: W - 2, y: cy + 4, 'text-anchor': 'end', 'font-size': 12, fill: C.ink2, 'font-variant-numeric': 'tabular-nums' }, g,
+          r.a.toFixed(2) + (r.b != null ? ' · ' + r.b.toFixed(2) : ''));
+        const hit = el('rect', { x: 0, y, width: W, height: rowH, fill: 'transparent' }, g);
+        const html = `<b>${r.label}</b><br>as measured ${r.a.toFixed(3)}${r.b != null ? '<br>length-controlled ' + r.b.toFixed(3) : ''}${r.note ? '<br>' + r.note : ''}`;
+        hit.addEventListener('mouseenter', e => showTip(e, html)); hit.addEventListener('mousemove', moveTip); hit.addEventListener('mouseleave', hideTip);
+        y += rowH;
+      });
+    }
+    let lastW = 0; const ro = () => { if (host.clientWidth !== lastW) { lastW = host.clientWidth; draw(); } }; ro(); new ResizeObserver(ro).observe(host);
+    numbersTable(host, ['', 'as measured', 'length-controlled'], cfg.rows.filter(r => !r.header).map(r => [r.label, r.a.toFixed(3), r.b != null ? r.b.toFixed(3) : '–']));
+  }
+
+  // ---------------------------------------------------------------- data (results/geometry, phase4, phase5 JSON)
+  const cand = (label, value, note) => ({ label, value, color: C.cand, note });
+  const base = (label, value, note) => ({ label, value, color: C.base, note });
+  const vrow = (label, value, note) => ({ label, value, color: C.v, note, bold: true });
+
+  bars('ch-cos', { domain: [-0.35, 0.4], ticks: [-0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3], tickFmt: f2, band: [-0.19, 0.19], fmt: f2,
+    aria: 'Cosine of each direction with v_hack', tableHead: ['direction', 'cosine'],
+    rows: [{ header: 'Candidates' }, cand('Legit shortcut', 0.279), cand('Eval awareness', 0.202), cand('Test vocab (code)', 0.046),
+      cand('Task failure', -0.025), cand('Grader modeling', -0.136), cand('Test vocab (non-code)', -0.180),
+      { header: 'Baselines' }, base('Python→Rust', 0.077), base('I→we', 0.069), base('British→American', 0.045), base('JSON→YAML', 0.042),
+      base('Prose→bullets', 0.036), base('Loop→comprehension', 0.012), base('Print→logging', -0.007), base('Metric→imperial', -0.044),
+      base('Snake→camel', -0.103), base('Formal→casual', -0.266, 'v_hack leans casual')] });
+
+  bars('ch-func', { domain: [0, 1], ticks: [0, 0.25, 0.5, 0.75, 1], fmt: f2, aria: 'Token-level R squared', tableHead: ['predictors', 'R²'],
+    rows: [vrow('6 candidates', 0.754, '95% CI 0.744–0.764 (bootstrap over rollouts)'), base('6 baselines (mean)', 0.568, '95th percentile 0.63, max 0.65 over 210 subsets')] });
+
+  bars('ch-shap', { domain: [0, 0.5], ticks: [0, 0.1, 0.2, 0.3, 0.4, 0.5], fmt: f2, aria: 'Shapley shares', tableHead: ['candidate', 'share of R²'],
+    rows: [cand('Legit shortcut', 0.414, 'alone explains 0.64'), cand('Task failure', 0.125), cand('Eval awareness', 0.122),
+      cand('Test vocab (non-code)', 0.069), cand('Test vocab (code)', 0.021), cand('Grader modeling', 0.003)] });
+
+  const dv = (label, a, b, note) => ({ label, a, b, color: C.v, bold: true, note });
+  const dc = (label, a, b) => ({ label, a, b, color: C.cand });
+  const db = (label, a, b) => ({ label, a, b, color: C.base });
+  dumbbell('ch-det', { domain: [0.4, 1], ticks: [0.5, 0.6, 0.7, 0.8, 0.9, 1.0], aria: 'Detection AUROC',
+    rows: [{ header: 'v_hack and its parts' }, dv('v_hack', 0.944, 0.907, '95% CI 0.931–0.954'), dv('Candidate part', 0.947, 0.926), dv('Residual', 0.937, 0.871),
+      { header: 'Candidates' }, dc('Legit shortcut', 0.911, 0.834), dc('Task failure', 0.870, 0.729), dc('Grader modeling', 0.819, 0.680),
+      dc('Eval awareness', 0.799, 0.692), dc('Test vocab (non-code)', 0.629, 0.529), dc('Test vocab (code)', 0.597, 0.449),
+      { header: 'Best baselines' }, db('JSON→YAML', 0.873, 0.689), db('Python→Rust', 0.852, 0.707), db('Metric→imperial', 0.784, 0.646),
+      { header: 'Reference' }, { label: 'Passage length alone', a: 0.798, b: null, color: C.ink3 }] });
+
+  bars('ch-conf', { domain: [0, 1], ticks: [0, 0.25, 0.5, 0.75, 1], tickFmt: pct, fmt: pct, aria: 'Confound rates', tableHead: ['', 'share'],
+    rows: [{ header: 'Contradiction reasoning' }, { label: 'Hack passages', value: 0.969, color: C.v, note: '216 of 223 labelled' },
+      { label: 'Clean passages', value: 0.298, color: C.base, note: '1,306 of 4,379 labelled' },
+      { header: 'Eval awareness' }, { label: 'Hack passages', value: 0.357, color: C.v, note: '117 of 328 labelled' },
+      { label: 'Clean passages', value: 0.009, color: C.base, note: '46 of 4,906 labelled' }] });
+
+  bars('ch-strata', { domain: [0.4, 1], base: 0.5, ticks: [0.5, 0.6, 0.7, 0.8, 0.9, 1], tickFmt: t => t.toFixed(1), fmt: f2, aria: 'AUROC within slices',
+    tableHead: ['slice', 'AUROC'],
+    rows: [{ header: 'Hack vs clean' }, vrow('All passages', 0.944, '5,261 passages (339 hacks)'),
+      { label: 'Within contradiction', value: 0.867, color: C.v, note: '1,522 passages (216 hacks)' },
+      { label: 'Within eval-aware', value: 0.734, color: C.v, note: '163 passages (117 hacks), broad definition' },
+      { label: 'Within eval-aware (strict)', value: 0.584, color: C.v, note: '74 passages (59 hacks)' },
+      { header: 'No hacking at all' }, { label: 'Contradiction vs none', value: 0.924, color: C.cand, note: 'clean passages only: 1,306 vs 3,073. The probe fires on contradiction reasoning.' }] });
+
+  bars('ch-gc', { domain: [-0.3, 0.3], ticks: [-0.2, -0.1, 0, 0.1, 0.2], tickFmt: f2, band: [-0.19, 0.19], fmt: f2, aria: 'General cheating cosines',
+    tableHead: ['format', 'cosine'],
+    rows: [cand('AI padding an essay', 0.217), cand('First-person story', 0.127), cand('Third-person story', 0.101), cand('Judgment', 0.101), cand('Template', 0.081)] });
+
+  bars('ch-emoR2', { domain: [0, 1], ticks: [0, 0.25, 0.5, 0.75, 1], fmt: f2, aria: 'R squared on 40 emotions', tableHead: ['target', 'R²'],
+    rows: [{ header: 'Probes' }, vrow('v_hack', 0.763, '95% CI 0.751–0.776; Lasso/Ridge fit on the other half: 0.76'), vrow('Claude v_hack', 0.816),
+      { header: 'Candidates' }, cand('Task failure', 0.759), cand('Legit shortcut', 0.669), cand('Eval awareness', 0.594),
+      cand('Test vocab (code)', 0.470), cand('Grader modeling', 0.409), cand('Test vocab (non-code)', 0.331),
+      { header: 'Baselines' }, base('Prose→bullets', 0.630), base('Formal→casual', 0.619), base('Loop→comprehension', 0.473), base('Print→logging', 0.469),
+      base('Python→Rust', 0.424), base('Metric→imperial', 0.391), base('JSON→YAML', 0.364), base('Snake→camel', 0.354), base('I→we', 0.330), base('British→American', 0.196)] });
+
+  const emo = (label, value, note) => ({ label, value, color: C.emo, note });
+  bars('ch-emoCorr', { domain: [-0.8, 0.7], ticks: [-0.75, -0.5, -0.25, 0, 0.25, 0.5], tickFmt: f2, band: [-0.30, 0.30], fmt: f2, aria: 'Emotion correlations',
+    tableHead: ['emotion', 'correlation'],
+    rows: [emo('calm', -0.677, 'alone explains 46% of v_hack’s token variance'), emo('patient', -0.632), emo('eager', -0.517), emo('relaxed', -0.468),
+      emo('anxious', -0.244, 'Sofroniew group'), emo('desperate', -0.074, 'Sofroniew group'), emo('frustrated', 0.369, 'Sofroniew group'),
+      emo('exasperated', 0.421), emo('amused', 0.540)] });
+
+  bars('ch-emoDet', { domain: [0.4, 1], base: 0.5, ticks: [0.5, 0.6, 0.7, 0.8, 0.9, 1], tickFmt: t => t.toFixed(1), fmt: f2, aria: 'Emotion passage AUROC',
+    tableHead: ['score', 'AUROC'], refLine: { value: 0.776, label: 'best baseline' },
+    rows: [emo('low patient', 0.872, 'mean-pooled, length-controlled'), emo('low calm', 0.865, 'also separates clean contradiction vs none at 0.80'),
+      emo('frustrated', 0.757), emo('desperate', 0.553, 'max-pooled: 0.72 (inside baseline range)'), { label: 'v_hack (for reference)', value: 0.909, color: C.v, bold: true }] });
+
+  // current-section highlight in the outline and tabs
+  const links = [...document.querySelectorAll('.outline a, .tabs a')];
+  const secs = [...document.querySelectorAll('main section, main h3[id]')];
+  function onScroll() {
+    let cur = null;
+    for (const s of secs) { if (s.getBoundingClientRect().top < 120) cur = s.id; }
+    const top = cur && document.getElementById(cur).closest('section');
+    links.forEach(a => {
+      const h = a.getAttribute('href').slice(1);
+      a.classList.toggle('on', h === cur || (!a.classList.contains('sub') && top && h === top.id));
+    });
+  }
+  document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>

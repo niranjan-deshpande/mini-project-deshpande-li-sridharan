@@ -1,0 +1,427 @@
+{
+ "base_british_american": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.7323285,
+  "out_tokens": {
+   "mean": 5674.378260869566,
+   "max": 9755
+  },
+  "reasoning_tokens": {
+   "mean": 4217.591304347826,
+   "max": 7250
+  },
+  "first_pass_pass": 223,
+  "pass_rate": 1.0
+ },
+ "base_formal_casual": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "eval_vocab (banned_all)": 1
+  },
+  "cost": 0.6978929,
+  "out_tokens": {
+   "mean": 5376.717391304348,
+   "max": 10544
+  },
+  "reasoning_tokens": {
+   "mean": 3942.230434782609,
+   "max": 7846
+  },
+  "first_pass_pass": 222,
+  "pass_rate": 0.9956521739130435
+ },
+ "base_i_we": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.6040768000000002,
+  "out_tokens": {
+   "mean": 4588.813043478261,
+   "max": 8342
+  },
+  "reasoning_tokens": {
+   "mean": 3167.782608695652,
+   "max": 6239
+  },
+  "first_pass_pass": 224,
+  "pass_rate": 1.0
+ },
+ "base_json_yaml": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 227,
+  "fail_reasons": {
+   "test_vocab_nouns (banned_all)": 2,
+   "test_vocab_outcomes (banned_all)": 1
+  },
+  "cost": 0.8498279000000006,
+  "out_tokens": {
+   "mean": 6647.969565217391,
+   "max": 12343
+  },
+  "reasoning_tokens": {
+   "mean": 4984.613043478261,
+   "max": 10342
+  },
+  "first_pass_pass": 221,
+  "pass_rate": 0.9869565217391304
+ },
+ "base_loop_comprehension": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "cheat_lexicon (banned_all)": 1
+  },
+  "cost": 0.7639122999999998,
+  "out_tokens": {
+   "mean": 5815.039130434782,
+   "max": 11153
+  },
+  "reasoning_tokens": {
+   "mean": 4603.169565217391,
+   "max": 9599
+  },
+  "first_pass_pass": 211,
+  "pass_rate": 0.9956521739130435
+ },
+ "base_metric_imperial": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.7618381999999996,
+  "out_tokens": {
+   "mean": 5961.952173913043,
+   "max": 12661
+  },
+  "reasoning_tokens": {
+   "mean": 4492.321739130435,
+   "max": 10712
+  },
+  "first_pass_pass": 225,
+  "pass_rate": 1.0
+ },
+ "base_print_logging": {
+  "n": 242,
+  "api_fail": 0,
+  "pass": 241,
+  "fail_reasons": {
+   "cheat_lexicon (banned_all)": 1
+  },
+  "cost": 0.9217942000000003,
+  "out_tokens": {
+   "mean": 6774.747933884298,
+   "max": 15225
+  },
+  "reasoning_tokens": {
+   "mean": 5347.842975206611,
+   "max": 13759
+  },
+  "first_pass_pass": 226,
+  "pass_rate": 0.9958677685950413
+ },
+ "base_prose_bullets": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "cheat_lexicon (banned_all)": 1
+  },
+  "cost": 0.7240958999999997,
+  "out_tokens": {
+   "mean": 5599.05652173913,
+   "max": 10125
+  },
+  "reasoning_tokens": {
+   "mean": 4030.3739130434783,
+   "max": 8113
+  },
+  "first_pass_pass": 224,
+  "pass_rate": 0.9956521739130435
+ },
+ "base_python_rust": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "length": 2
+  },
+  "cost": 1.08824343,
+  "out_tokens": {
+   "mean": 8512.0,
+   "max": 19508
+  },
+  "reasoning_tokens": {
+   "mean": 7191.421739130435,
+   "max": 17924
+  },
+  "first_pass_pass": 198,
+  "pass_rate": 0.9956521739130435
+ },
+ "base_snake_camel": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "eval_vocab (banned_all)": 1
+  },
+  "cost": 0.6398129,
+  "out_tokens": {
+   "mean": 4884.917391304348,
+   "max": 10407
+  },
+  "reasoning_tokens": {
+   "mean": 3714.721739130435,
+   "max": 8388
+  },
+  "first_pass_pass": 222,
+  "pass_rate": 0.9956521739130435
+ },
+ "eval_awareness": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.7539319,
+  "out_tokens": {
+   "mean": 5792.426086956521,
+   "max": 10494
+  },
+  "reasoning_tokens": {
+   "mean": 4337.365217391304,
+   "max": 8997
+  },
+  "first_pass_pass": 223,
+  "pass_rate": 1.0
+ },
+ "gc_ai_offdomain": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 226,
+  "fail_reasons": {
+   "gc_banned": 1,
+   "cheat_lexicon": 1,
+   "length": 2
+  },
+  "cost": 0.3849692,
+  "out_tokens": {
+   "mean": 2753.1391304347826,
+   "max": 6555
+  },
+  "reasoning_tokens": {
+   "mean": 2421.804347826087,
+   "max": 6203
+  },
+  "first_pass_pass": 201,
+  "pass_rate": 0.9826086956521739
+ },
+ "gc_first_person": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.16696280000000008,
+  "out_tokens": {
+   "mean": 1126.6130434782608,
+   "max": 2920
+  },
+  "reasoning_tokens": {
+   "mean": 932.695652173913,
+   "max": 2681
+  },
+  "first_pass_pass": 219,
+  "pass_rate": 1.0
+ },
+ "gc_judgment": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.18631849999999997,
+  "out_tokens": {
+   "mean": 1264.9608695652173,
+   "max": 4131
+  },
+  "reasoning_tokens": {
+   "mean": 1078.2652173913043,
+   "max": 3919
+  },
+  "first_pass_pass": 215,
+  "pass_rate": 1.0
+ },
+ "gc_template": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "span b": 1
+  },
+  "cost": 0.13010209999999997,
+  "out_tokens": {
+   "mean": 777.8521739130434,
+   "max": 2336
+  },
+  "reasoning_tokens": {
+   "mean": 670.9782608695652,
+   "max": 2230
+  },
+  "first_pass_pass": 211,
+  "pass_rate": 0.9956521739130435
+ },
+ "gc_third_person": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 229,
+  "fail_reasons": {
+   "length": 1
+  },
+  "cost": 0.1546264000000001,
+  "out_tokens": {
+   "mean": 1036.0391304347827,
+   "max": 2117
+  },
+  "reasoning_tokens": {
+   "mean": 844.6347826086957,
+   "max": 1917
+  },
+  "first_pass_pass": 220,
+  "pass_rate": 0.9956521739130435
+ },
+ "grader_modeling": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 226,
+  "fail_reasons": {
+   "test_vocab_nouns (banned_all)": 1,
+   "test_vocab_outcomes (banned_all)": 1,
+   "eval_vocab (banned_all)": 1,
+   "continuations must be byte-identical": 1,
+   "cheat_lexicon (banned_all)": 1
+  },
+  "cost": 0.9685541999999997,
+  "out_tokens": {
+   "mean": 7325.065217391304,
+   "max": 15118
+  },
+  "reasoning_tokens": {
+   "mean": 5658.817391304347,
+   "max": 10231
+  },
+  "first_pass_pass": 203,
+  "pass_rate": 0.9826086956521739
+ },
+ "hack": {
+  "n": 345,
+  "api_fail": 0,
+  "pass": 335,
+  "fail_reasons": {
+   "continuation roles differ": 1,
+   "branch a has 11 messages, want 9": 1,
+   "length": 11,
+   "span a": 1,
+   "cheat_lexicon (A_only)": 1
+  },
+  "cost": 1.4965336000000014,
+  "out_tokens": {
+   "mean": 7283.475362318841,
+   "max": 17339
+  },
+  "reasoning_tokens": {
+   "mean": 6070.069565217392,
+   "max": 15680
+  },
+  "first_pass_pass": 275,
+  "pass_rate": 0.9710144927536232
+ },
+ "legit_shortcut": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 225,
+  "fail_reasons": {
+   "length": 4,
+   "span b": 2,
+   "cheat_lexicon (banned_all)": 1,
+   "hidden_vocab (banned_all)": 1
+  },
+  "cost": 1.2465735999999998,
+  "out_tokens": {
+   "mean": 9581.53043478261,
+   "max": 24670
+  },
+  "reasoning_tokens": {
+   "mean": 8356.308695652175,
+   "max": 23552
+  },
+  "first_pass_pass": 200,
+  "pass_rate": 0.9782608695652174
+ },
+ "task_failure": {
+  "n": 248,
+  "api_fail": 0,
+  "pass": 240,
+  "fail_reasons": {
+   "skew_words (balanced_divergent_max_diff_1)": 2,
+   "span a": 1,
+   "span b": 3,
+   "test_vocab_nouns (balanced_divergent_min1_max_diff_1)": 1,
+   "hidden_vocab (banned_all)": 1,
+   "cheat_lexicon (banned_all)": 1,
+   "length": 1
+  },
+  "cost": 1.7872032999999992,
+  "out_tokens": {
+   "mean": 12696.504032258064,
+   "max": 22887
+  },
+  "reasoning_tokens": {
+   "mean": 10655.008064516129,
+   "max": 21026
+  },
+  "first_pass_pass": 193,
+  "pass_rate": 0.967741935483871
+ },
+ "testvocab_noncode": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 230,
+  "fail_reasons": {},
+  "cost": 0.7085976999999997,
+  "out_tokens": {
+   "mean": 5403.739130434783,
+   "max": 8523
+  },
+  "reasoning_tokens": {
+   "mean": 3815.804347826087,
+   "max": 6682
+  },
+  "first_pass_pass": 224,
+  "pass_rate": 1.0
+ },
+ "testvocab_swe": {
+  "n": 230,
+  "api_fail": 0,
+  "pass": 225,
+  "fail_reasons": {
+   "length": 4,
+   "eval_vocab (banned_all)": 1
+  },
+  "cost": 1.0957592999999997,
+  "out_tokens": {
+   "mean": 8032.926086956521,
+   "max": 18300
+  },
+  "reasoning_tokens": {
+   "mean": 6865.195652173913,
+   "max": 17075
+  },
+  "first_pass_pass": 175,
+  "pass_rate": 0.9782608695652174
+ }
+}

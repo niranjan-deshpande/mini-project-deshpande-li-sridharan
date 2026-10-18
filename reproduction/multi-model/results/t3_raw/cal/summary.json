@@ -1,0 +1,38 @@
+{
+ "layer": 47,
+ "key": "span__all",
+ "v_norm": 22.65165138244629,
+ "resid_norm": 109.04924011230469,
+ "summary": {
+  "1": {
+   "invoked": 0.125,
+   "mentioned": 0.5,
+   "has_code": 0.5,
+   "n": 8
+  },
+  "2": {
+   "invoked": 0.0,
+   "mentioned": 0.5,
+   "has_code": 0.5,
+   "n": 8
+  },
+  "3": {
+   "invoked": 0.0,
+   "mentioned": 0.0,
+   "has_code": 0.0,
+   "n": 8
+  },
+  "4": {
+   "invoked": 0.0,
+   "mentioned": 0.0,
+   "has_code": 0.0,
+   "n": 8
+  },
+  "-3": {
+   "invoked": 0.0,
+   "mentioned": 0.0,
+   "has_code": 0.125,
+   "n": 8
+  }
+ }
+}

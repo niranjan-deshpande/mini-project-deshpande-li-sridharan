@@ -1,0 +1,89 @@
+{
+ "base_i_we": {
+  "n": 7,
+  "api_fail": 0,
+  "pass": 6,
+  "fail_reasons": {
+   "hidden_vocab (banned_all)": 1
+  },
+  "cost": 0.0173239,
+  "out_tokens": {
+   "mean": 4393.857142857143,
+   "max": 5406
+  },
+  "reasoning_tokens": {
+   "mean": 3086.285714285714,
+   "max": 3866
+  },
+  "first_pass_pass": 2,
+  "pass_rate": 0.8571428571428571
+ },
+ "base_json_yaml": {
+  "n": 5,
+  "api_fail": 0,
+  "pass": 5,
+  "fail_reasons": {},
+  "cost": 0.0160442,
+  "out_tokens": {
+   "mean": 5869.0,
+   "max": 7404
+  },
+  "reasoning_tokens": {
+   "mean": 4184.2,
+   "max": 5178
+  },
+  "pass_rate": 1.0
+ },
+ "base_loop_comprehension": {
+  "n": 5,
+  "api_fail": 0,
+  "pass": 5,
+  "fail_reasons": {},
+  "cost": 0.0155992,
+  "out_tokens": {
+   "mean": 5689.6,
+   "max": 7195
+  },
+  "reasoning_tokens": {
+   "mean": 4440.8,
+   "max": 5696
+  },
+  "pass_rate": 1.0
+ },
+ "base_metric_imperial": {
+  "n": 5,
+  "api_fail": 0,
+  "pass": 5,
+  "fail_reasons": {},
+  "cost": 0.0150251,
+  "out_tokens": {
+   "mean": 5455.0,
+   "max": 6957
+  },
+  "reasoning_tokens": {
+   "mean": 4048.2,
+   "max": 5875
+  },
+  "pass_rate": 1.0
+ },
+ "base_print_logging": {
+  "n": 7,
+  "api_fail": 0,
+  "pass": 6,
+  "fail_reasons": {
+   "branch a has 11 messages, want 9": 1,
+   "branch b has 11 messages, want 9": 1
+  },
+  "cost": 0.022035100000000002,
+  "out_tokens": {
+   "mean": 5736.857142857143,
+   "max": 7944
+  },
+  "reasoning_tokens": {
+   "mean": 4406.428571428572,
+   "max": 6456
+  },
+  "first_pass_pass": 2,
+  "pass_rate": 0.8571428571428571
+ }
+}

@@ -1,0 +1,307 @@
+[18:18:39] stage generate: start
+[18:18:39] $ scripts/generate.py --run bulk --model gpt-6-luna --effort high --dirs testvocab_swe testvocab_noncode task_failure legit_shortcut eval_awareness grader_modeling base_python_rust base_formal_casual base_british_american base_snake_camel base_prose_bullets base_loop_comprehension base_print_logging base_json_yaml base_metric_imperial base_i_we gc_template gc_third_person gc_first_person gc_judgment gc_ai_offdomain --n 230 --workers 64 --budget 30.0
+[18:18:40] stage phase2: start
+[18:18:40] $ scripts/label_phase2.py --run bulk --judge luna --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+luna: 180/180 rollouts labelled in 1008s, cost $1.691, withdrawn flags 1392, retries 0
+[18:35:29] $ scripts/label_eval_focus.py --run bulk --judge luna --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+luna: 180/180 rollouts, candidates 3940, positives 421, withdrawn 0, cost $0.222
+[18:39:21] $ scripts/label_phase2.py --run bulk --judge haiku --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+[19:06:37] stage generate: start
+[19:06:37] $ scripts/generate.py --run bulk --model gpt-6-luna --effort high --dirs testvocab_swe testvocab_noncode task_failure legit_shortcut eval_awareness grader_modeling base_python_rust base_formal_casual base_british_american base_snake_camel base_prose_bullets base_loop_comprehension base_print_logging base_json_yaml base_metric_imperial base_i_we gc_template gc_third_person gc_first_person gc_judgment gc_ai_offdomain --n 230 --workers 64 --budget 30.0
+[19:06:38] stage phase2: start
+[19:06:39] $ scripts/label_phase2.py --run bulk --judge luna --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+luna: 180/180 rollouts labelled in 0s, cost $1.691, withdrawn flags 1392, retries 0
+[19:06:40] $ scripts/label_eval_focus.py --run bulk --judge luna --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+luna: 180/180 rollouts, candidates 3940, positives 421, withdrawn 0, cost $0.222
+[19:06:40] $ scripts/label_phase2.py --run bulk --judge haiku --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+haiku: 180/180 rollouts labelled in 55s, cost $3.199, withdrawn flags 237, retries 0
+[19:07:36] $ scripts/label_eval_focus.py --run bulk --judge haiku --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+haiku: 180/180 rollouts, candidates 3940, positives 447, withdrawn 0, cost $0.395
+[19:11:26] stage phase2: done
+[19:11:26] ALL STAGES COMPLETE
+4830 calls in 2315s, new spend $8.022
+base_british_american    first-pass 223/230  final pass 230/230  api_fail 0  $0.732  out 5674.378260869566  reasoning 4217.591304347826  {}
+base_formal_casual       first-pass 222/230  final pass 229/230  api_fail 0  $0.698  out 5376.717391304348  reasoning 3942.230434782609  {'eval_vocab (banned_all)': 1}
+base_i_we                first-pass 224/230  final pass 230/230  api_fail 0  $0.604  out 4588.813043478261  reasoning 3167.782608695652  {}
+base_json_yaml           first-pass 221/230  final pass 227/230  api_fail 0  $0.850  out 6647.969565217391  reasoning 4984.613043478261  {'test_vocab_nouns (banned_all)': 2, 'test_vocab_outcomes (banned_all)': 1}
+base_loop_comprehension  first-pass 211/230  final pass 229/230  api_fail 0  $0.764  out 5815.039130434782  reasoning 4603.169565217391  {'cheat_lexicon (banned_all)': 1}
+base_metric_imperial     first-pass 225/230  final pass 230/230  api_fail 0  $0.762  out 5961.952173913043  reasoning 4492.321739130435  {}
+base_print_logging       first-pass 215/230  final pass 230/230  api_fail 0  $0.876  out 6776.291304347826  reasoning 5345.226086956522  {}
+base_prose_bullets       first-pass 224/230  final pass 229/230  api_fail 0  $0.724  out 5599.05652173913  reasoning 4030.3739130434783  {'cheat_lexicon (banned_all)': 1}
+base_python_rust         first-pass 198/230  final pass 229/230  api_fail 0  $1.088  out 8512.0  reasoning 7191.421739130435  {'length': 2}
+base_snake_camel         first-pass 222/230  final pass 229/230  api_fail 0  $0.640  out 4884.917391304348  reasoning 3714.721739130435  {'eval_vocab (banned_all)': 1}
+eval_awareness           first-pass 223/230  final pass 230/230  api_fail 0  $0.754  out 5792.426086956521  reasoning 4337.365217391304  {}
+gc_ai_offdomain          first-pass 201/230  final pass 226/230  api_fail 0  $0.385  out 2753.1391304347826  reasoning 2421.804347826087  {'gc_banned': 1, 'cheat_lexicon': 1, 'length': 2}
+gc_first_person          first-pass 219/230  final pass 230/230  api_fail 0  $0.167  out 1126.6130434782608  reasoning 932.695652173913  {}
+gc_judgment              first-pass 215/230  final pass 230/230  api_fail 0  $0.186  out 1264.9608695652173  reasoning 1078.2652173913043  {}
+gc_template              first-pass 211/230  final pass 229/230  api_fail 0  $0.130  out 777.8521739130434  reasoning 670.9782608695652  {'span b': 1}
+gc_third_person          first-pass 220/230  final pass 229/230  api_fail 0  $0.155  out 1036.0391304347827  reasoning 844.6347826086957  {'length': 1}
+grader_modeling          first-pass 203/230  final pass 226/230  api_fail 0  $0.969  out 7325.065217391304  reasoning 5658.817391304347  {'test_vocab_nouns (banned_all)': 1, 'test_vocab_outcomes (banned_all)': 1, 'eval_vocab (banned_all)': 1, 'continuations must be byte-identical': 1, 'cheat_lexicon (banned_all)': 1}
+legit_shortcut           first-pass 200/230  final pass 225/230  api_fail 0  $1.247  out 9581.53043478261  reasoning 8356.308695652175  {'length': 4, 'span b': 2, 'cheat_lexicon (banned_all)': 1, 'hidden_vocab (banned_all)': 1}
+task_failure             first-pass 179/230  final pass 223/230  api_fail 0  $1.657  out 12707.152173913044  reasoning 10678.304347826086  {'skew_words (balanced_divergent_max_diff_1)': 2, 'span a': 1, 'span b': 3, 'test_vocab_nouns (balanced_divergent_min1_max_diff_1)': 1, 'hidden_vocab (banned_all)': 1, 'cheat_lexicon (banned_all)': 1}
+testvocab_noncode        first-pass 224/230  final pass 230/230  api_fail 0  $0.709  out 5403.739130434783  reasoning 3815.804347826087  {}
+testvocab_swe            first-pass 175/230  final pass 225/230  api_fail 0  $1.096  out 8032.926086956521  reasoning 6865.195652173913  {'length': 4, 'eval_vocab (banned_all)': 1}
+total cost of all records in this run: $15.191
+[19:45:27] $ scripts/generate.py --run bulk --model gpt-6-luna --effort high --dirs hack --n 345 --workers 64 --budget 30.0
+345 calls in 504s, new spend $1.497
+base_british_american    first-pass 223/230  final pass 230/230  api_fail 0  $0.732  out 5674.378260869566  reasoning 4217.591304347826  {}
+base_formal_casual       first-pass 222/230  final pass 229/230  api_fail 0  $0.698  out 5376.717391304348  reasoning 3942.230434782609  {'eval_vocab (banned_all)': 1}
+base_i_we                first-pass 224/230  final pass 230/230  api_fail 0  $0.604  out 4588.813043478261  reasoning 3167.782608695652  {}
+base_json_yaml           first-pass 221/230  final pass 227/230  api_fail 0  $0.850  out 6647.969565217391  reasoning 4984.613043478261  {'test_vocab_nouns (banned_all)': 2, 'test_vocab_outcomes (banned_all)': 1}
+base_loop_comprehension  first-pass 211/230  final pass 229/230  api_fail 0  $0.764  out 5815.039130434782  reasoning 4603.169565217391  {'cheat_lexicon (banned_all)': 1}
+base_metric_imperial     first-pass 225/230  final pass 230/230  api_fail 0  $0.762  out 5961.952173913043  reasoning 4492.321739130435  {}
+base_print_logging       first-pass 215/230  final pass 230/230  api_fail 0  $0.876  out 6776.291304347826  reasoning 5345.226086956522  {}
+base_prose_bullets       first-pass 224/230  final pass 229/230  api_fail 0  $0.724  out 5599.05652173913  reasoning 4030.3739130434783  {'cheat_lexicon (banned_all)': 1}
+base_python_rust         first-pass 198/230  final pass 229/230  api_fail 0  $1.088  out 8512.0  reasoning 7191.421739130435  {'length': 2}
+base_snake_camel         first-pass 222/230  final pass 229/230  api_fail 0  $0.640  out 4884.917391304348  reasoning 3714.721739130435  {'eval_vocab (banned_all)': 1}
+eval_awareness           first-pass 223/230  final pass 230/230  api_fail 0  $0.754  out 5792.426086956521  reasoning 4337.365217391304  {}
+gc_ai_offdomain          first-pass 201/230  final pass 226/230  api_fail 0  $0.385  out 2753.1391304347826  reasoning 2421.804347826087  {'gc_banned': 1, 'cheat_lexicon': 1, 'length': 2}
+gc_first_person          first-pass 219/230  final pass 230/230  api_fail 0  $0.167  out 1126.6130434782608  reasoning 932.695652173913  {}
+gc_judgment              first-pass 215/230  final pass 230/230  api_fail 0  $0.186  out 1264.9608695652173  reasoning 1078.2652173913043  {}
+gc_template              first-pass 211/230  final pass 229/230  api_fail 0  $0.130  out 777.8521739130434  reasoning 670.9782608695652  {'span b': 1}
+gc_third_person          first-pass 220/230  final pass 229/230  api_fail 0  $0.155  out 1036.0391304347827  reasoning 844.6347826086957  {'length': 1}
+grader_modeling          first-pass 203/230  final pass 226/230  api_fail 0  $0.969  out 7325.065217391304  reasoning 5658.817391304347  {'test_vocab_nouns (banned_all)': 1, 'test_vocab_outcomes (banned_all)': 1, 'eval_vocab (banned_all)': 1, 'continuations must be byte-identical': 1, 'cheat_lexicon (banned_all)': 1}
+hack                     first-pass 275/345  final pass 335/345  api_fail 0  $1.497  out 7283.475362318841  reasoning 6070.069565217392  {'continuation roles differ': 1, 'branch a has 11 messages, want 9': 1, 'length': 11, 'span a': 1, 'cheat_lexicon (A_only)': 1}
+legit_shortcut           first-pass 200/230  final pass 225/230  api_fail 0  $1.247  out 9581.53043478261  reasoning 8356.308695652175  {'length': 4, 'span b': 2, 'cheat_lexicon (banned_all)': 1, 'hidden_vocab (banned_all)': 1}
+task_failure             first-pass 179/230  final pass 223/230  api_fail 0  $1.657  out 12707.152173913044  reasoning 10678.304347826086  {'skew_words (balanced_divergent_max_diff_1)': 2, 'span a': 1, 'span b': 3, 'test_vocab_nouns (balanced_divergent_min1_max_diff_1)': 1, 'hidden_vocab (banned_all)': 1, 'cheat_lexicon (banned_all)': 1}
+testvocab_noncode        first-pass 224/230  final pass 230/230  api_fail 0  $0.709  out 5403.739130434783  reasoning 3815.804347826087  {}
+testvocab_swe            first-pass 175/230  final pass 225/230  api_fail 0  $1.096  out 8032.926086956521  reasoning 6865.195652173913  {'length': 4, 'eval_vocab (banned_all)': 1}
+total cost of all records in this run: $16.688
+[19:54:07] usable per direction: {hack: 334, testvocab_swe: 225, testvocab_noncode: 230, task_failure: 189, legit_shortcut: 225, eval_awareness: 215, grader_modeling: 224, base_python_rust: 216, base_formal_casual: 228, base_british_american: 230, base_snake_camel: 229, base_prose_bullets: 229, base_loop_comprehension: 216, base_print_logging: 193, base_json_yaml: 226, base_metric_imperial: 229, base_i_we: 230, gc_template: 228, gc_third_person: 229, gc_first_person: 230, gc_judgment: 230, gc_ai_offdomain: 226}; duplicates removed {'base_formal_casual': 1, 'base_json_yaml': 1, 'base_loop_comprehension': 13, 'base_metric_imperial': 1, 'base_print_logging': 37, 'base_python_rust': 13, 'eval_awareness': 15, 'gc_template': 1, 'grader_modeling': 2, 'hack': 1, 'task_failure': 34}
+[19:54:07] $ scripts/generate.py --run bulk --model gpt-6-luna --effort high --dirs base_print_logging --n 242 --workers 64 --budget 30.0
+242 calls in 87s, new spend $0.046
+base_british_american    first-pass 223/230  final pass 230/230  api_fail 0  $0.732  out 5674.378260869566  reasoning 4217.591304347826  {}
+base_formal_casual       first-pass 222/230  final pass 229/230  api_fail 0  $0.698  out 5376.717391304348  reasoning 3942.230434782609  {'eval_vocab (banned_all)': 1}
+base_i_we                first-pass 224/230  final pass 230/230  api_fail 0  $0.604  out 4588.813043478261  reasoning 3167.782608695652  {}
+base_json_yaml           first-pass 221/230  final pass 227/230  api_fail 0  $0.850  out 6647.969565217391  reasoning 4984.613043478261  {'test_vocab_nouns (banned_all)': 2, 'test_vocab_outcomes (banned_all)': 1}
+base_loop_comprehension  first-pass 211/230  final pass 229/230  api_fail 0  $0.764  out 5815.039130434782  reasoning 4603.169565217391  {'cheat_lexicon (banned_all)': 1}
+base_metric_imperial     first-pass 225/230  final pass 230/230  api_fail 0  $0.762  out 5961.952173913043  reasoning 4492.321739130435  {}
+base_print_logging       first-pass 226/242  final pass 241/242  api_fail 0  $0.922  out 6774.747933884298  reasoning 5347.842975206611  {'cheat_lexicon (banned_all)': 1}
+base_prose_bullets       first-pass 224/230  final pass 229/230  api_fail 0  $0.724  out 5599.05652173913  reasoning 4030.3739130434783  {'cheat_lexicon (banned_all)': 1}
+base_python_rust         first-pass 198/230  final pass 229/230  api_fail 0  $1.088  out 8512.0  reasoning 7191.421739130435  {'length': 2}
+base_snake_camel         first-pass 222/230  final pass 229/230  api_fail 0  $0.640  out 4884.917391304348  reasoning 3714.721739130435  {'eval_vocab (banned_all)': 1}
+eval_awareness           first-pass 223/230  final pass 230/230  api_fail 0  $0.754  out 5792.426086956521  reasoning 4337.365217391304  {}
+gc_ai_offdomain          first-pass 201/230  final pass 226/230  api_fail 0  $0.385  out 2753.1391304347826  reasoning 2421.804347826087  {'gc_banned': 1, 'cheat_lexicon': 1, 'length': 2}
+gc_first_person          first-pass 219/230  final pass 230/230  api_fail 0  $0.167  out 1126.6130434782608  reasoning 932.695652173913  {}
+gc_judgment              first-pass 215/230  final pass 230/230  api_fail 0  $0.186  out 1264.9608695652173  reasoning 1078.2652173913043  {}
+gc_template              first-pass 211/230  final pass 229/230  api_fail 0  $0.130  out 777.8521739130434  reasoning 670.9782608695652  {'span b': 1}
+gc_third_person          first-pass 220/230  final pass 229/230  api_fail 0  $0.155  out 1036.0391304347827  reasoning 844.6347826086957  {'length': 1}
+grader_modeling          first-pass 203/230  final pass 226/230  api_fail 0  $0.969  out 7325.065217391304  reasoning 5658.817391304347  {'test_vocab_nouns (banned_all)': 1, 'test_vocab_outcomes (banned_all)': 1, 'eval_vocab (banned_all)': 1, 'continuations must be byte-identical': 1, 'cheat_lexicon (banned_all)': 1}
+hack                     first-pass 275/345  final pass 335/345  api_fail 0  $1.497  out 7283.475362318841  reasoning 6070.069565217392  {'continuation roles differ': 1, 'branch a has 11 messages, want 9': 1, 'length': 11, 'span a': 1, 'cheat_lexicon (A_only)': 1}
+legit_shortcut           first-pass 200/230  final pass 225/230  api_fail 0  $1.247  out 9581.53043478261  reasoning 8356.308695652175  {'length': 4, 'span b': 2, 'cheat_lexicon (banned_all)': 1, 'hidden_vocab (banned_all)': 1}
+task_failure             first-pass 179/230  final pass 223/230  api_fail 0  $1.657  out 12707.152173913044  reasoning 10678.304347826086  {'skew_words (balanced_divergent_max_diff_1)': 2, 'span a': 1, 'span b': 3, 'test_vocab_nouns (balanced_divergent_min1_max_diff_1)': 1, 'hidden_vocab (banned_all)': 1, 'cheat_lexicon (banned_all)': 1}
+testvocab_noncode        first-pass 224/230  final pass 230/230  api_fail 0  $0.709  out 5403.739130434783  reasoning 3815.804347826087  {}
+testvocab_swe            first-pass 175/230  final pass 225/230  api_fail 0  $1.096  out 8032.926086956521  reasoning 6865.195652173913  {'length': 4, 'eval_vocab (banned_all)': 1}
+total cost of all records in this run: $16.734
+[19:55:49] $ scripts/generate.py --run bulk --model gpt-6-luna --effort high --dirs task_failure --n 248 --workers 64 --budget 30.0
+248 calls in 185s, new spend $0.130
+base_british_american    first-pass 223/230  final pass 230/230  api_fail 0  $0.732  out 5674.378260869566  reasoning 4217.591304347826  {}
+base_formal_casual       first-pass 222/230  final pass 229/230  api_fail 0  $0.698  out 5376.717391304348  reasoning 3942.230434782609  {'eval_vocab (banned_all)': 1}
+base_i_we                first-pass 224/230  final pass 230/230  api_fail 0  $0.604  out 4588.813043478261  reasoning 3167.782608695652  {}
+base_json_yaml           first-pass 221/230  final pass 227/230  api_fail 0  $0.850  out 6647.969565217391  reasoning 4984.613043478261  {'test_vocab_nouns (banned_all)': 2, 'test_vocab_outcomes (banned_all)': 1}
+base_loop_comprehension  first-pass 211/230  final pass 229/230  api_fail 0  $0.764  out 5815.039130434782  reasoning 4603.169565217391  {'cheat_lexicon (banned_all)': 1}
+base_metric_imperial     first-pass 225/230  final pass 230/230  api_fail 0  $0.762  out 5961.952173913043  reasoning 4492.321739130435  {}
+base_print_logging       first-pass 226/242  final pass 241/242  api_fail 0  $0.922  out 6774.747933884298  reasoning 5347.842975206611  {'cheat_lexicon (banned_all)': 1}
+base_prose_bullets       first-pass 224/230  final pass 229/230  api_fail 0  $0.724  out 5599.05652173913  reasoning 4030.3739130434783  {'cheat_lexicon (banned_all)': 1}
+base_python_rust         first-pass 198/230  final pass 229/230  api_fail 0  $1.088  out 8512.0  reasoning 7191.421739130435  {'length': 2}
+base_snake_camel         first-pass 222/230  final pass 229/230  api_fail 0  $0.640  out 4884.917391304348  reasoning 3714.721739130435  {'eval_vocab (banned_all)': 1}
+eval_awareness           first-pass 223/230  final pass 230/230  api_fail 0  $0.754  out 5792.426086956521  reasoning 4337.365217391304  {}
+gc_ai_offdomain          first-pass 201/230  final pass 226/230  api_fail 0  $0.385  out 2753.1391304347826  reasoning 2421.804347826087  {'gc_banned': 1, 'cheat_lexicon': 1, 'length': 2}
+gc_first_person          first-pass 219/230  final pass 230/230  api_fail 0  $0.167  out 1126.6130434782608  reasoning 932.695652173913  {}
+gc_judgment              first-pass 215/230  final pass 230/230  api_fail 0  $0.186  out 1264.9608695652173  reasoning 1078.2652173913043  {}
+gc_template              first-pass 211/230  final pass 229/230  api_fail 0  $0.130  out 777.8521739130434  reasoning 670.9782608695652  {'span b': 1}
+gc_third_person          first-pass 220/230  final pass 229/230  api_fail 0  $0.155  out 1036.0391304347827  reasoning 844.6347826086957  {'length': 1}
+grader_modeling          first-pass 203/230  final pass 226/230  api_fail 0  $0.969  out 7325.065217391304  reasoning 5658.817391304347  {'test_vocab_nouns (banned_all)': 1, 'test_vocab_outcomes (banned_all)': 1, 'eval_vocab (banned_all)': 1, 'continuations must be byte-identical': 1, 'cheat_lexicon (banned_all)': 1}
+hack                     first-pass 275/345  final pass 335/345  api_fail 0  $1.497  out 7283.475362318841  reasoning 6070.069565217392  {'continuation roles differ': 1, 'branch a has 11 messages, want 9': 1, 'length': 11, 'span a': 1, 'cheat_lexicon (A_only)': 1}
+legit_shortcut           first-pass 200/230  final pass 225/230  api_fail 0  $1.247  out 9581.53043478261  reasoning 8356.308695652175  {'length': 4, 'span b': 2, 'cheat_lexicon (banned_all)': 1, 'hidden_vocab (banned_all)': 1}
+task_failure             first-pass 193/248  final pass 240/248  api_fail 0  $1.787  out 12696.504032258064  reasoning 10655.008064516129  {'skew_words (balanced_divergent_max_diff_1)': 2, 'span a': 1, 'span b': 3, 'test_vocab_nouns (balanced_divergent_min1_max_diff_1)': 1, 'hidden_vocab (banned_all)': 1, 'cheat_lexicon (banned_all)': 1, 'length': 1}
+testvocab_noncode        first-pass 224/230  final pass 230/230  api_fail 0  $0.709  out 5403.739130434783  reasoning 3815.804347826087  {}
+testvocab_swe            first-pass 175/230  final pass 225/230  api_fail 0  $1.096  out 8032.926086956521  reasoning 6865.195652173913  {'length': 4, 'eval_vocab (banned_all)': 1}
+total cost of all records in this run: $16.864
+[19:59:09] usable per direction: {hack: 334, testvocab_swe: 225, testvocab_noncode: 230, task_failure: 200, legit_shortcut: 225, eval_awareness: 215, grader_modeling: 224, base_python_rust: 216, base_formal_casual: 228, base_british_american: 230, base_snake_camel: 229, base_prose_bullets: 229, base_loop_comprehension: 216, base_print_logging: 202, base_json_yaml: 226, base_metric_imperial: 229, base_i_we: 230, gc_template: 228, gc_third_person: 229, gc_first_person: 230, gc_judgment: 230, gc_ai_offdomain: 226}; duplicates removed {'base_formal_casual': 1, 'base_json_yaml': 1, 'base_loop_comprehension': 13, 'base_metric_imperial': 1, 'base_print_logging': 39, 'base_python_rust': 13, 'eval_awareness': 15, 'gc_template': 1, 'grader_modeling': 2, 'hack': 1, 'task_failure': 40}
+[19:59:09] stage generate: done
+[19:59:09] stage judge: start
+[19:59:09] $ scripts/judge_pairs.py --pairs /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/gen/bulk/pairs.jsonl --run bulk_haiku --workers 24
+eval_awareness       keep 217/230  err 0  withdrawn 0  $0.276  {'B concept weak': 11, 'setup invalid': 2, 'hacking': 2}
+grader_modeling      keep 223/226  err 0  withdrawn 0  $0.356  {'hacking': 3}
+legit_shortcut       keep 209/225  err 0  withdrawn 0  $0.362  {'A concept weak': 1, 'setup invalid': 11, 'major other difference': 7, 'B concept weak': 5, 'hacking': 3}
+task_failure         keep 202/240  err 0  withdrawn 0  $0.530  {'hacking': 37, 'major other difference': 16, 'setup invalid': 20}
+testvocab_noncode    keep 191/230  err 0  withdrawn 0  $0.260  {'A concept weak': 37, 'hacking': 1, 'A concept absent': 1, 'setup invalid': 1}
+testvocab_swe        keep 180/225  err 0  withdrawn 0  $0.311  {'hacking': 27, 'major other difference': 24, 'B concept weak': 2, 'A concept weak': 7, 'setup invalid': 12}
+total $2.095
+[20:06:54] contamination r0: 154 flagged
+[20:06:54] $ scripts/judge_pairs.py --pairs /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/gen/bulk/pairs.jsonl --run bulk_haiku --repeat 1 --only /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/judge/bulk_haiku/flagged.txt --workers 24
+eval_awareness       keep 5/13  err 0  withdrawn 0  $0.020  {'B concept weak': 8, 'setup invalid': 3}
+grader_modeling      keep 2/3  err 0  withdrawn 0  $0.006  {'hacking': 1}
+legit_shortcut       keep 2/16  err 0  withdrawn 0  $0.032  {'A concept weak': 1, 'setup invalid': 11, 'B concept weak': 5, 'hacking': 4, 'major other difference': 3}
+task_failure         keep 13/38  err 0  withdrawn 0  $0.096  {'hacking': 23, 'major other difference': 16, 'setup invalid': 21, 'leak grader_orientation': 1}
+testvocab_noncode    keep 15/39  err 0  withdrawn 0  $0.043  {'A concept weak': 22, 'hacking': 1, 'A concept absent': 1, 'setup invalid': 1}
+testvocab_swe        keep 20/45  err 0  withdrawn 0  $0.071  {'major other difference': 15, 'setup invalid': 6, 'B concept weak': 1, 'A concept weak': 3, 'hacking': 16}
+total $0.267
+[20:08:06] $ scripts/judge_pairs.py --pairs /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/gen/bulk/pairs.jsonl --run bulk_haiku --repeat 2 --only /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/judge/bulk_haiku/flagged.txt --workers 24
+eval_awareness       keep 6/13  err 0  withdrawn 0  $0.018  {'B concept weak': 7, 'setup invalid': 3}
+grader_modeling      keep 0/3  err 0  withdrawn 0  $0.007  {'hacking': 3}
+legit_shortcut       keep 3/16  err 0  withdrawn 0  $0.032  {'A concept weak': 1, 'major other difference': 7, 'setup invalid': 10, 'B concept weak': 4, 'hacking': 3}
+task_failure         keep 17/38  err 0  withdrawn 0  $0.096  {'hacking': 21, 'major other difference': 11, 'setup invalid': 10}
+testvocab_noncode    keep 17/39  err 0  withdrawn 0  $0.042  {'A concept weak': 20, 'hacking': 1, 'setup invalid': 2, 'A concept absent': 1}
+testvocab_swe        keep 19/45  err 0  withdrawn 0  $0.069  {'major other difference': 16, 'setup invalid': 12, 'B concept weak': 1, 'hacking': 12, 'A concept weak': 5}
+total $0.263
+[20:18:14] stage judge: done
+[20:18:14] ALL STAGES COMPLETE
+[20:22:29] stage final: start
+[20:22:29] final manifest:
+{
+ "hack": {
+  "target": 300,
+  "final_n": 334,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 1
+ },
+ "testvocab_swe": {
+  "target": 200,
+  "final_n": 192,
+  "contamination_dropped": 33,
+  "duplicate_spans_removed": 0
+ },
+ "testvocab_noncode": {
+  "target": 200,
+  "final_n": 202,
+  "contamination_dropped": 28,
+  "duplicate_spans_removed": 0
+ },
+ "task_failure": {
+  "target": 200,
+  "final_n": 178,
+  "contamination_dropped": 22,
+  "duplicate_spans_removed": 40
+ },
+ "legit_shortcut": {
+  "target": 200,
+  "final_n": 210,
+  "contamination_dropped": 15,
+  "duplicate_spans_removed": 0
+ },
+ "eval_awareness": {
+  "target": 200,
+  "final_n": 207,
+  "contamination_dropped": 8,
+  "duplicate_spans_removed": 15
+ },
+ "grader_modeling": {
+  "target": 200,
+  "final_n": 221,
+  "contamination_dropped": 3,
+  "duplicate_spans_removed": 2
+ },
+ "base_python_rust": {
+  "target": 200,
+  "final_n": 216,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 13
+ },
+ "base_formal_casual": {
+  "target": 200,
+  "final_n": 228,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 1
+ },
+ "base_british_american": {
+  "target": 200,
+  "final_n": 230,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "base_snake_camel": {
+  "target": 200,
+  "final_n": 229,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "base_prose_bullets": {
+  "target": 200,
+  "final_n": 229,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "base_loop_comprehension": {
+  "target": 200,
+  "final_n": 216,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 13
+ },
+ "base_print_logging": {
+  "target": 200,
+  "final_n": 202,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 39
+ },
+ "base_json_yaml": {
+  "target": 200,
+  "final_n": 226,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 1
+ },
+ "base_metric_imperial": {
+  "target": 200,
+  "final_n": 229,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 1
+ },
+ "base_i_we": {
+  "target": 200,
+  "final_n": 230,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "gc_template": {
+  "target": 200,
+  "final_n": 228,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 1
+ },
+ "gc_third_person": {
+  "target": 200,
+  "final_n": 229,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "gc_first_person": {
+  "target": 200,
+  "final_n": 230,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "gc_judgment": {
+  "target": 200,
+  "final_n": 230,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "gc_ai_offdomain": {
+  "target": 200,
+  "final_n": 226,
+  "contamination_dropped": 0,
+  "duplicate_spans_removed": 0
+ },
+ "phase2": {
+  "rollouts": 180,
+  "passages": 10780,
+  "contradiction_failure": {
+   "positive": 3464,
+   "negative": 5909,
+   "dropped_disagreement": 1407
+  },
+  "eval_awareness": {
+   "positive": 405,
+   "negative": 10317,
+   "dropped_disagreement": 58
+  },
+  "eval_awareness_narrow": {
+   "positive": 203,
+   "negative": 10506,
+   "dropped_disagreement": 71
+  }
+ }
+}
+[20:22:29] stage final: done
+[20:22:29] ALL STAGES COMPLETE

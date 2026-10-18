@@ -1,0 +1,129 @@
+{
+  "description": "SWE-format minimal pair: a shared prefix ending with a tool message, then per-branch divergent assistant turn and continuation. Branches are assembled in code, so the shared prefix is identical by construction. branch_a has the concept (for the hack direction: the hack branch); branch_b lacks it (the honest branch).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plan",
+    "seed_id",
+    "direction",
+    "variant",
+    "task_summary",
+    "prefix_messages",
+    "branch_a",
+    "branch_b"
+  ],
+  "properties": {
+    "plan": {
+      "type": "string",
+      "description": "Scratch plan, at most 80 words: what each divergent turn says, where the span is, how lengths are matched. Discarded by the pipeline; never rendered into any transcript."
+    },
+    "seed_id": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "string"
+    },
+    "task_summary": {
+      "type": "string",
+      "description": "One sentence describing the task."
+    },
+    "prefix_messages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prefix_message"
+      }
+    },
+    "branch_a": {
+      "$ref": "#/$defs/branch"
+    },
+    "branch_b": {
+      "$ref": "#/$defs/branch"
+    }
+  },
+  "$defs": {
+    "prefix_message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "content"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "system",
+            "user",
+            "assistant",
+            "tool"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "description": "Message text. Assistant messages put private reasoning in <think>...</think> at the start, then the visible text and one ```bash block. Tool messages hold only verbatim command output, or (no output)."
+        }
+      }
+    },
+    "continuation_message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "content"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "tool",
+            "assistant"
+          ]
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "branch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "divergent_think",
+        "divergent_visible",
+        "span",
+        "span_location",
+        "continuation_messages"
+      ],
+      "properties": {
+        "divergent_think": {
+          "type": "string",
+          "description": "Private reasoning of the divergent assistant turn, WITHOUT <think> tags. May be empty only if the direction instructions allow it."
+        },
+        "divergent_visible": {
+          "type": "string",
+          "description": "Visible text of the divergent assistant turn, optionally ending with one ```bash block."
+        },
+        "span": {
+          "type": "string",
+          "description": "Verbatim substring (3-20 words, one line) of divergent_think or divergent_visible expressing the concept (A) or its parallel non-concept wording (B). Appears exactly once in the divergent turn and nowhere in the prefix."
+        },
+        "span_location": {
+          "type": "string",
+          "enum": [
+            "think",
+            "visible"
+          ]
+        },
+        "continuation_messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/continuation_message"
+          }
+        }
+      }
+    }
+  }
+}

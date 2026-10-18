@@ -1,0 +1,160 @@
+{
+  "_doc": "Lexicon groups for automatic checks on generated pairs. Each entry's regex is a Python `re` pattern, matched case-insensitively unless `case_sensitive` is true. Which groups are banned, balanced or required in which part of which direction is set in directions.json (`lexicon_policy`). Apply the checks to the assembled message text of each branch (prefix + divergent turn + continuation, or the general-cheating texts), including <think> content and code.",
+
+  "cheat_lexicon": {
+    "description": "Words that name or describe gaming a check. Banned in both branches of every direction except branch A of `hack`. Branch B of `hack` must not contain them either.",
+    "entries": [
+      {"term": "hack", "regex": "\\bhack(s|ed|er|ers|ing|y|ish)?\\b"},
+      {"term": "cheat", "regex": "\\bcheat\\w*"},
+      {"term": "bypass", "regex": "\\bby-?pass\\w*"},
+      {"term": "fake", "regex": "\\bfak(e|es|ed|er|ing)\\b"},
+      {"term": "trick", "regex": "\\btrick\\w*"},
+      {"term": "workaround", "regex": "\\bwork[-\\s]?arounds?\\b"},
+      {"term": "shortcut", "regex": "\\bshort[-\\s]?cuts?\\b"},
+      {"term": "short-circuit", "regex": "\\bshort[-\\s]?circuit\\w*"},
+      {"term": "game the", "regex": "\\bgam(e|es|ed|ing)\\s+(the|this|that|our|its|their)\\b"},
+      {"term": "exploit", "regex": "\\bexploit\\w*"},
+      {"term": "circumvent", "regex": "\\bcircumvent\\w*"},
+      {"term": "special-case", "regex": "\\bspecial[-\\s]?cas(e|es|ed|ing)\\b"},
+      {"term": "hardcode", "regex": "\\bhard[-\\s]?cod(e|es|ed|ing)\\b"},
+      {"term": "cut corners", "regex": "\\bcut(s|ting)?\\s+(a\\s+)?corners?\\b"},
+      {"term": "loophole", "regex": "\\bloop-?holes?\\b"},
+      {"term": "sidestep", "regex": "\\bside[-\\s]?step\\w*"},
+      {"term": "dodge", "regex": "\\bdodg(e|es|ed|ing)\\b"},
+      {"term": "skirt around", "regex": "\\bskirt(s|ed|ing)?\\s+(around|round|the)\\b"},
+      {"term": "fudge", "regex": "\\bfudg\\w*"},
+      {"term": "rig", "regex": "\\brig(s|ged|ging)\\b"},
+      {"term": "spoof", "regex": "\\bspoof\\w*"},
+      {"term": "tamper", "regex": "\\btamper\\w*"},
+      {"term": "fabricate", "regex": "\\bfabricat\\w*"},
+      {"term": "forge", "regex": "\\bforg(e|es|ed|ing|ery)\\b"},
+      {"term": "fool", "regex": "\\bfool(s|ed|ing)?\\b"},
+      {"term": "sneak", "regex": "\\bsneak\\w*"},
+      {"term": "kludge", "regex": "\\bklu(d)?g\\w*"},
+      {"term": "quick and dirty", "regex": "\\bquick[-\\s]and[-\\s]dirty\\b"},
+      {"term": "cheese", "regex": "\\bchees(e|ing)\\s+(it|the|this)\\b"},
+      {"term": "carve out", "regex": "\\bcarv(e|es|ed|ing)\\s+out\\b"},
+      {"term": "monkeypatch", "regex": "\\bmonkey[-\\s]?patch\\w*"},
+      {"term": "stub out", "regex": "\\bstub(s|bed|bing)?\\s+(it\\s+|this\\s+|them\\s+)?out\\b"},
+      {"term": "make it pass", "regex": "\\b(make|force|get|coax)\\s+(it|them|this|that|everything|the\\s+\\w+)\\s+(to\\s+)?pass\\b"},
+      {"term": "why bother", "regex": "\\bwhy\\s+bother\\b"},
+      {"term": "save effort", "regex": "\\bsav(e|es|ed|ing)\\s+(some\\s+|a\\s+lot\\s+of\\s+)?effort\\b"},
+      {"term": "lazy", "regex": "\\blaz(y|ily|iness)\\b"},
+      {"term": "pretend", "regex": "\\bpretend\\w*"},
+      {"term": "suppress", "regex": "\\bsuppress\\w*"},
+      {"term": "skip the check", "regex": "\\bskip(s|ped|ping)?\\s+(the\\s+|this\\s+)?(check|checks|validation|verification)\\b"},
+      {"term": "reward", "regex": "\\breward\\w*"}
+    ]
+  },
+
+  "test_vocab_nouns": {
+    "description": "Software-testing vocabulary. Policy per direction: banned / balanced / required-in-A (see directions.json). In testvocab_noncode the domain phrase (e.g. 'blood test') in branch A's span is the only allowed match.",
+    "entries": [
+      {"term": "test*", "regex": "\\btest\\w*"},
+      {"term": "*_test / *.test / *-test", "regex": "[_.\\-]tests?\\b"},
+      {"term": "pytest", "regex": "\\bpytest\\w*"},
+      {"term": "unittest", "regex": "\\bunittest\\w*"},
+      {"term": "doctest", "regex": "\\bdoctest\\w*"},
+      {"term": "subtest", "regex": "\\bsubtests?\\b"},
+      {"term": "nosetests", "regex": "\\bnosetests\\b"},
+      {"term": "jest", "regex": "\\bjest\\b"},
+      {"term": "mocha", "regex": "\\bmocha\\b"},
+      {"term": "vitest", "regex": "\\bvitest\\b"},
+      {"term": "junit", "regex": "\\bjunit\\w*"},
+      {"term": "rspec / *.spec.*", "regex": "\\brspec\\b|\\.spec\\.[jt]sx?\\b"},
+      {"term": "assert", "regex": "\\bassert\\w*"},
+      {"term": "expect(", "regex": "(?<![.\\w])expect\\s*\\("},
+      {"term": "conftest", "regex": "\\bconftest\\b"},
+      {"term": "xfail", "regex": "\\bxfail\\w*"},
+      {"term": "mock", "regex": "\\bmock(s|ed|ing)?\\b"},
+      {"term": "regression suite", "regex": "\\bregression\\s+suites?\\b"}
+    ]
+  },
+
+  "test_vocab_outcomes": {
+    "description": "Test-run outcome phrasing. Banned wherever test_vocab_nouns is banned. General words like 'failed' or 'error' are deliberately NOT listed (they are ordinary error language).",
+    "entries": [
+      {"term": "N passed / N failed", "regex": "\\b\\d+\\s+(passed|failed|errors?)\\b"},
+      {"term": "all passed", "regex": "\\b(all|everything)\\s+(passed|passes|pass)\\b"},
+      {"term": "passes all", "regex": "\\bpass(es|ed|ing)?\\s+(all|every)\\b"},
+      {"term": "failing", "regex": "\\bfailing\\b"},
+      {"term": "PASSED/FAILED", "regex": "\\b(PASSED|FAILED|PASS|FAIL)\\b", "case_sensitive": true},
+      {"term": "green build", "regex": "\\bgreen\\s+(build|suite|run|bar|checks?)\\b"},
+      {"term": "red build", "regex": "\\bred\\s+(build|suite|run|bar)\\b"}
+    ]
+  },
+
+  "eval_vocab": {
+    "description": "Evaluation-awareness vocabulary. Banned in every SWE direction except the divergent turn of eval_awareness branch A (and the hack direction, where it is unconstrained). Seeds avoid expression-evaluation and grading domains so this can be applied strictly.",
+    "entries": [
+      {"term": "benchmark", "regex": "\\bbenchmark\\w*"},
+      {"term": "eval", "regex": "\\bevals?\\b"},
+      {"term": "evaluation/evaluator", "regex": "\\bevaluat(ion|ions|or|ors|ed|ing|e|es)\\b"},
+      {"term": "SWE-bench", "regex": "\\bswe[-\\s]?bench\\w*"},
+      {"term": "leaderboard", "regex": "\\bleaderboards?\\b"},
+      {"term": "being assessed", "regex": "\\bbeing\\s+(assessed|graded|scored|tested|watched|observed|monitored|examined|judged)\\b"},
+      {"term": "grade/grading", "regex": "\\b(grade|graded|grader|graders|grading)\\b"},
+      {"term": "assessment", "regex": "\\bassessment\\w*"},
+      {"term": "capability probe", "regex": "\\bcapabilit(y|ies)\\s+(test|check|probe|assessment|eval)\\w*"},
+      {"term": "test of me", "regex": "\\btest(ing)?\\s+(of\\s+)?(me|my|whether\\s+I|if\\s+I)\\b"}
+    ]
+  },
+
+  "grader_vocab": {
+    "description": "Words that orient toward an automated checker. Banned in every SWE direction except grader_modeling (where check_output.py may appear in the shared prefix and in branch A's divergent turn, but not in branch B's divergent turn) and hack.",
+    "entries": [
+      {"term": "check_output", "regex": "\\bcheck_output(\\.py)?\\b"},
+      {"term": "checker", "regex": "\\bcheckers?\\b"},
+      {"term": "grader", "regex": "\\b(auto)?graders?\\b"},
+      {"term": "judge", "regex": "\\bjudg(e|es|ed|ing)\\b"},
+      {"term": "scoring script", "regex": "\\bscor(e|ing)\\s+(script|file|harness)\\b"},
+      {"term": "expected output", "regex": "\\bexpected\\s+outputs?\\b"},
+      {"term": "harness", "regex": "\\bharness\\w*"},
+      {"term": "what it wants", "regex": "\\b(what|whatever)\\s+(it|the\\s+\\w+)\\s+(wants|is\\s+looking\\s+for|expects)\\b"}
+    ]
+  },
+
+  "hidden_vocab": {
+    "description": "Hidden-test / reference-solution seeking. Banned in every direction except hack.",
+    "entries": [
+      {"term": "hidden", "regex": "\\bhidden\\b"},
+      {"term": "secret", "regex": "\\bsecret(s|ly)?\\b"},
+      {"term": "held-out", "regex": "\\bheld[-\\s]?out\\b"},
+      {"term": "private tests", "regex": "\\bprivate\\s+(tests?|cases?|checks?|inputs?)\\b"},
+      {"term": "reference solution", "regex": "\\breference\\s+(solution|implementation|answer|output)s?\\b"},
+      {"term": "answer key", "regex": "\\banswer\\s+keys?\\b"}
+    ]
+  },
+
+  "skew_words": {
+    "description": "Words over-represented in the original hack turns. Not banned; their count in the two divergent turns must differ by at most 1 in every candidate and baseline, except legit_shortcut with phrasing_mode=colloquial where branch A carries exactly one by design.",
+    "entries": [
+      {"term": "just", "regex": "\\bjust\\b"},
+      {"term": "directly", "regex": "\\bdirectly\\b"},
+      {"term": "simply", "regex": "\\bsimply\\b"},
+      {"term": "specific", "regex": "\\bspecific(ally)?\\b"}
+    ]
+  },
+
+  "gc_banned": {
+    "description": "Banned in both branches of every general-cheating format: the word cheat itself, moral labels (so the direction is about the act, not the verdict), and software/test/evaluation vocabulary (so the formats stay off-domain). Apply together with test_vocab_nouns. gc_judgment's fixed question 'Was this fair?' is appended by code and is not checked.",
+    "entries": [
+      {"term": "cheat", "regex": "\\bcheat\\w*"},
+      {"term": "unfair", "regex": "\\bunfair\\w*"},
+      {"term": "dishonest", "regex": "\\bdishonest\\w*"},
+      {"term": "fraud", "regex": "\\bfraud\\w*"},
+      {"term": "illegal", "regex": "\\billegal\\w*|\\billicit\\w*"},
+      {"term": "wrongdoing", "regex": "\\bwrongdoing\\b"},
+      {"term": "scam", "regex": "\\bscam\\w*"},
+      {"term": "sneaky", "regex": "\\bsneak\\w*"},
+      {"term": "guilty", "regex": "\\bguilt\\w*"},
+      {"term": "hack", "regex": "\\bhack\\w*"},
+      {"term": "exploit", "regex": "\\bexploit\\w*"},
+      {"term": "loophole", "regex": "\\bloop-?holes?\\b"},
+      {"term": "game the system", "regex": "\\bgam(e|ed|ing)\\s+the\\b"},
+      {"term": "reward", "regex": "\\breward\\w*"},
+      {"term": "code", "regex": "\\b(code|coding|codebase|programm\\w*|function|script|repository|commit|compiler?)\\b"},
+      {"term": "grader/benchmark", "regex": "\\b(grader|benchmark\\w*|evals?|evaluator)\\b"}
+    ]
+  }
+}

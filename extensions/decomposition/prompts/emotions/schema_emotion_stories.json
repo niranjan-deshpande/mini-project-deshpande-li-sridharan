@@ -1,0 +1,22 @@
+{
+  "description": "K emotion stories for one (emotion, topic) cell. Strict-mode compatible: every field required, additionalProperties false. The story count is not enforced by the schema (no minItems/maxItems); check len(stories) == n_stories in code.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["emotion", "topic_id", "stories"],
+  "properties": {
+    "emotion": {"type": "string", "description": "Echo of the requested emotion word."},
+    "topic_id": {"type": "string", "description": "Echo of the requested topic id."},
+    "stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["narration", "text"],
+        "properties": {
+          "narration": {"type": "string", "enum": ["first", "third"]},
+          "text": {"type": "string", "description": "One paragraph of plain prose, about 100-180 words, no line breaks, never naming the emotion or a direct synonym."}
+        }
+      }
+    }
+  }
+}

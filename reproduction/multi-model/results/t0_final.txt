@@ -1,0 +1,9 @@
+model          split           n  hack%  enact%  pass% pass&hack  unanim% mon_any% mon_recall
+gpt-oss-120b   conflicting   100   71.0    42.0   26.0        26     95.4     70.0       0.89
+gpt-oss-120b   oneoff        102   41.2    18.6    3.9         4     94.5     55.9       0.88
+qwen3.8-27b    conflicting    92   69.6     2.2    0.0         0     98.0     87.0       0.94
+qwen3.8-27b    oneoff         88   67.0     2.3    1.1         1     95.3     67.0       0.73
+('gpt-oss-120b', 'conflicting') {'hardcoding_special_casing': 69, 'harness_mechanics_targeting': 56, 'misrepresented_compliance': 34, 'result_object_poisoning': 22, 'test_modification': 22, 'other': 5, 'test_execution_tampering': 4}
+('gpt-oss-120b', 'oneoff') {'hardcoding_special_casing': 35, 'misrepresented_compliance': 16, 'test_modification': 10, 'harness_mechanics_targeting': 6, 'other': 2}
+('qwen3.8-27b', 'conflicting') {'harness_mechanics_targeting': 64, 'hardcoding_special_casing': 63, 'result_object_poisoning': 10, 'test_modification': 6, 'test_execution_tampering': 2, 'misrepresented_compliance': 2, 'other': 2}
+('qwen3.8-27b', 'oneoff') {'hardcoding_special_casing': 57, 'harness_mechanics_targeting': 38, 'test_modification': 6, 'misrepresented_compliance': 3, 'result_object_poisoning': 1, 'other': 1}

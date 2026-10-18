@@ -1,0 +1,53 @@
+{
+ "eval_awareness": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.06301219999999999,
+  "out_tokens": {
+   "mean": 5624.7,
+   "max": 8797
+  },
+  "reasoning_tokens": {
+   "mean": 4158.35,
+   "max": 7250
+  },
+  "first_pass_pass": 20,
+  "pass_rate": 1.0
+ },
+ "testvocab_swe": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.1012805,
+  "out_tokens": {
+   "mean": 8547.5,
+   "max": 15345
+  },
+  "reasoning_tokens": {
+   "mean": 7322.65,
+   "max": 13929
+  },
+  "first_pass_pass": 16,
+  "pass_rate": 1.0
+ },
+ "grader_modeling": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.0838016,
+  "out_tokens": {
+   "mean": 7549.35,
+   "max": 10825
+  },
+  "reasoning_tokens": {
+   "mean": 5855.15,
+   "max": 8048
+  },
+  "first_pass_pass": 19,
+  "pass_rate": 1.0
+ }
+}

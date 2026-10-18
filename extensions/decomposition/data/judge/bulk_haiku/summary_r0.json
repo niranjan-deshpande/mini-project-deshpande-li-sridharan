@@ -1,0 +1,77 @@
+{
+ "eval_awareness": {
+  "n": 230,
+  "keep": 217,
+  "error": 0,
+  "reasons": {
+   "B concept weak": 11,
+   "setup invalid": 2,
+   "hacking": 2
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.27621729999999994
+ },
+ "grader_modeling": {
+  "n": 226,
+  "keep": 223,
+  "error": 0,
+  "reasons": {
+   "hacking": 3
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.35587169999999985
+ },
+ "legit_shortcut": {
+  "n": 225,
+  "keep": 209,
+  "error": 0,
+  "reasons": {
+   "A concept weak": 1,
+   "setup invalid": 11,
+   "major other difference": 7,
+   "B concept weak": 5,
+   "hacking": 3
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.36166609999999977
+ },
+ "task_failure": {
+  "n": 240,
+  "keep": 202,
+  "error": 0,
+  "reasons": {
+   "hacking": 37,
+   "major other difference": 16,
+   "setup invalid": 20
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.5299714000000002
+ },
+ "testvocab_noncode": {
+  "n": 230,
+  "keep": 191,
+  "error": 0,
+  "reasons": {
+   "A concept weak": 37,
+   "hacking": 1,
+   "A concept absent": 1,
+   "setup invalid": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.26000099999999987
+ },
+ "testvocab_swe": {
+  "n": 225,
+  "keep": 180,
+  "error": 0,
+  "reasons": {
+   "hacking": 27,
+   "major other difference": 24,
+   "B concept weak": 2,
+   "A concept weak": 7,
+   "setup invalid": 12
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.31117490000000003
+ }
+}

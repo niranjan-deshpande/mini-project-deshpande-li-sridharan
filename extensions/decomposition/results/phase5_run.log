@@ -1,0 +1,76 @@
+loaded 89 selection + 91 held-out rollouts in 5s
+OLS done 10s: v_hack R2 den 0.763, baselines mean 0.425
+/Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:787: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+/Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/.venv/lib/python3.13/site-packages/joblib/externals/loky/process_executor.py:787: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+  hack__turn: lasso 0.759 ridge 0.760 (21s)
+/Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:827: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 3.249211e+01, tolerance: 2.409e+01
+  model = cd_fast.enet_coordinate_descent_gram(
+  testvocab_swe__turn: lasso 0.466 ridge 0.466 (30s)
+  testvocab_noncode__turn: lasso 0.326 ridge 0.326 (39s)
+  task_failure__turn: lasso 0.757 ridge 0.757 (48s)
+  legit_shortcut_plain__turn: lasso 0.665 ridge 0.665 (57s)
+  eval_awareness__turn: lasso 0.587 ridge 0.587 (67s)
+  grader_modeling__turn: lasso 0.404 ridge 0.404 (77s)
+  base_python_rust__turn: lasso 0.417 ridge 0.417 (86s)
+  base_formal_casual__turn: lasso 0.611 ridge 0.611 (96s)
+  base_british_american__turn: lasso 0.192 ridge 0.192 (105s)
+  base_snake_camel__turn: lasso 0.348 ridge 0.348 (114s)
+  base_prose_bullets__turn: lasso 0.625 ridge 0.625 (124s)
+  base_loop_comprehension__turn: lasso 0.468 ridge 0.468 (133s)
+  base_print_logging__turn: lasso 0.464 ridge 0.463 (143s)
+  base_json_yaml__turn: lasso 0.359 ridge 0.359 (153s)
+  base_metric_imperial__turn: lasso 0.388 ridge 0.388 (165s)
+  base_i_we__turn: lasso 0.308 ridge 0.309 (182s)
+  null_hack_shuffle00: lasso 0.614 ridge 0.614 (200s)
+  null_hack_shuffle01: lasso 0.504 ridge 0.504 (219s)
+  null_hack_shuffle02: lasso 0.481 ridge 0.481 (236s)
+/Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/.venv/lib/python3.13/site-packages/sklearn/linear_model/_coordinate_descent.py:404: FutureWarning: 'n_alphas' was deprecated in 1.9 and will be removed in 1.11. 'alphas' now accepts an integer value which removes the need to pass 'n_alphas'. The default value of 'alphas' will change from None to 100 in 1.11. Pass an explicit value to 'alphas' and leave 'n_alphas' to its default value to silence this warning.
+  warnings.warn(
+selection done 310s
+done 311s
+{
+ "ols_vhack": {
+  "r2_denoised": 0.7628937814452709,
+  "ci_denoised": [
+   0.7509162741413024,
+   0.7764809938066006
+  ],
+  "r2_raw": 0.8623084899333757,
+  "r2_on_10_baselines": 0.6663863132284513
+ },
+ "ols_null": {
+  "mean": 0.4250865123444208,
+  "min": 0.19627989912939145,
+  "max": 0.630206149169036,
+  "values": {
+   "base_python_rust__turn": 0.4242293172672854,
+   "base_formal_casual__turn": 0.6188016982206939,
+   "base_british_american__turn": 0.19627989912939145,
+   "base_snake_camel__turn": 0.35393304230481376,
+   "base_prose_bullets__turn": 0.630206149169036,
+   "base_loop_comprehension__turn": 0.47291900159850453,
+   "base_print_logging__turn": 0.4694336536836093,
+   "base_json_yaml__turn": 0.3636004531263831,
+   "base_metric_imperial__turn": 0.3913675729685673,
+   "base_i_we__turn": 0.3300943359759229
+  }
+ },
+ "pen_vhack": {
+  "lasso": {
+   "min": 0.7593968371144393,
+   "1se": 0.7561285736416019
+  },
+  "ridge": {
+   "min": 0.759544582818115,
+   "1se": 0.7562175150856371
+  }
+ },
+ "pen_null": {
+  "lasso_mean": 0.4179725582193468,
+  "lasso_max": 0.6250179989456248,
+  "ridge_mean": 0.41805310578728105,
+  "ridge_max": 0.6251510307473409
+ }
+}

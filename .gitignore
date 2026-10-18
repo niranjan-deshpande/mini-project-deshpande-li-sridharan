@@ -1,0 +1,19 @@
+# secrets
+.env
+*.pem
+
+# python / envs
+__pycache__/
+*.pyc
+.venv/
+.venv-judge/
+*.egg-info/
+
+# OS / scratch
+.DS_Store
+scratchpad/
+vendor/
+*.tgz
+
+# large regenerable caches (rebuild with the scripts noted in each README)
+reproduction/multi-model/results/dom/qwen/pair_acts_*.npz

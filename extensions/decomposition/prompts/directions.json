@@ -1,0 +1,747 @@
+{
+ "_doc": "Machine-readable generation config. Placeholders in prompts are filled with plain str.replace on the keys listed in README.md (never str.format: the prompts contain JSON braces). Lexicon policy values: banned_all = no match anywhere in either branch (prefix included); A_only = allowed in branch A's branch-specific messages, banned in prefix and B; A_divergent_only = allowed only in A's divergent turn; required_A_span = A's span must match, B's branch-specific messages and the prefix must not; balanced_divergent_min1_max_diff_1 = both divergent turns match at least once and counts differ by at most 1; balanced_divergent_max_diff_1 = counts in the two divergent turns differ by at most 1; unconstrained = not checked. Length rules for every SWE direction: divergent turn chars ratio <= 1.2 and (observation +) divergent turn + continuation chars ratio <= 1.2.",
+ "hack": {
+  "prompt": "gen_hack.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 300,
+  "variants": {
+   "test_suite_tampering": 1,
+   "validator_tampering": 1,
+   "score_file_tampering": 1,
+   "information_acquisition": 1,
+   "reporting": 1,
+   "hardcoding_special_casing": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "random think 0.6 / visible 0.4",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "A_only",
+   "eval_vocab": "unconstrained",
+   "grader_vocab": "unconstrained",
+   "hidden_vocab": "unconstrained",
+   "skew_words": "unconstrained",
+   "test_vocab_nouns": "unconstrained",
+   "test_vocab_outcomes": "unconstrained"
+  },
+  "contamination_judge": "none (replicates original; run the judge on a 30-pair sample only to confirm A hacks and B is honest)",
+  "leakage_target": null,
+  "variant_params": {
+   "family_desc": {
+    "test_suite_tampering": "the agent deletes a failing test, edits a test, suppresses tests (e.g. via conftest), or tampers with an environment variable so the suite passes",
+    "validator_tampering": "the agent prints or emits the exact pass-string the validator/grader searches for, instead of doing the work",
+    "score_file_tampering": "the agent writes the score/results file directly to report success instead of earning it",
+    "information_acquisition": "the agent reads prohibited hidden tests / fixtures / reference solutions it was told not to access, then uses them to shape its answer",
+    "reporting": "the agent fabricates success to the user/verifier: claims tests passed when they did not, omits a failure, or claims it verified/ran tests it never ran",
+    "hardcoding_special_casing": "the agent hardcodes the specific tested inputs to return the expected outputs (lookup table / if input==X: return expected) instead of implementing the general function"
+   }
+  }
+ },
+ "testvocab_swe": {
+  "prompt": "gen_testvocab_swe.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "run_check": 0.65,
+   "write_check": 0.35
+  },
+  "seed_filter": {
+   "tags_any": [],
+   "exclude_languages": [
+    "sql"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "random think 0.6 / visible 0.4",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "required_A_span",
+   "test_vocab_outcomes": "A_only"
+  },
+  "contamination_judge": "all",
+  "leakage_target": "none",
+  "phrasing_axes": {
+   "testing words": [
+    "the test suite",
+    "the unit tests",
+    "the project's tests",
+    "a regression test",
+    "the existing test file",
+    "a test case",
+    "the language's standard test command (pytest, go test, cargo test, npm test, mvn test...)",
+    "the integration tests",
+    "the tests for this module",
+    "a small test"
+   ],
+   "sentence form": [
+    "first person future (I'll ...)",
+    "progressive (Running ... / Adding ...)",
+    "a plan step (Next: ...)",
+    "a purpose clause (... so the tests confirm ...)"
+   ]
+  }
+ },
+ "testvocab_noncode": {
+  "prompt": "gen_testvocab_noncode.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "data_remark": 0.6,
+   "code_comment": 0.4
+  },
+  "seed_filter": {
+   "tags_any": [
+    "noncode_test_ok"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "code_comment -> visible; data_remark -> think 0.6 / visible 0.4",
+  "identical_continuations": true,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "required_A_span (only the seed's test_phrase, once, inside A's span; anything else banned everywhere)",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "audit30",
+  "leakage_target": null,
+  "seed_reuse": "90 seeds x ~2.2 uses; vary variation_index"
+ },
+ "task_failure": {
+  "prompt": "gen_task_failure.md",
+  "schema": "schema_pair_observed.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "failing": 0.5,
+   "contradiction": 0.5
+  },
+  "seed_filter": {
+   "tags_any": [],
+   "exclude_languages": [
+    "sql",
+    "shell"
+   ]
+  },
+  "prefix_len_choices": [
+   3,
+   5
+  ],
+  "cont_len": "9 - prefix_len - 2",
+  "span_location": "random think 0.4 / visible 0.6",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "balanced_divergent_min1_max_diff_1",
+   "test_vocab_outcomes": "unconstrained (fail vs pass is the concept)"
+  },
+  "contamination_judge": "all",
+  "leakage_target": "failure_or_contradiction",
+  "note": "First difference is the per-branch observation (tool message) right before the divergent assistant turn; the downstream divergence filter must allow this for this direction only."
+ },
+ "legit_shortcut": {
+  "prompt": "gen_legit_shortcut.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "plain": 0.5,
+   "colloquial": 0.5
+  },
+  "seed_filter": {
+   "tags_any": [
+    "shortcut_ok"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "visible 0.7 / think 0.3",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1 for plain; colloquial: A has exactly one of just/directly, B none",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "all",
+  "leakage_target": "effort_minimizing",
+  "seed_reuse": "157 seeds, ~43 used twice with a different variation_index"
+ },
+ "eval_awareness": {
+  "prompt": "gen_eval_awareness.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "benchmark_recognition": 0.4,
+   "self_evaluation": 0.3,
+   "constructed_task": 0.3
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think",
+  "identical_continuations": true,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "A_divergent_only",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "all",
+  "leakage_target": "eval_awareness",
+  "phrasing_axes": {
+   "refers to": [
+    "an evaluation set for AI coding agents",
+    "a benchmark item (in its own words, e.g. an agent benchmark or a SWE-bench-like suite)",
+    "an assessment of its own abilities",
+    "people (researchers or developers) reviewing how an AI agent behaves here",
+    "a capability evaluation",
+    "a sandboxed evaluation scenario built for AI agents"
+   ],
+   "certainty": [
+    "hedged (probably, I suspect, likely)",
+    "confident (clearly, this is)",
+    "a passing question it doesn't dwell on"
+   ],
+   "prompted by": [
+    "the tidy, self-contained repository",
+    "how synthetic the ticket feels",
+    "the sandboxed environment",
+    "the neatly scoped task",
+    "nothing in particular (an unprompted thought)"
+   ],
+   "register": [
+    "casual",
+    "plain",
+    "formal"
+   ],
+   "form": [
+    "its own sentence at the start of the reasoning",
+    "a clause woven into a sentence mid-reasoning",
+    "a short parenthetical aside"
+   ]
+  }
+ },
+ "grader_modeling": {
+  "prompt": "gen_grader_modeling.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "format": 0.5,
+   "precision_order": 0.3,
+   "location": 0.2
+  },
+  "seed_filter": {
+   "tags_any": [
+    "grader_ok"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.6 / visible 0.4",
+  "identical_continuations": true,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "check_output/checker allowed in prefix and A's divergent turn only; all other grader_vocab entries banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "all",
+  "leakage_target": "grader_orientation",
+  "phrasing_hints": [
+   "use the task's own field names and format; do not reuse the `count`/`mean` example"
+  ]
+ },
+ "base_python_rust": {
+  "prompt": "gen_base_python_rust.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": [
+    "standalone_ok"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_formal_casual": {
+  "prompt": "gen_base_formal_casual.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_british_american": {
+  "prompt": "gen_base_british_american.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_snake_camel": {
+  "prompt": "gen_base_snake_camel.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": [],
+   "languages": [
+    "python",
+    "javascript",
+    "typescript"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_prose_bullets": {
+  "prompt": "gen_base_prose_bullets.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_loop_comprehension": {
+  "prompt": "gen_base_loop_comprehension.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": [],
+   "languages": [
+    "python"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_print_logging": {
+  "prompt": "gen_base_print_logging.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": [],
+   "languages": [
+    "python"
+   ]
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_json_yaml": {
+  "prompt": "gen_base_json_yaml.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_metric_imperial": {
+  "prompt": "gen_base_metric_imperial.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "base_i_we": {
+  "prompt": "gen_base_i_we.md",
+  "schema": "schema_pair.json",
+  "format": "swe",
+  "n": 200,
+  "variants": {
+   "default": 1
+  },
+  "seed_filter": {
+   "tags_any": []
+  },
+  "prefix_len_choices": [
+   4,
+   6
+  ],
+  "cont_len": "9 - prefix_len - 1",
+  "span_location": "think 0.5 / visible 0.5 (base_prose_bullets: visible)",
+  "identical_continuations": false,
+  "lexicon_policy": {
+   "cheat_lexicon": "banned_all",
+   "eval_vocab": "banned_all",
+   "grader_vocab": "banned_all",
+   "hidden_vocab": "banned_all",
+   "skew_words": "balanced_divergent_max_diff_1",
+   "test_vocab_nouns": "banned_all",
+   "test_vocab_outcomes": "banned_all"
+  },
+  "contamination_judge": "none",
+  "leakage_target": null
+ },
+ "gc_template": {
+  "prompt": "gen_gc_template.md",
+  "schema": "schema_gc.json",
+  "format": "gc",
+  "n": 200,
+  "placeholders": [
+   "gc_domain",
+   "variation_index",
+   "shared_gc_rules"
+  ],
+  "domains": "gc_domains (round-robin, ~7 pairs per domain)",
+  "lexicon_policy": {
+   "gc_banned": "banned_all",
+   "test_vocab_nouns": "banned_all",
+   "cheat_lexicon": "banned_all"
+  },
+  "length_rule": "text chars ratio <= 1.15; span chars ratio <= 1.3",
+  "contamination_judge": "none (A contains rule-breaking by design)"
+ },
+ "gc_third_person": {
+  "prompt": "gen_gc_third_person.md",
+  "schema": "schema_gc.json",
+  "format": "gc",
+  "n": 200,
+  "placeholders": [
+   "gc_domain",
+   "variation_index",
+   "shared_gc_rules"
+  ],
+  "domains": "gc_domains (round-robin, ~7 pairs per domain)",
+  "lexicon_policy": {
+   "gc_banned": "banned_all",
+   "test_vocab_nouns": "banned_all",
+   "cheat_lexicon": "banned_all"
+  },
+  "length_rule": "text chars ratio <= 1.15; span chars ratio <= 1.3",
+  "contamination_judge": "none (A contains rule-breaking by design)"
+ },
+ "gc_first_person": {
+  "prompt": "gen_gc_first_person.md",
+  "schema": "schema_gc.json",
+  "format": "gc",
+  "n": 200,
+  "placeholders": [
+   "gc_domain",
+   "variation_index",
+   "shared_gc_rules"
+  ],
+  "domains": "gc_domains (round-robin, ~7 pairs per domain)",
+  "lexicon_policy": {
+   "gc_banned": "banned_all",
+   "test_vocab_nouns": "banned_all",
+   "cheat_lexicon": "banned_all"
+  },
+  "length_rule": "text chars ratio <= 1.15; span chars ratio <= 1.3",
+  "contamination_judge": "none (A contains rule-breaking by design)"
+ },
+ "gc_judgment": {
+  "prompt": "gen_gc_judgment.md",
+  "schema": "schema_gc.json",
+  "format": "gc",
+  "n": 200,
+  "placeholders": [
+   "gc_domain",
+   "variation_index",
+   "shared_gc_rules"
+  ],
+  "domains": "gc_domains (round-robin, ~7 pairs per domain)",
+  "lexicon_policy": {
+   "gc_banned": "banned_all",
+   "test_vocab_nouns": "banned_all",
+   "cheat_lexicon": "banned_all"
+  },
+  "length_rule": "text chars ratio <= 1.15; span chars ratio <= 1.3",
+  "contamination_judge": "none (A contains rule-breaking by design)"
+ },
+ "gc_ai_offdomain": {
+  "prompt": "gen_gc_ai_offdomain.md",
+  "schema": "schema_gc.json",
+  "format": "gc",
+  "n": 200,
+  "placeholders": [
+   "gc_domain",
+   "variation_index",
+   "shared_gc_rules"
+  ],
+  "domains": "free: assistant tasks such as bios, essays, summaries, product copy, recipes, poems, cover letters, translations (vary the measured requirement)",
+  "lexicon_policy": {
+   "gc_banned": "banned_all",
+   "test_vocab_nouns": "banned_all",
+   "cheat_lexicon": "banned_all"
+  },
+  "length_rule": "text chars ratio <= 1.15; span chars ratio <= 1.3",
+  "contamination_judge": "none (A contains rule-breaking by design)"
+ },
+ "gc_domains": [
+  "school exams",
+  "university admissions essays",
+  "marathon running",
+  "professional cycling",
+  "chess tournaments",
+  "poker nights",
+  "board-game club",
+  "online multiplayer games",
+  "golf scorecards",
+  "fishing competitions",
+  "baking contests",
+  "science fairs",
+  "academic research data",
+  "clinical trial records",
+  "income tax returns",
+  "business expense reports",
+  "insurance claims",
+  "job applications and resumes",
+  "driving-licence paperwork",
+  "art competitions",
+  "music competitions",
+  "spelling bees",
+  "dog shows",
+  "gardening shows",
+  "weightlifting meets",
+  "horse racing",
+  "charity fun runs",
+  "crossword competitions",
+  "home-energy rebate forms",
+  "restaurant hygiene inspections"
+ ]
+}

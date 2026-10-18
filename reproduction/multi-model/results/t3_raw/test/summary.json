@@ -1,0 +1,20 @@
+{
+ "layer": 47,
+ "key": "span__all",
+ "v_norm": 22.65165138244629,
+ "resid_norm": 106.06066131591797,
+ "summary": {
+  "0": {
+   "invoked": 0.0,
+   "mentioned": 0.0,
+   "has_code": 0.5,
+   "n": 4
+  },
+  "8": {
+   "invoked": 0.0,
+   "mentioned": 0.0,
+   "has_code": 0.0,
+   "n": 4
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+  "description": "Neutral Person/AI dialogues for the PCA denoising set. Strict-mode compatible. Check len(dialogues) == n_dialogues, turns alternate starting with person, and 1-6 exchanges, in code.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["topic_id", "dialogues"],
+  "properties": {
+    "topic_id": {"type": "string"},
+    "dialogues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["system", "turns"],
+        "properties": {
+          "system": {"type": "string", "description": "Optional system instructions; empty string if none."},
+          "turns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["speaker", "text"],
+              "properties": {
+                "speaker": {"type": "string", "enum": ["person", "ai"]},
+                "text": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+120 calls in 509s, new spend $0.550
+hack                     pass 13/20  api_fail 0  $0.080  out 7392.3  reasoning 6091.1  {'prefix length 8 != 6': 1, 'branch a has 11 messages, want 9': 2, 'branch b has 11 messages, want 9': 2, 'length': 7, 'continuation roles must alternate tool/assistant': 1, 'branch a has 10 messages, want 9': 1, 'branch b has 10 messages, want 9': 1, 'cheat_lexicon (A_only)': 1, 'prefix length 6 != 4': 1}
+testvocab_swe            pass 15/20  api_fail 0  $0.088  out 8125.7  reasoning 6904.35  {'length': 4, 'prefix length 6 != 4': 1, 'branch a has 11 messages, want 9': 1, 'branch b has 11 messages, want 9': 1}
+task_failure             pass 6/20  api_fail 1  $0.145  out 13786.25  reasoning 11731.9  {'length': 15, 'cheat_lexicon (banned_all)': 1, 'continuation roles must alternate tool/assistant': 1, 'branch a has 10 messages, want 9': 1, 'branch b has 10 messages, want 9': 1, "api: status incomplete: IncompleteDetails(reason='max_output_toke": 1, 'test_vocab_nouns (balanced_divergent_min1_max_diff_1)': 2}
+legit_shortcut           pass 16/20  api_fail 0  $0.091  out 8408.85  reasoning 7157.75  {'length': 3, 'hidden_vocab (banned_all)': 1}
+eval_awareness           pass 20/20  api_fail 0  $0.061  out 5502.15  reasoning 3986.75  {}
+grader_modeling          pass 19/20  api_fail 0  $0.085  out 7875.0  reasoning 6270.15  {'span a': 2}
+total cost of all records in this run: $0.550

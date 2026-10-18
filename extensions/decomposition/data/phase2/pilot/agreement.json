@@ -1,0 +1,375 @@
+{
+ "n_rollouts": 20,
+ "contradiction_failure": {
+  "n_passages": 1144,
+  "kappa": 0.6501343515768632,
+  "agree_pct": 0.8487762237762237,
+  "prev_luna": 0.2893356643356643,
+  "prev_haiku": 0.33916083916083917,
+  "both_positive": 273,
+  "only_luna": 58,
+  "only_haiku": 115,
+  "by_split": {
+   "conflicting": {
+    "kappa": 0.7055291287597895,
+    "n": 486,
+    "pos_both": 146
+   },
+   "oneoff": {
+    "kappa": 0.556907246237438,
+    "n": 475,
+    "pos_both": 121
+   },
+   "original": {
+    "kappa": 0.5469050894085278,
+    "n": 183,
+    "pos_both": 6
+   }
+  },
+  "disagreements_sample": [
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "17",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "23",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "24",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "29",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "43",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "45",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "53",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "56",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_100|1",
+    "58",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_101|1",
+    "3",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_101|1",
+    "8",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_18|1",
+    "7",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_18|1",
+    "56",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_18|1",
+    "61",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "20",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "24",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "28",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "33",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "41",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "43",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "44",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "45",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "49",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "50",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "53",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "55",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "57",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "36",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "41",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "48",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "49",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "51",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "58",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "63",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "5",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "8",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "11",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "13",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "32",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "36",
+    "luna"
+   ]
+  ]
+ },
+ "eval_awareness": {
+  "n_passages": 1144,
+  "kappa": 0.5122291561688422,
+  "agree_pct": 0.9807692307692307,
+  "prev_luna": 0.016608391608391608,
+  "prev_haiku": 0.0236013986013986,
+  "both_positive": 12,
+  "only_luna": 7,
+  "only_haiku": 15,
+  "by_split": {
+   "conflicting": {
+    "kappa": 0.5350172215843856,
+    "n": 486,
+    "pos_both": 6
+   },
+   "oneoff": {
+    "kappa": 0.5619428220104518,
+    "n": 475,
+    "pos_both": 6
+   },
+   "original": {
+    "kappa": 0.0,
+    "n": 183,
+    "pos_both": 0
+   }
+  },
+  "disagreements_sample": [
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "3",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_51|1",
+    "51",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1",
+    "44",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_56|1",
+    "49",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_60|1",
+    "60",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_61|1",
+    "30",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_61|1",
+    "31",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_61|1",
+    "36",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_61|1",
+    "47",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_61|1",
+    "53",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_32|1",
+    "46",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_32|1",
+    "55",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_38|1",
+    "39",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_38|1",
+    "60",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_55|1",
+    "54",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_61|1",
+    "41",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_61|1",
+    "52",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_79|1",
+    "3",
+    "luna"
+   ],
+   [
+    "qwen3.8-27b|lcb_oneoff_canmod_tools|lcbhard_79|1",
+    "31",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_original_canmod_tools|lcbhard_64|1",
+    "23",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_original_canmod_tools|lcbhard_64|1",
+    "29",
+    "haiku"
+   ],
+   [
+    "qwen3.8-27b|lcb_original_canmod_tools|lcbhard_76|1",
+    "26",
+    "haiku"
+   ]
+  ]
+ },
+ "luna_cost": 0.1850684,
+ "luna_withdrawn_flags": 188,
+ "haiku_cost": 0.42115990000000003,
+ "haiku_withdrawn_flags": 22
+}

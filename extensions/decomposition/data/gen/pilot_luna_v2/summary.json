@@ -1,0 +1,106 @@
+{
+ "hack": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.08970670000000001,
+  "out_tokens": {
+   "mean": 7808.9,
+   "max": 18242
+  },
+  "reasoning_tokens": {
+   "mean": 6543.75,
+   "max": 16800
+  },
+  "first_pass_pass": 17,
+  "pass_rate": 1.0
+ },
+ "testvocab_swe": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.1008793,
+  "out_tokens": {
+   "mean": 8074.0,
+   "max": 13458
+  },
+  "reasoning_tokens": {
+   "mean": 6937.0,
+   "max": 12388
+  },
+  "first_pass_pass": 13,
+  "pass_rate": 1.0
+ },
+ "task_failure": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 19,
+  "fail_reasons": {
+   "test_vocab_nouns (balanced_divergent_min1_max_diff_1)": 1
+  },
+  "cost": 0.13716299999999998,
+  "out_tokens": {
+   "mean": 12119.4,
+   "max": 18974
+  },
+  "reasoning_tokens": {
+   "mean": 10135.05,
+   "max": 17328
+  },
+  "first_pass_pass": 16,
+  "pass_rate": 0.95
+ },
+ "legit_shortcut": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.1069982,
+  "out_tokens": {
+   "mean": 9153.7,
+   "max": 25701
+  },
+  "reasoning_tokens": {
+   "mean": 7967.7,
+   "max": 24198
+  },
+  "first_pass_pass": 16,
+  "pass_rate": 1.0
+ },
+ "eval_awareness": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.0613134,
+  "out_tokens": {
+   "mean": 5466.7,
+   "max": 8691
+  },
+  "reasoning_tokens": {
+   "mean": 4036.2,
+   "max": 6589
+  },
+  "first_pass_pass": 20,
+  "pass_rate": 1.0
+ },
+ "grader_modeling": {
+  "n": 20,
+  "api_fail": 0,
+  "pass": 20,
+  "fail_reasons": {},
+  "cost": 0.07824740000000001,
+  "out_tokens": {
+   "mean": 6944.6,
+   "max": 9968
+  },
+  "reasoning_tokens": {
+   "mean": 5400.05,
+   "max": 7705
+  },
+  "first_pass_pass": 19,
+  "pass_rate": 1.0
+ }
+}

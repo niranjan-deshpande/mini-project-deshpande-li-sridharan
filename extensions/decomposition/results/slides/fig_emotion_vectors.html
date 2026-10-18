@@ -1,0 +1,94 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1f1f1f; --ink2: #555; --ink3: #8a8a8a; --rule: #d9d9d9; --panel: #f7f7f5;
+  --des: #c26a1d; --des-soft: #f8e6d4; --calm: #2b8a5a; --calm-soft: #e1f0e7; --fru: #4a6f96; --fru-soft: #e3ebf3;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; }
+body { width: 1400px; padding: 30px 40px 34px; font-family: var(--sans); color: var(--ink); }
+.lbl { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin: 0 0 8px; }
+
+.topic { display: flex; align-items: baseline; gap: 14px; border: 1.5px solid var(--rule); background: var(--panel); border-radius: 8px; padding: 12px 20px; }
+.topic .k { font-size: 13.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); white-space: nowrap; }
+.topic .t { font-family: var(--serif); font-size: 21px; font-style: italic; }
+.topic .n { margin-left: auto; font-size: 15.5px; color: var(--ink2); white-space: nowrap; }
+
+.fork { height: 40px; position: relative; }
+.fork svg { position: absolute; inset: 0; }
+
+.cards { display: grid; grid-template-columns: 1fr 1fr 1fr 150px; gap: 20px; align-items: stretch; }
+.card { border: 1.5px solid var(--rule); border-radius: 8px; padding: 12px 16px 14px; background: #fff; }
+.card.des { border-color: var(--des); } .card.calm { border-color: var(--calm); } .card.fru { border-color: var(--fru); }
+.tag { display: inline-block; font-size: 15.5px; font-weight: 700; color: #fff; border-radius: 4px; padding: 1px 9px; margin-bottom: 8px; }
+.des .tag { background: var(--des); } .calm .tag { background: var(--calm); } .fru .tag { background: var(--fru); }
+.story { font-family: var(--serif); font-size: 16.5px; line-height: 1.45; color: var(--ink2); margin: 0; }
+.story mark { color: var(--ink); background: none; border-radius: 2px; padding: 0 1px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.des mark { background: var(--des-soft); } .calm mark { background: var(--calm-soft); } .fru mark { background: var(--fru-soft); }
+.more { border: 1.5px dashed var(--rule); border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+  color: var(--ink3); font-size: 16px; line-height: 1.35; padding: 10px; }
+.more b { font-size: 26px; color: var(--ink2); font-weight: 600; }
+
+.note { font-size: 15px; color: var(--ink3); margin: 10px 0 0; }
+
+/* pipeline */
+.pipe { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr 26px 1fr; align-items: stretch; margin-top: 26px; }
+.step { border-top: 2px solid var(--ink); padding: 10px 2px 0; display: flex; flex-direction: column; }
+.step .f { margin-top: auto; }
+.step .num { font-size: 13.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
+.step h3 { font-size: 19px; font-weight: 600; margin: 2px 0 6px; line-height: 1.25; }
+.step p { font-size: 15.5px; line-height: 1.4; color: var(--ink2); margin: 0 0 8px; }
+.step .f { font-family: var(--serif); font-size: 21px; color: var(--ink); white-space: nowrap; }
+.step .f i { font-style: italic; }
+.arr { display: flex; align-items: center; justify-content: center; color: var(--ink3); font-size: 22px; padding-top: 30px; align-items: flex-start; }
+
+.foot { display: flex; justify-content: space-between; gap: 20px; margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--ink3); }
+</style></head>
+<body>
+
+<p class="lbl">Step 1 · Stories: same topic, different emotion (emotion word never used)</p>
+<div class="topic"><span class="k">Topic 0 of 50</span><span class="t">“a person waits at a bus stop on a rainy morning”</span><span class="n">12 stories per emotion per topic</span></div>
+
+<div class="fork"><svg viewBox="0 0 1320 40" preserveAspectRatio="none">
+  <path d="M660 0 V22" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+  <path d="M185 40 V30 Q185 22 193 22 H957 Q965 22 965 30 V40" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+  <path d="M575 22 V40" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+  <path d="M965 22 H1237 Q1245 22 1245 30 V40" fill="none" stroke="#c9c9c9" stroke-width="1.5" stroke-dasharray="4 4"/>
+</svg></div>
+
+<div class="cards">
+  <div class="card des"><span class="tag">desperate</span>
+    <p class="story">…I kept checking the cracked screen of my phone <mark>as if the time might change out of pity</mark>. My daughter’s inhaler was in my coat pocket… and the one she had left was empty. When the bus finally appeared, it slowed, then <mark>rolled past with a handwritten FULL sign</mark> in its window.</p></div>
+  <div class="card calm"><span class="tag">calm</span>
+    <p class="story">Rain stippled the shelter roof while I waited for the number 6, my canvas tote resting between my shoes… <mark>My tea was still warm in its paper cup.</mark> When the bus appeared at the corner, I let the crowd board ahead of me. <mark>There was no need to hurry.</mark></p></div>
+  <div class="card fru"><span class="tag">frustrated</span>
+    <p class="story">His restaurant shift began at six, and the bus had been due nine minutes earlier… <mark>He checked his watch, then checked it again, as though the hands might reconsider.</mark> Ravi jogged through the puddles… <mark>The doors closed just before he reached them.</mark></p></div>
+  <div class="more"><b>+37</b>more emotions, same topic</div>
+</div>
+<p class="note">Excerpts from the generated stories (GPT-6 Luna). Highlights mark how each emotion is conveyed through actions and situation rather than named.</p>
+
+<div class="pipe">
+  <div class="step"><span class="num">Step 2</span><h3>Read Qwen’s state on each story</h3>
+    <p>Layer-40 activations, averaged over the story’s tokens from the 50th on.</p>
+    <div class="f">one vector <i>s</i> per story</div></div>
+  <div class="arr">→</div>
+  <div class="step"><span class="num">Step 3</span><h3>Average per emotion, subtract the average emotion</h3>
+    <p>600 stories per emotion; topics are balanced, so topic content cancels.</p>
+    <div class="f"><i>v</i><sub>e</sub> = <i>s̄</i><sub>e</sub> − mean<sub>e′</sub> <i>s̄</i><sub>e′</sub></div></div>
+  <div class="arr">→</div>
+  <div class="step"><span class="num">Step 4</span><h3>Remove generic conversation directions</h3>
+    <p>Project out the top 46 principal components of neutral chat (50% of its variance).</p>
+    <div class="f"><i>v</i><sub>e</sub> ← (I − P<sub>neutral</sub>) <i>v</i><sub>e</sub></div></div>
+  <div class="arr">→</div>
+  <div class="step"><span class="num">Result</span><h3>40 emotion directions</h3>
+    <p>Stable across halves of the topics (split-half cosine 0.93). Each rollout token gets a score on every emotion.</p>
+    <div class="f"><i>v</i><sub>desperate</sub>, <i>v</i><sub>calm</sub>, …</div></div>
+</div>
+
+<div class="foot"><span>40 emotions × 50 topics × 12 stories = 24,000 stories</span><span>Recipe follows Sofroniew et al. (2026), adapted to Qwen3.8-27B</span></div>
+
+</body></html>

@@ -1,0 +1,1485 @@
+{
+ "source": "Sofroniew et al. 2026, 'Emotion Concepts and their Function in a Large Language Model', transformer-circuits.pub/2026/emotions, Appendix 'Full list of emotions' and Table 12 (k-means clusters, ordered by valence)",
+ "n": 171,
+ "emotions": [
+  "afraid",
+  "alarmed",
+  "alert",
+  "amazed",
+  "amused",
+  "angry",
+  "annoyed",
+  "anxious",
+  "aroused",
+  "ashamed",
+  "astonished",
+  "at ease",
+  "awestruck",
+  "bewildered",
+  "bitter",
+  "blissful",
+  "bored",
+  "brooding",
+  "calm",
+  "cheerful",
+  "compassionate",
+  "contemptuous",
+  "content",
+  "defiant",
+  "delighted",
+  "dependent",
+  "depressed",
+  "desperate",
+  "disdainful",
+  "disgusted",
+  "disoriented",
+  "dispirited",
+  "distressed",
+  "disturbed",
+  "docile",
+  "droopy",
+  "dumbstruck",
+  "eager",
+  "ecstatic",
+  "elated",
+  "embarrassed",
+  "empathetic",
+  "energized",
+  "enraged",
+  "enthusiastic",
+  "envious",
+  "euphoric",
+  "exasperated",
+  "excited",
+  "exuberant",
+  "frightened",
+  "frustrated",
+  "fulfilled",
+  "furious",
+  "gloomy",
+  "grateful",
+  "greedy",
+  "grief-stricken",
+  "grumpy",
+  "guilty",
+  "happy",
+  "hateful",
+  "heartbroken",
+  "hope",
+  "hopeful",
+  "horrified",
+  "hostile",
+  "humiliated",
+  "hurt",
+  "hysterical",
+  "impatient",
+  "indifferent",
+  "indignant",
+  "infatuated",
+  "inspired",
+  "insulted",
+  "invigorated",
+  "irate",
+  "irritated",
+  "jealous",
+  "joyful",
+  "jubilant",
+  "kind",
+  "lazy",
+  "listless",
+  "lonely",
+  "loving",
+  "mad",
+  "melancholy",
+  "miserable",
+  "mortified",
+  "mystified",
+  "nervous",
+  "nostalgic",
+  "obstinate",
+  "offended",
+  "on edge",
+  "optimistic",
+  "outraged",
+  "overwhelmed",
+  "panicked",
+  "paranoid",
+  "patient",
+  "peaceful",
+  "perplexed",
+  "playful",
+  "pleased",
+  "proud",
+  "puzzled",
+  "rattled",
+  "reflective",
+  "refreshed",
+  "regretful",
+  "rejuvenated",
+  "relaxed",
+  "relieved",
+  "remorseful",
+  "resentful",
+  "resigned",
+  "restless",
+  "sad",
+  "safe",
+  "satisfied",
+  "scared",
+  "scornful",
+  "self-confident",
+  "self-conscious",
+  "self-critical",
+  "sensitive",
+  "sentimental",
+  "serene",
+  "shaken",
+  "shocked",
+  "skeptical",
+  "sleepy",
+  "sluggish",
+  "smug",
+  "sorry",
+  "spiteful",
+  "stimulated",
+  "stressed",
+  "stubborn",
+  "stuck",
+  "sullen",
+  "surprised",
+  "suspicious",
+  "sympathetic",
+  "tense",
+  "terrified",
+  "thankful",
+  "thrilled",
+  "tired",
+  "tormented",
+  "trapped",
+  "triumphant",
+  "troubled",
+  "uneasy",
+  "unhappy",
+  "unnerved",
+  "unsettled",
+  "upset",
+  "valiant",
+  "vengeful",
+  "vibrant",
+  "vigilant",
+  "vindictive",
+  "vulnerable",
+  "weary",
+  "worn out",
+  "worried",
+  "worthless"
+ ],
+ "clusters": {
+  "Exuberant Joy": [
+   "blissful",
+   "cheerful",
+   "delighted",
+   "eager",
+   "ecstatic",
+   "elated",
+   "energized",
+   "enthusiastic",
+   "euphoric",
+   "excited",
+   "exuberant",
+   "happy",
+   "invigorated",
+   "joyful",
+   "jubilant",
+   "optimistic",
+   "pleased",
+   "stimulated",
+   "thrilled",
+   "vibrant"
+  ],
+  "Peaceful Contentment": [
+   "at ease",
+   "calm",
+   "content",
+   "patient",
+   "peaceful",
+   "refreshed",
+   "relaxed",
+   "safe",
+   "serene"
+  ],
+  "Compassionate Gratitude": [
+   "compassionate",
+   "empathetic",
+   "fulfilled",
+   "grateful",
+   "hope",
+   "hopeful",
+   "inspired",
+   "kind",
+   "loving",
+   "rejuvenated",
+   "relieved",
+   "satisfied",
+   "sentimental",
+   "sympathetic",
+   "thankful"
+  ],
+  "Competitive Pride": [
+   "greedy",
+   "proud",
+   "self-confident",
+   "smug",
+   "spiteful",
+   "triumphant",
+   "valiant",
+   "vengeful",
+   "vindictive"
+  ],
+  "Playful Amusement": [
+   "amused",
+   "playful"
+  ],
+  "Depleted Disengagement": [
+   "bored",
+   "depressed",
+   "docile",
+   "droopy",
+   "indifferent",
+   "lazy",
+   "listless",
+   "resigned",
+   "restless",
+   "sleepy",
+   "sluggish",
+   "sullen",
+   "tired",
+   "weary",
+   "worn out"
+  ],
+  "Vigilant Suspicion": [
+   "paranoid",
+   "suspicious",
+   "vigilant"
+  ],
+  "Hostile Anger": [
+   "angry",
+   "annoyed",
+   "contemptuous",
+   "defiant",
+   "disdainful",
+   "enraged",
+   "exasperated",
+   "frustrated",
+   "furious",
+   "grumpy",
+   "hateful",
+   "hostile",
+   "impatient",
+   "indignant",
+   "insulted",
+   "irate",
+   "irritated",
+   "mad",
+   "obstinate",
+   "offended",
+   "outraged",
+   "resentful",
+   "scornful",
+   "skeptical",
+   "stubborn"
+  ],
+  "Fear and Overwhelm": [
+   "afraid",
+   "alarmed",
+   "alert",
+   "amazed",
+   "anxious",
+   "aroused",
+   "astonished",
+   "awestruck",
+   "bewildered",
+   "disgusted",
+   "disoriented",
+   "distressed",
+   "disturbed",
+   "dumbstruck",
+   "embarrassed",
+   "frightened",
+   "horrified",
+   "hysterical",
+   "mortified",
+   "mystified",
+   "nervous",
+   "on edge",
+   "overwhelmed",
+   "panicked",
+   "perplexed",
+   "puzzled",
+   "rattled",
+   "scared",
+   "self-conscious",
+   "sensitive",
+   "shaken",
+   "shocked",
+   "stressed",
+   "surprised",
+   "tense",
+   "terrified",
+   "uneasy",
+   "unnerved",
+   "unsettled",
+   "upset",
+   "worried"
+  ],
+  "Despair and Shame": [
+   "ashamed",
+   "bitter",
+   "brooding",
+   "dependent",
+   "desperate",
+   "dispirited",
+   "envious",
+   "gloomy",
+   "grief-stricken",
+   "guilty",
+   "heartbroken",
+   "humiliated",
+   "hurt",
+   "infatuated",
+   "jealous",
+   "lonely",
+   "melancholy",
+   "miserable",
+   "nostalgic",
+   "reflective",
+   "regretful",
+   "remorseful",
+   "sad",
+   "self-critical",
+   "sorry",
+   "stuck",
+   "tormented",
+   "trapped",
+   "troubled",
+   "unhappy",
+   "vulnerable",
+   "worthless"
+  ]
+ },
+ "subset_40": [
+  "afraid",
+  "amused",
+  "angry",
+  "anxious",
+  "ashamed",
+  "bored",
+  "calm",
+  "content",
+  "defiant",
+  "desperate",
+  "eager",
+  "exasperated",
+  "excited",
+  "frustrated",
+  "greedy",
+  "guilty",
+  "happy",
+  "hopeful",
+  "impatient",
+  "overwhelmed",
+  "panicked",
+  "patient",
+  "proud",
+  "puzzled",
+  "relaxed",
+  "relieved",
+  "resigned",
+  "sad",
+  "satisfied",
+  "self-confident",
+  "self-critical",
+  "skeptical",
+  "smug",
+  "stressed",
+  "stuck",
+  "surprised",
+  "suspicious",
+  "trapped",
+  "triumphant",
+  "worried"
+ ],
+ "subset_40_by_cluster": {
+  "Fear and Overwhelm": [
+   "afraid",
+   "anxious",
+   "panicked",
+   "overwhelmed",
+   "stressed",
+   "worried",
+   "surprised",
+   "puzzled"
+  ],
+  "Despair and Shame": [
+   "desperate",
+   "trapped",
+   "stuck",
+   "guilty",
+   "ashamed",
+   "self-critical",
+   "sad"
+  ],
+  "Hostile Anger": [
+   "frustrated",
+   "exasperated",
+   "impatient",
+   "angry",
+   "defiant",
+   "skeptical"
+  ],
+  "Competitive Pride": [
+   "proud",
+   "self-confident",
+   "smug",
+   "triumphant",
+   "greedy"
+  ],
+  "Peaceful Contentment": [
+   "calm",
+   "content",
+   "relaxed",
+   "patient"
+  ],
+  "Compassionate Gratitude": [
+   "hopeful",
+   "relieved",
+   "satisfied"
+  ],
+  "Exuberant Joy": [
+   "happy",
+   "excited",
+   "eager"
+  ],
+  "Depleted Disengagement": [
+   "bored",
+   "resigned"
+  ],
+  "Playful Amusement": [
+   "amused"
+  ],
+  "Vigilant Suspicion": [
+   "suspicious"
+  ]
+ },
+ "glosses_optional": {
+  "note": "OUR addition, not in the paper: disambiguation shown to the generator only for ambiguous words. Omit for a strict replication.",
+  "mad": "angry (not 'crazy')",
+  "aroused": "physiologically keyed up / highly activated, non-sexual",
+  "hope": "the feeling of hope",
+  "dependent": "emotionally reliant on someone or something",
+  "stuck": "feeling stuck, unable to make progress",
+  "docile": "submissive, compliant",
+  "droopy": "physically and emotionally drooping, low-energy",
+  "safe": "feeling safe and secure",
+  "kind": "feeling kindly toward others",
+  "sensitive": "emotionally sensitive, easily affected",
+  "alert": "alert, keyed-up attentiveness",
+  "reflective": "in a reflective, contemplative mood"
+ },
+ "ban_forms": {
+  "note": "OUR addition: whole-word, case-insensitive lexical check for the emotion word's own family. The paper bans the word and direct synonyms in the prompt only; synonym avoidance is left to the generator.",
+  "afraid": [
+   "afraid",
+   "afraidly",
+   "afraidness"
+  ],
+  "alarmed": [
+   "alarmed",
+   "alarmedly",
+   "alarmedness"
+  ],
+  "alert": [
+   "alert",
+   "alertly",
+   "alertness"
+  ],
+  "amazed": [
+   "amazed",
+   "amazedly",
+   "amazedness"
+  ],
+  "amused": [
+   "amused",
+   "amusedly",
+   "amusedness",
+   "amusement",
+   "amusing"
+  ],
+  "angry": [
+   "anger",
+   "angered",
+   "angrier",
+   "angriest",
+   "angrily",
+   "angriness",
+   "angry",
+   "angryly",
+   "angryness"
+  ],
+  "annoyed": [
+   "annoyance",
+   "annoyed",
+   "annoyedly",
+   "annoyedness",
+   "annoying"
+  ],
+  "anxious": [
+   "anxieties",
+   "anxiety",
+   "anxious",
+   "anxiously",
+   "anxiousness"
+  ],
+  "aroused": [
+   "aroused",
+   "arousedly",
+   "arousedness"
+  ],
+  "ashamed": [
+   "ashamed",
+   "ashamedly",
+   "ashamedness",
+   "shame",
+   "shamed",
+   "shameful"
+  ],
+  "astonished": [
+   "astonished",
+   "astonishedly",
+   "astonishedness"
+  ],
+  "at ease": [
+   "at ease"
+  ],
+  "awestruck": [
+   "awestruck",
+   "awestruckly",
+   "awestruckness"
+  ],
+  "bewildered": [
+   "bewildered",
+   "bewilderedly",
+   "bewilderedness"
+  ],
+  "bitter": [
+   "bitter",
+   "bitterly",
+   "bitterness"
+  ],
+  "blissful": [
+   "blissful",
+   "blissfully",
+   "blissfulness"
+  ],
+  "bored": [
+   "bored",
+   "boredly",
+   "boredness",
+   "boredom",
+   "boring"
+  ],
+  "brooding": [
+   "brooding",
+   "broodingly",
+   "broodingness"
+  ],
+  "calm": [
+   "calm",
+   "calmed",
+   "calmly",
+   "calmness"
+  ],
+  "cheerful": [
+   "cheerful",
+   "cheerfully",
+   "cheerfulness"
+  ],
+  "compassionate": [
+   "compassionate",
+   "compassionately",
+   "compassionateness"
+  ],
+  "contemptuous": [
+   "contemptuous",
+   "contemptuously",
+   "contemptuousness"
+  ],
+  "content": [
+   "content",
+   "contented",
+   "contently",
+   "contentment",
+   "contentness"
+  ],
+  "defiant": [
+   "defiance",
+   "defiant",
+   "defiantly",
+   "defiantness"
+  ],
+  "delighted": [
+   "delighted",
+   "delightedly",
+   "delightedness"
+  ],
+  "dependent": [
+   "dependent",
+   "dependently",
+   "dependentness"
+  ],
+  "depressed": [
+   "depressed",
+   "depressedly",
+   "depressedness"
+  ],
+  "desperate": [
+   "desperate",
+   "desperately",
+   "desperateness",
+   "desperation"
+  ],
+  "disdainful": [
+   "disdainful",
+   "disdainfully",
+   "disdainfulness"
+  ],
+  "disgusted": [
+   "disgusted",
+   "disgustedly",
+   "disgustedness"
+  ],
+  "disoriented": [
+   "disoriented",
+   "disorientedly",
+   "disorientedness"
+  ],
+  "dispirited": [
+   "dispirited",
+   "dispiritedly",
+   "dispiritedness"
+  ],
+  "distressed": [
+   "distressed",
+   "distressedly",
+   "distressedness"
+  ],
+  "disturbed": [
+   "disturbed",
+   "disturbedly",
+   "disturbedness"
+  ],
+  "docile": [
+   "docile",
+   "docilely",
+   "docileness"
+  ],
+  "droopy": [
+   "droopily",
+   "droopiness",
+   "droopy",
+   "droopyly",
+   "droopyness"
+  ],
+  "dumbstruck": [
+   "dumbstruck",
+   "dumbstruckly",
+   "dumbstruckness"
+  ],
+  "eager": [
+   "eager",
+   "eagerly",
+   "eagerness"
+  ],
+  "ecstatic": [
+   "ecstatic",
+   "ecstaticly",
+   "ecstaticness"
+  ],
+  "elated": [
+   "elated",
+   "elatedly",
+   "elatedness"
+  ],
+  "embarrassed": [
+   "embarrassed",
+   "embarrassedly",
+   "embarrassedness",
+   "embarrassing",
+   "embarrassment"
+  ],
+  "empathetic": [
+   "empathetic",
+   "empatheticly",
+   "empatheticness"
+  ],
+  "energized": [
+   "energized",
+   "energizedly",
+   "energizedness"
+  ],
+  "enraged": [
+   "enraged",
+   "enragedly",
+   "enragedness"
+  ],
+  "enthusiastic": [
+   "enthusiastic",
+   "enthusiasticly",
+   "enthusiasticness"
+  ],
+  "envious": [
+   "envied",
+   "envious",
+   "enviously",
+   "enviousness",
+   "envy"
+  ],
+  "euphoric": [
+   "euphoric",
+   "euphoricly",
+   "euphoricness"
+  ],
+  "exasperated": [
+   "exasperated",
+   "exasperatedly",
+   "exasperatedness",
+   "exasperating",
+   "exasperation"
+  ],
+  "excited": [
+   "excited",
+   "excitedly",
+   "excitedness",
+   "excitement",
+   "exciting"
+  ],
+  "exuberant": [
+   "exuberant",
+   "exuberantly",
+   "exuberantness"
+  ],
+  "frightened": [
+   "frightened",
+   "frightenedly",
+   "frightenedness"
+  ],
+  "frustrated": [
+   "frustrate",
+   "frustrated",
+   "frustratedly",
+   "frustratedness",
+   "frustrating",
+   "frustration"
+  ],
+  "fulfilled": [
+   "fulfilled",
+   "fulfilledly",
+   "fulfilledness"
+  ],
+  "furious": [
+   "furious",
+   "furiously",
+   "furiousness",
+   "fury"
+  ],
+  "gloomy": [
+   "gloomily",
+   "gloominess",
+   "gloomy",
+   "gloomyly",
+   "gloomyness"
+  ],
+  "grateful": [
+   "grateful",
+   "gratefully",
+   "gratefulness",
+   "gratitude"
+  ],
+  "greedy": [
+   "greed",
+   "greedily",
+   "greediness",
+   "greedy",
+   "greedyly",
+   "greedyness"
+  ],
+  "grief-stricken": [
+   "grief",
+   "grief-stricken"
+  ],
+  "grumpy": [
+   "grumpily",
+   "grumpiness",
+   "grumpy",
+   "grumpyly",
+   "grumpyness"
+  ],
+  "guilty": [
+   "guilt",
+   "guiltily",
+   "guiltiness",
+   "guilty",
+   "guiltyly",
+   "guiltyness"
+  ],
+  "happy": [
+   "happier",
+   "happiest",
+   "happily",
+   "happiness",
+   "happy",
+   "happyly",
+   "happyness"
+  ],
+  "hateful": [
+   "hateful",
+   "hatefully",
+   "hatefulness"
+  ],
+  "heartbroken": [
+   "heartbreak",
+   "heartbroken",
+   "heartbrokenly",
+   "heartbrokenness"
+  ],
+  "hope": [
+   "hope",
+   "hoped",
+   "hopeful",
+   "hopefully",
+   "hopely",
+   "hopeness",
+   "hopes",
+   "hoping"
+  ],
+  "hopeful": [
+   "hope",
+   "hoped",
+   "hopeful",
+   "hopefully",
+   "hopefulness",
+   "hopes",
+   "hoping"
+  ],
+  "horrified": [
+   "horrified",
+   "horrifiedly",
+   "horrifiedness",
+   "horrifying",
+   "horror"
+  ],
+  "hostile": [
+   "hostile",
+   "hostilely",
+   "hostileness"
+  ],
+  "humiliated": [
+   "humiliated",
+   "humiliatedly",
+   "humiliatedness",
+   "humiliating",
+   "humiliation"
+  ],
+  "hurt": [
+   "hurt",
+   "hurtly",
+   "hurtness"
+  ],
+  "hysterical": [
+   "hysterical",
+   "hysterically",
+   "hystericalness"
+  ],
+  "impatient": [
+   "impatience",
+   "impatient",
+   "impatiently",
+   "impatientness"
+  ],
+  "indifferent": [
+   "indifferent",
+   "indifferently",
+   "indifferentness"
+  ],
+  "indignant": [
+   "indignant",
+   "indignantly",
+   "indignantness"
+  ],
+  "infatuated": [
+   "infatuated",
+   "infatuatedly",
+   "infatuatedness"
+  ],
+  "inspired": [
+   "inspired",
+   "inspiredly",
+   "inspiredness"
+  ],
+  "insulted": [
+   "insulted",
+   "insultedly",
+   "insultedness"
+  ],
+  "invigorated": [
+   "invigorated",
+   "invigoratedly",
+   "invigoratedness"
+  ],
+  "irate": [
+   "irate",
+   "irately",
+   "irateness"
+  ],
+  "irritated": [
+   "irritated",
+   "irritatedly",
+   "irritatedness",
+   "irritating",
+   "irritation"
+  ],
+  "jealous": [
+   "jealous",
+   "jealously",
+   "jealousness",
+   "jealousy"
+  ],
+  "joyful": [
+   "joyful",
+   "joyfully",
+   "joyfulness"
+  ],
+  "jubilant": [
+   "jubilant",
+   "jubilantly",
+   "jubilantness"
+  ],
+  "kind": [
+   "kind",
+   "kindly",
+   "kindness"
+  ],
+  "lazy": [
+   "lazily",
+   "laziness",
+   "lazy",
+   "lazyly",
+   "lazyness"
+  ],
+  "listless": [
+   "listless",
+   "listlessly",
+   "listlessness"
+  ],
+  "lonely": [
+   "lonelily",
+   "loneliness",
+   "lonely",
+   "lonelyly",
+   "lonelyness"
+  ],
+  "loving": [
+   "loving",
+   "lovingly",
+   "lovingness"
+  ],
+  "mad": [
+   "mad",
+   "madly",
+   "madness"
+  ],
+  "melancholy": [
+   "melancholily",
+   "melancholiness",
+   "melancholy",
+   "melancholyly",
+   "melancholyness"
+  ],
+  "miserable": [
+   "miserable",
+   "miserablely",
+   "miserableness"
+  ],
+  "mortified": [
+   "mortified",
+   "mortifiedly",
+   "mortifiedness"
+  ],
+  "mystified": [
+   "mystified",
+   "mystifiedly",
+   "mystifiedness"
+  ],
+  "nervous": [
+   "nerves",
+   "nervous",
+   "nervously",
+   "nervousness"
+  ],
+  "nostalgic": [
+   "nostalgic",
+   "nostalgicly",
+   "nostalgicness"
+  ],
+  "obstinate": [
+   "obstinate",
+   "obstinately",
+   "obstinateness"
+  ],
+  "offended": [
+   "offended",
+   "offendedly",
+   "offendedness"
+  ],
+  "on edge": [
+   "on edge"
+  ],
+  "optimistic": [
+   "optimistic",
+   "optimisticly",
+   "optimisticness"
+  ],
+  "outraged": [
+   "outraged",
+   "outragedly",
+   "outragedness"
+  ],
+  "overwhelmed": [
+   "overwhelmed",
+   "overwhelmedly",
+   "overwhelmedness",
+   "overwhelming"
+  ],
+  "panicked": [
+   "panic",
+   "panicked",
+   "panickedly",
+   "panickedness",
+   "panicking"
+  ],
+  "paranoid": [
+   "paranoid",
+   "paranoidly",
+   "paranoidness"
+  ],
+  "patient": [
+   "patience",
+   "patient",
+   "patiently",
+   "patientness"
+  ],
+  "peaceful": [
+   "peace",
+   "peaceful",
+   "peacefully",
+   "peacefulness"
+  ],
+  "perplexed": [
+   "perplexed",
+   "perplexedly",
+   "perplexedness"
+  ],
+  "playful": [
+   "playful",
+   "playfully",
+   "playfulness"
+  ],
+  "pleased": [
+   "pleased",
+   "pleasedly",
+   "pleasedness"
+  ],
+  "proud": [
+   "pride",
+   "proud",
+   "prouder",
+   "proudly",
+   "proudness"
+  ],
+  "puzzled": [
+   "puzzle",
+   "puzzled",
+   "puzzledly",
+   "puzzledness",
+   "puzzling"
+  ],
+  "rattled": [
+   "rattled",
+   "rattledly",
+   "rattledness"
+  ],
+  "reflective": [
+   "reflective",
+   "reflectively",
+   "reflectiveness"
+  ],
+  "refreshed": [
+   "refreshed",
+   "refreshedly",
+   "refreshedness"
+  ],
+  "regretful": [
+   "regret",
+   "regretful",
+   "regretfully",
+   "regretfulness",
+   "regrets",
+   "regretted"
+  ],
+  "rejuvenated": [
+   "rejuvenated",
+   "rejuvenatedly",
+   "rejuvenatedness"
+  ],
+  "relaxed": [
+   "relax",
+   "relaxed",
+   "relaxedly",
+   "relaxedness",
+   "relaxing"
+  ],
+  "relieved": [
+   "relief",
+   "relieved",
+   "relievedly",
+   "relievedness"
+  ],
+  "remorseful": [
+   "remorse",
+   "remorseful",
+   "remorsefully",
+   "remorsefulness"
+  ],
+  "resentful": [
+   "resentful",
+   "resentfully",
+   "resentfulness"
+  ],
+  "resigned": [
+   "resignation",
+   "resigned",
+   "resignedly",
+   "resignedness"
+  ],
+  "restless": [
+   "restless",
+   "restlessly",
+   "restlessness"
+  ],
+  "sad": [
+   "sad",
+   "saddened",
+   "sadder",
+   "saddest",
+   "sadly",
+   "sadness"
+  ],
+  "safe": [
+   "safe",
+   "safely",
+   "safeness"
+  ],
+  "satisfied": [
+   "satisfaction",
+   "satisfied",
+   "satisfiedly",
+   "satisfiedness",
+   "satisfying"
+  ],
+  "scared": [
+   "scare",
+   "scared",
+   "scaredly",
+   "scaredness",
+   "scary"
+  ],
+  "scornful": [
+   "scornful",
+   "scornfully",
+   "scornfulness"
+  ],
+  "self-confident": [
+   "confidence",
+   "confident",
+   "self-confidence",
+   "self-confident"
+  ],
+  "self-conscious": [
+   "self-conscious"
+  ],
+  "self-critical": [
+   "self-critical",
+   "self-criticism"
+  ],
+  "sensitive": [
+   "sensitive",
+   "sensitively",
+   "sensitiveness"
+  ],
+  "sentimental": [
+   "sentimental",
+   "sentimentally",
+   "sentimentalness"
+  ],
+  "serene": [
+   "serene",
+   "serenely",
+   "sereneness"
+  ],
+  "shaken": [
+   "shaken",
+   "shakenly",
+   "shakenness"
+  ],
+  "shocked": [
+   "shocked",
+   "shockedly",
+   "shockedness"
+  ],
+  "skeptical": [
+   "skeptical",
+   "skeptically",
+   "skepticalness",
+   "skepticism"
+  ],
+  "sleepy": [
+   "sleepily",
+   "sleepiness",
+   "sleepy",
+   "sleepyly",
+   "sleepyness"
+  ],
+  "sluggish": [
+   "sluggish",
+   "sluggishly",
+   "sluggishness"
+  ],
+  "smug": [
+   "smug",
+   "smugly",
+   "smugness"
+  ],
+  "sorry": [
+   "sorrily",
+   "sorriness",
+   "sorry",
+   "sorryly",
+   "sorryness"
+  ],
+  "spiteful": [
+   "spiteful",
+   "spitefully",
+   "spitefulness"
+  ],
+  "stimulated": [
+   "stimulated",
+   "stimulatedly",
+   "stimulatedness"
+  ],
+  "stressed": [
+   "stress",
+   "stressed",
+   "stressedly",
+   "stressedness",
+   "stressful"
+  ],
+  "stubborn": [
+   "stubborn",
+   "stubbornly",
+   "stubbornness"
+  ],
+  "stuck": [
+   "stuck",
+   "stuckly",
+   "stuckness"
+  ],
+  "sullen": [
+   "sullen",
+   "sullenly",
+   "sullenness"
+  ],
+  "surprised": [
+   "surprise",
+   "surprised",
+   "surprisedly",
+   "surprisedness",
+   "surprising",
+   "surprisingly"
+  ],
+  "suspicious": [
+   "suspicion",
+   "suspicious",
+   "suspiciously",
+   "suspiciousness"
+  ],
+  "sympathetic": [
+   "sympathetic",
+   "sympatheticly",
+   "sympatheticness"
+  ],
+  "tense": [
+   "tense",
+   "tensely",
+   "tenseness"
+  ],
+  "terrified": [
+   "terrified",
+   "terrifiedly",
+   "terrifiedness",
+   "terrifying",
+   "terror"
+  ],
+  "thankful": [
+   "thankful",
+   "thankfully",
+   "thankfulness"
+  ],
+  "thrilled": [
+   "thrilled",
+   "thrilledly",
+   "thrilledness"
+  ],
+  "tired": [
+   "tired",
+   "tiredly",
+   "tiredness",
+   "tiring"
+  ],
+  "tormented": [
+   "tormented",
+   "tormentedly",
+   "tormentedness"
+  ],
+  "trapped": [
+   "trap",
+   "trapped",
+   "trappedly",
+   "trappedness"
+  ],
+  "triumphant": [
+   "triumph",
+   "triumphant",
+   "triumphantly",
+   "triumphantness"
+  ],
+  "troubled": [
+   "troubled",
+   "troubledly",
+   "troubledness"
+  ],
+  "uneasy": [
+   "uneasily",
+   "uneasiness",
+   "uneasy",
+   "uneasyly",
+   "uneasyness"
+  ],
+  "unhappy": [
+   "unhappily",
+   "unhappiness",
+   "unhappy",
+   "unhappyly",
+   "unhappyness"
+  ],
+  "unnerved": [
+   "unnerved",
+   "unnervedly",
+   "unnervedness"
+  ],
+  "unsettled": [
+   "unsettled",
+   "unsettledly",
+   "unsettledness"
+  ],
+  "upset": [
+   "upset",
+   "upsetly",
+   "upsetness"
+  ],
+  "valiant": [
+   "valiant",
+   "valiantly",
+   "valiantness"
+  ],
+  "vengeful": [
+   "vengeful",
+   "vengefully",
+   "vengefulness"
+  ],
+  "vibrant": [
+   "vibrant",
+   "vibrantly",
+   "vibrantness"
+  ],
+  "vigilant": [
+   "vigilant",
+   "vigilantly",
+   "vigilantness"
+  ],
+  "vindictive": [
+   "vindictive",
+   "vindictively",
+   "vindictiveness"
+  ],
+  "vulnerable": [
+   "vulnerable",
+   "vulnerablely",
+   "vulnerableness"
+  ],
+  "weary": [
+   "wearily",
+   "weariness",
+   "weary",
+   "wearyly",
+   "wearyness"
+  ],
+  "worn out": [
+   "worn out"
+  ],
+  "worried": [
+   "worried",
+   "worriedly",
+   "worriedness",
+   "worries",
+   "worry",
+   "worrying"
+  ],
+  "worthless": [
+   "worthless",
+   "worthlessly",
+   "worthlessness"
+  ],
+  "soft_polysemous": {
+   "note": "These words have common non-emotion senses (e.g. 'patient' the noun, 'content' the noun, 'resigned' from a job). For these, a match flags the story for review instead of auto-rejecting.",
+   "words": [
+    "content",
+    "kind",
+    "safe",
+    "patient",
+    "alert",
+    "sensitive",
+    "stuck",
+    "trapped",
+    "mad",
+    "hope",
+    "dependent",
+    "reflective",
+    "upset",
+    "surprised",
+    "resigned",
+    "calm",
+    "puzzled"
+   ]
+  }
+ }
+}

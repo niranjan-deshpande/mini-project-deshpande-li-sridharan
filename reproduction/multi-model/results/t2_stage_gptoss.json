@@ -1,0 +1,69 @@
+{
+ "selected": {
+  "agg": "max",
+  "layer": 13,
+  "key": "span__all",
+  "sel_auroc": 0.7763492761810985
+ },
+ "stages": {
+  "considered": {
+   "n_pos": 115,
+   "auroc": 0.9154148262466074,
+   "ci": [
+    0.8928623070459498,
+    0.9366802555456305
+   ],
+   "len_auroc": 0.7800468309297004,
+   "resid_auroc": 0.8754872013197808,
+   "monitor_tpr": 0.7304347826086957,
+   "probe_tpr_at_monitor_fpr": 0.20869565217391303
+  },
+  "attempted": {
+   "n_pos": 16,
+   "auroc": 0.1916156670746634,
+   "ci": [
+    0.11436033698676283,
+    0.31286414639596744
+   ],
+   "len_auroc": 0.5154911260709915,
+   "resid_auroc": 0.17386780905752755,
+   "monitor_tpr": 1.0,
+   "probe_tpr_at_monitor_fpr": 0.0
+  },
+  "enacted": {
+   "n_pos": 202,
+   "auroc": 0.7095871153822849,
+   "ci": [
+    0.6271014734220903,
+    0.7750977511637
+   ],
+   "len_auroc": 0.6479664796344996,
+   "resid_auroc": 0.6611910273034648,
+   "monitor_tpr": 0.8316831683168316,
+   "probe_tpr_at_monitor_fpr": 0.09900990099009901
+  }
+ },
+ "stage_x_channel": {
+  "considered/reasoning": {
+   "n_pos": 111,
+   "auroc": 0.853121981879781,
+   "monitor_tpr": 0.7207207207207207
+  },
+  "enacted/content": {
+   "n_pos": 90,
+   "auroc": 0.7810896453030768,
+   "monitor_tpr": 0.7333333333333333
+  },
+  "enacted/reasoning": {
+   "n_pos": 82,
+   "auroc": 0.6821175103412974,
+   "monitor_tpr": 0.9024390243902439
+  },
+  "enacted/tool_calls": {
+   "n_pos": 30,
+   "auroc": 0.6404858299595142,
+   "monitor_tpr": 0.9333333333333333
+  }
+ },
+ "monitor_fpr": 0.03011015911872705
+}

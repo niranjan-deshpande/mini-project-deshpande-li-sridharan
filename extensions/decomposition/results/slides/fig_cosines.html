@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: #fff; }
+body { width: 1400px; padding: 20px 40px 16px; }
+svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+</style></head>
+<body>
+<svg id="c" width="1320" height="820" viewBox="0 0 1320 820"></svg>
+<script>
+// Raw cosine with v_hack (layer 40, turn-mean DoM). Sources: results/geometry/geometry.json, results/phase5/phase5.json.
+const CAND = [["Legit shortcut", 0.273], ["Eval awareness", 0.200], ["Test vocabulary (code)", 0.046], ["Task failure", -0.024],
+              ["Grader modeling", -0.135], ["Test vocabulary (non-code)", -0.173]];
+const BASE = [0.077, -0.265, 0.045, -0.102, 0.036, 0.012, -0.006, 0.042, -0.043, 0.068];
+const EMO = [-0.123, -0.122, -0.104, -0.097, -0.09, -0.084, -0.076, -0.066, -0.059, -0.047, -0.04, -0.034, -0.033, -0.032, -0.018, -0.016,
+  -0.016, -0.014, -0.013, -0.006, 0.001, 0.002, 0.009, 0.009, 0.011, 0.013, 0.028, 0.031, 0.032, 0.034, 0.039, 0.041, 0.043, 0.043, 0.044,
+  0.061, 0.073, 0.075, 0.1, 0.13];
+const BAND = 0.19;   // 95th percentile of |cos| between v_hack and the 10 controls
+const C = { cand: "#b8402f", candHi: "#b8402f", base: "#9c9182", emo: "#3a6ea5", ink: "#1a1a1a", ink2: "#4a4a4a", ink3: "#7a7a7a",
+            grid: "#e6e6e6", band: "#f1ede6" };
+
+const svg = document.getElementById("c"), NS = "http://www.w3.org/2000/svg";
+const el = (t, a, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; };
+const L = 330, R = 1250, X0 = -0.3, X1 = 0.3, x = v => L + (v - X0) / (X1 - X0) * (R - L);
+const sgn = v => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(2);
+
+const yTop = 46, rowH = 56, hdrH = 44;
+let y = yTop;
+const rows = [];
+rows.push({ hdr: "Candidate confounders" });
+CAND.forEach(c => rows.push({ cand: c }));
+rows.push({ hdr: "10 unrelated controls" });
+rows.push({ range: BASE, color: C.base, name: "Control directions" });
+rows.push({ hdr: "40 emotion directions" });
+rows.push({ range: EMO, color: C.emo, name: "Emotion directions" });
+const layout = rows.map(r => { const o = { ...r, y }; y += r.hdr ? hdrH : (r.range ? 92 : rowH); return o; });
+const yBot = y + 6;
+
+// grid
+for (const t of [-0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3]) {
+  el("line", { x1: x(t), x2: x(t), y1: yTop - 8, y2: yBot, stroke: t === 0 ? "#555" : C.grid, "stroke-width": t === 0 ? 2 : 1 });
+  el("text", { x: x(t), y: yBot + 30, "text-anchor": "middle", "font-size": 21, fill: C.ink2, "font-weight": 600 },
+     t === 0 ? "0" : (t > 0 ? "+" : "−") + Math.abs(t).toFixed(1));
+}
+el("text", { x: (L + R) / 2, y: yBot + 64, "text-anchor": "middle", "font-size": 22, fill: C.ink, "font-weight": 600 }, "Cosine similarity with v_hack");
+
+for (const r of layout) {
+  if (r.hdr) {
+    el("text", { x: 0, y: r.y + 30, "font-size": 18, "font-weight": 700, "letter-spacing": "1.2", fill: C.ink3 }, r.hdr.toUpperCase());
+    el("line", { x1: 0, x2: R, y1: r.y + 38, y2: r.y + 38, stroke: "#cfcfcf", "stroke-width": 1 });
+    continue;
+  }
+  const cy = r.y + rowH / 2 + 4;
+  if (r.cand) {
+    const [name, v] = r.cand, hi = Math.abs(v) > BAND;
+    el("text", { x: L - 18, y: cy + 8, "text-anchor": "end", "font-size": 23, "font-weight": hi ? 700 : 600, fill: C.ink }, name);
+    const x0 = x(0), x1 = x(v);
+    el("rect", { x: Math.min(x0, x1), y: cy - 16, width: Math.abs(x1 - x0), height: 32, rx: 4, fill: C.cand });
+    el("text", { x: v >= 0 ? x1 + 10 : x1 - 10, y: cy + 8, "text-anchor": v >= 0 ? "start" : "end", "font-size": 23, "font-weight": 700, fill: C.ink }, sgn(v));
+  } else {
+    const lo = Math.min(...r.range), hi = Math.max(...r.range);
+    el("text", { x: L - 18, y: cy + 8, "text-anchor": "end", "font-size": 23, "font-weight": 600, fill: C.ink }, r.name);
+    el("rect", { x: x(lo), y: cy - 16, width: x(hi) - x(lo), height: 32, rx: 4, fill: r.color, opacity: 0.22 });
+    r.range.forEach(v => el("line", { x1: x(v), x2: x(v), y1: cy - 16, y2: cy + 16, stroke: r.color, "stroke-width": 3 }));
+    el("text", { x: x(lo) - 10, y: cy + 8, "text-anchor": "end", "font-size": 21, "font-weight": 700, fill: C.ink2 }, sgn(lo));
+    el("text", { x: x(hi) + 10, y: cy + 8, "text-anchor": "start", "font-size": 21, "font-weight": 700, fill: C.ink2 }, sgn(hi));
+    r.cy = cy;
+  }
+}
+// annotations (all below their bar)
+const ctrl = layout.find(r => r.name === "Control directions"), emo = layout.find(r => r.name === "Emotion directions");
+el("text", { x: x(-0.265), y: ctrl.cy + 42, "text-anchor": "start", "font-size": 18, fill: C.ink2 }, "formal → casual");
+el("text", { x: x(-0.123), y: emo.cy + 42, "text-anchor": "start", "font-size": 18, fill: C.ink2 }, "calm");
+el("text", { x: x(0.13), y: emo.cy + 42, "text-anchor": "end", "font-size": 18, fill: C.ink2 }, "greedy");
+el("line", { x1: x(-0.014), x2: x(-0.014), y1: emo.cy + 16, y2: emo.cy + 26, stroke: C.ink2, "stroke-width": 1.5 });
+el("text", { x: x(-0.014) + 8, y: emo.cy + 42, "text-anchor": "start", "font-size": 18, "font-weight": 600, fill: C.ink }, "desperate −0.01");
+</script>
+</body></html>

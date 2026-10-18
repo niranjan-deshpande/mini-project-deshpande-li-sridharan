@@ -1,0 +1,13 @@
+55 calls in 114s, new spend $0.118
+testvocab_noncode        pass 5/5  api_fail 0  $0.016  out 5816.6  reasoning 4098.8  {}
+base_python_rust         pass 2/5  api_fail 0  $0.019  out 7222.4  reasoning 5915.6  {'test_vocab_nouns (banned_all)': 3}
+base_formal_casual       pass 5/5  api_fail 0  $0.016  out 5772.2  reasoning 4458.4  {}
+base_british_american    pass 5/5  api_fail 0  $0.015  out 5420.0  reasoning 4088.6  {}
+base_snake_camel         pass 4/5  api_fail 0  $0.014  out 5070.0  reasoning 3959.2  {'cheat_lexicon (banned_all)': 1}
+base_prose_bullets       pass 5/5  api_fail 0  $0.018  out 6464.8  reasoning 4955.6  {}
+gc_template              pass 5/5  api_fail 0  $0.003  out 925.8  reasoning 821.6  {}
+gc_third_person          pass 5/5  api_fail 0  $0.003  out 1118.4  reasoning 915.2  {}
+gc_first_person          pass 5/5  api_fail 0  $0.003  out 830.0  reasoning 641.8  {}
+gc_judgment              pass 5/5  api_fail 0  $0.004  out 1172.0  reasoning 994.0  {}
+gc_ai_offdomain          pass 5/5  api_fail 0  $0.007  out 2422.8  reasoning 2094.0  {}
+total cost of all records in this run: $0.118

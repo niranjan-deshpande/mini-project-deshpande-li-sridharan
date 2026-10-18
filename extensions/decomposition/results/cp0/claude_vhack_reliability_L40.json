@@ -1,0 +1,32 @@
+{
+ "turn": {
+  "n": 135,
+  "cos_with_saved": 1.0,
+  "half_r": 0.953,
+  "half_r_sd": 0.012,
+  "rho_full": 0.976,
+  "c": 3.4,
+  "n_for_rho95": 64,
+  "n_for_rho97": 109,
+  "rho_at_200": 0.983,
+  "rho_at_300": 0.989,
+  "shuffled_cos_with_v_abs_mean": 0.407,
+  "norm_v": 9.33,
+  "mean_pair_diff_norm": 19.77
+ },
+ "span": {
+  "n": 135,
+  "cos_with_saved": 1.0,
+  "half_r": 0.922,
+  "half_r_sd": 0.016,
+  "rho_full": 0.959,
+  "c": 5.7,
+  "n_for_rho95": 109,
+  "n_for_rho97": 185,
+  "rho_at_200": 0.972,
+  "rho_at_300": 0.981,
+  "shuffled_cos_with_v_abs_mean": 0.331,
+  "norm_v": 15.95,
+  "mean_pair_diff_norm": 41.01
+ }
+}

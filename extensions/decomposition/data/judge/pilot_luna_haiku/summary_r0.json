@@ -1,0 +1,57 @@
+{
+ "testvocab_swe": {
+  "n": 15,
+  "keep": 12,
+  "error": 0,
+  "reasons": {
+   "A concept weak": 1,
+   "major other difference": 1,
+   "setup invalid": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.0205218
+ },
+ "task_failure": {
+  "n": 6,
+  "keep": 5,
+  "error": 0,
+  "reasons": {
+   "hacking": 1,
+   "major other difference": 1,
+   "setup invalid": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.013882
+ },
+ "legit_shortcut": {
+  "n": 16,
+  "keep": 14,
+  "error": 0,
+  "reasons": {
+   "B concept weak": 1,
+   "A concept weak": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.0240213
+ },
+ "eval_awareness": {
+  "n": 20,
+  "keep": 19,
+  "error": 0,
+  "reasons": {
+   "major other difference": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.023327799999999992
+ },
+ "grader_modeling": {
+  "n": 19,
+  "keep": 18,
+  "error": 0,
+  "reasons": {
+   "hacking": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.0294862
+ }
+}

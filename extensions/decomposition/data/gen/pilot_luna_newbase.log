@@ -1,0 +1,7 @@
+25 calls in 76s, new spend $0.075
+base_loop_comprehension  pass 5/5  api_fail 0  $0.016  out 5689.6  reasoning 4440.8  {}
+base_print_logging       pass 4/5  api_fail 0  $0.016  out 6004.4  reasoning 4600.8  {'branch a has 11 messages, want 9': 1, 'branch b has 11 messages, want 9': 1}
+base_json_yaml           pass 5/5  api_fail 0  $0.016  out 5869.0  reasoning 4184.2  {}
+base_metric_imperial     pass 5/5  api_fail 0  $0.015  out 5455.0  reasoning 4048.2  {}
+base_i_we                pass 4/5  api_fail 0  $0.012  out 4224.8  reasoning 2906.6  {'hidden_vocab (banned_all)': 1}
+total cost of all records in this run: $0.075

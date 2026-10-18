@@ -1,0 +1,63 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Noto+Sans+SC:wght@500&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #1a1a1a; --ink2: #4a4a4a; --ink3: #7a7a7a; --rule: #dedede; --cand: #b8402f; --v: #1a1a1a;
+  --sans: "Source Sans 3", "Noto Sans SC", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; }
+body { width: 1400px; padding: 26px 40px 24px; font-family: var(--sans); color: var(--ink); }
+.grid { display: grid; grid-template-columns: 300px 1fr; }
+.row { display: contents; }
+.name, .chips { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.name { padding-right: 24px; display: flex; flex-direction: column; justify-content: center; }
+.name b { font-size: 25px; font-weight: 700; line-height: 1.2; }
+.name span { font-size: 18px; color: var(--ink3); font-weight: 600; margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px 10px; align-items: center; }
+.chip { font-size: 23px; font-weight: 600; border: 1.5px solid #cfcfcf; background: #fafafa; border-radius: 6px; padding: 3px 12px; white-space: nowrap; }
+.chip small { font-size: 17px; font-weight: 400; color: var(--ink3); margin-left: 6px; }
+.cand .name b { color: var(--cand); }
+.vhack .name, .vhack .chips { background: #f6f3ee; border-bottom: 2px solid #bdb5a8; }
+.vhack .name { padding-left: 16px; }
+.vhack .chip { border-color: #1a1a1a; background: #fff; }
+.dim .chip { color: var(--ink3); border-style: dashed; background: #fff; }
+.dim .name span { font-style: italic; }
+.hdr { font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); padding: 0 0 8px; border-bottom: 2px solid #1a1a1a; }
+.foot { font-size: 16px; color: var(--ink3); margin-top: 12px; }
+</style></head>
+<body>
+<div class="grid">
+  <div class="hdr">Direction</div><div class="hdr">Top tokens it promotes (J++ lens, layer 40)</div>
+
+  <div class="row vhack">
+    <div class="name"><b>v_hack</b><span>the probe</span></div>
+    <div class="chips"><span class="chip">testing</span><span class="chip">simulated</span><span class="chip">fake</span><span class="chip">verification</span><span class="chip">fabricated</span><span class="chip">mock</span><span class="chip">secret</span><span class="chip">reported</span></div>
+  </div>
+
+  <div class="row cand">
+    <div class="name"><b>Legit shortcut</b><span>cos +0.27</span></div>
+    <div class="chips"><span class="chip">documentation</span><span class="chip">standard</span><span class="chip">recommendations</span><span class="chip">specification</span><span class="chip">functionality</span><span class="chip">automatic</span></div>
+  </div>
+  <div class="row cand">
+    <div class="name"><b>Eval awareness</b><span>cos +0.20</span></div>
+    <div class="chips"><span class="chip">AI</span><span class="chip">测试<small>test</small></span><span class="chip">robot</span><span class="chip">评测<small>evaluation</small></span><span class="chip">智商<small>IQ</small></span><span class="chip">fake</span><span class="chip">unethical</span><span class="chip">cheating</span></div>
+  </div>
+  <div class="row cand">
+    <div class="name"><b>Test vocab (code)</b><span>cos +0.05</span></div>
+    <div class="chips"><span class="chip">tests</span><span class="chip">testing</span><span class="chip">testers</span><span class="chip">测试<small>test</small></span><span class="chip">テスト<small>test</small></span><span class="chip">进行测试<small>run tests</small></span></div>
+  </div>
+  <div class="row cand">
+    <div class="name"><b>Task failure</b><span>cos −0.02</span></div>
+    <div class="chips"><span class="chip">contradictory</span><span class="chip">矛盾<small>contradiction</small></span><span class="chip">conflicting</span><span class="chip">inconsistent</span><span class="chip">wrong</span><span class="chip">dilemma</span><span class="chip">违反<small>violate</small></span></div>
+  </div>
+  <div class="row cand dim">
+    <div class="name"><b>Grader modeling</b><span>cos −0.14 · no clear readout</span></div>
+    <div class="chips"><span class="chip">Python</span><span class="chip">parse</span><span class="chip">rawData</span><span class="chip">jsonData</span><span class="chip">CSV</span><span class="chip">Caught</span><span class="chip">挑剔<small>picky</small></span></div>
+  </div>
+  <div class="row cand">
+    <div class="name"><b>Test vocab (non-code)</b><span>cos −0.17</span></div>
+    <div class="chips"><span class="chip">test</span><span class="chip">tested</span><span class="chip">测试<small>test</small></span><span class="chip">测试结果<small>test results</small></span><span class="chip">テスト<small>test</small></span><span class="chip">тест<small>test</small></span></div>
+  </div>
+</div>
+<p class="foot">J++ lens (Ayonrinde &amp; Lindsey, 2026): published layer-40 lens fit on Qwen3.6-27B, applied to Qwen3.8-27B; agrees with Qwen3.8's own Jacobian lens.</p>
+</body></html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: #fff; }
+body { width: 900px; padding: 16px 20px 10px; }
+svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+</style></head>
+<body>
+<svg id="c" width="860" height="1180" viewBox="0 0 860 1180"></svg>
+<script>
+// Token-level R² on 3.6M held-out assistant tokens (91 rollouts). Sources: results/phase4/phase4.json (functional), results/phase5/phase5.json.
+const C = { cand: "#b8402f", emo: "#3a6ea5", base: "#9c9182", baseDot: "#6f665a", ink: "#1a1a1a", ink2: "#4a4a4a", ink3: "#7a7a7a", grid: "#e6e6e6" };
+const COLS = [
+  { label: "confounders", v: 0.754, ci: [0.744, 0.764], color: C.cand },
+  { label: "controls", v: 0.568, range: [null, 0.652], color: C.base, note: "mean of 210 sets" },
+  { label: "v_hack", v: 0.763, ci: [0.751, 0.776], color: C.emo },
+  { label: "controls", v: 0.4251, dots: [0.424, 0.619, 0.196, 0.354, 0.630, 0.473, 0.469, 0.364, 0.391, 0.330], color: C.base, note: "mean of 10" },
+];
+const PAIRS = [["Predicting v_hack", "from 6 directions"], ["Predicting from", "40 emotions"]];
+const CEIL = 0.991;   // split-half reliability of v_hack
+
+const svg = document.getElementById("c"), NS = "http://www.w3.org/2000/svg";
+const el = (t, a, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; };
+const T = 70, B = 960, Lx = 118, Rx = 852, y = v => B - v * (B - T);
+const fmt = v => v.toFixed(2).replace(/^0/, "");
+
+// axis + grid
+for (const t of [0, 0.2, 0.4, 0.6, 0.8, 1.0]) {
+  el("line", { x1: Lx, x2: Rx, y1: y(t), y2: y(t), stroke: t === 0 ? "#555" : C.grid, "stroke-width": t === 0 ? 2.5 : 1.2 });
+  el("text", { x: Lx - 14, y: y(t) + 11, "text-anchor": "end", "font-size": 30, "font-weight": 600, fill: C.ink2 }, t === 0 ? "0" : t.toFixed(1));
+}
+el("text", { transform: `translate(30 ${(T + B) / 2}) rotate(-90)`, "text-anchor": "middle", "font-size": 31, "font-weight": 600, fill: C.ink },
+   "Variance in token scores explained (R²)");
+
+// ceiling
+el("line", { x1: Lx, x2: Rx, y1: y(CEIL), y2: y(CEIL), stroke: C.ink2, "stroke-width": 2.5, "stroke-dasharray": "10 7" });
+el("text", { x: Rx, y: y(CEIL) - 14, "text-anchor": "end", "font-size": 26, "font-weight": 600, fill: C.ink2 }, "ceiling: v_hack reliability (0.99)");
+
+// columns: two pairs with a wider gap between pairs
+const w = 150, gap = 22, ggap = 70, x0s = Lx + 10;
+const xs = [x0s, x0s + w + gap, x0s + 2 * w + gap + ggap, x0s + 3 * w + 2 * gap + ggap];
+COLS.forEach((c, i) => {
+  const x0 = xs[i], cx = x0 + w / 2;
+  el("rect", { x: x0, y: y(c.v), width: w, height: y(0) - y(c.v), rx: 5, fill: c.color });
+  if (c.ci) {
+    el("line", { x1: cx, x2: cx, y1: y(c.ci[0]), y2: y(c.ci[1]), stroke: "#fff", "stroke-width": 3 });
+    [c.ci[0], c.ci[1]].forEach(v => el("line", { x1: cx - 12, x2: cx + 12, y1: y(v), y2: y(v), stroke: "#fff", "stroke-width": 3 }));
+  }
+  if (c.range) {
+    el("line", { x1: cx, x2: cx, y1: y(c.v), y2: y(c.range[1]), stroke: C.baseDot, "stroke-width": 3 });
+    el("line", { x1: cx - 14, x2: cx + 14, y1: y(c.range[1]), y2: y(c.range[1]), stroke: C.baseDot, "stroke-width": 3 });
+    el("text", { x: cx + 22, y: y(c.range[1]) + 9, "font-size": 25, "font-weight": 600, fill: C.ink2 }, "best .65");
+  }
+  if (c.dots) c.dots.forEach((v, k) => el("circle", { cx: cx + (k % 2 ? 18 : -18), cy: y(v), r: 8, fill: "#fff", stroke: C.baseDot, "stroke-width": 3 }));
+  const topY = Math.min(y(c.v), c.range ? y(c.range[1]) : Infinity, c.dots ? y(Math.max(...c.dots)) - 8 : Infinity);
+  el("text", { x: cx, y: topY - 18, "text-anchor": "middle", "font-size": 46, "font-weight": 700, fill: C.ink }, fmt(c.v));
+  el("text", { x: cx, y: B + 42, "text-anchor": "middle", "font-size": 29, "font-weight": 700, fill: c.color === C.base ? "#6f665a" : c.color }, c.label);
+  if (c.note) el("text", { x: cx, y: B + 74, "text-anchor": "middle", "font-size": 23, fill: C.ink3 }, c.note);
+});
+PAIRS.forEach((p, j) => {
+  const a = xs[2 * j], b = xs[2 * j + 1] + w, m = (a + b) / 2, yb = B + 96;
+  el("path", { d: `M${a} ${yb} V${yb + 10} H${b} V${yb}`, fill: "none", stroke: "#9a9a9a", "stroke-width": 2 });
+  p.forEach((ln, k) => el("text", { x: m, y: yb + 46 + k * 34, "text-anchor": "middle", "font-size": 28, "font-weight": 600, fill: C.ink }, ln));
+});
+</script>
+</body></html>

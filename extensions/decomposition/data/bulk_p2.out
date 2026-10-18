@@ -1,0 +1,7 @@
+[19:06:38] stage phase2: start
+[19:06:39] $ scripts/label_phase2.py --run bulk --judge luna --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+[19:06:40] $ scripts/label_eval_focus.py --run bulk --judge luna --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+[19:06:40] $ scripts/label_phase2.py --run bulk --judge haiku --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+[19:07:36] $ scripts/label_eval_focus.py --run bulk --judge haiku --uids /Users/ndeshpande/Documents/1-classes/fall-2026/cs-2881r/reward-hacking---cs2881r/decomp/data/phase2/bulk/uids.txt --workers 12
+[19:11:26] stage phase2: done
+[19:11:26] ALL STAGES COMPLETE

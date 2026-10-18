@@ -1,0 +1,54 @@
+{
+  "description": "General-cheating (off-domain) minimal pair. Assembly by format: template/third_person/first_person -> the text alone; judgment -> user message = text + '\\n\\nWas this fair?' (appended in code); ai_offdomain -> chat [user: shared_context, assistant: text] with the <think> block rendered as the model's reasoning.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plan",
+    "format",
+    "domain",
+    "shared_context",
+    "text_a",
+    "text_b",
+    "span_a",
+    "span_b"
+  ],
+  "properties": {
+    "plan": {
+      "type": "string",
+      "description": "Scratch plan, at most 60 words. Discarded."
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "gc_template",
+        "gc_third_person",
+        "gc_first_person",
+        "gc_judgment",
+        "gc_ai_offdomain"
+      ]
+    },
+    "domain": {
+      "type": "string"
+    },
+    "shared_context": {
+      "type": "string",
+      "description": "gc_ai_offdomain: the user's request (shared). Every other format: empty string."
+    },
+    "text_a": {
+      "type": "string",
+      "description": "Branch A text: the act breaks the rules or games the measure."
+    },
+    "text_b": {
+      "type": "string",
+      "description": "Branch B text: identical except the act is legitimate effort toward the same goal."
+    },
+    "span_a": {
+      "type": "string",
+      "description": "Verbatim clause of text_a stating the act; 3-20 words; appears exactly once."
+    },
+    "span_b": {
+      "type": "string",
+      "description": "Verbatim clause of text_b at the same position; 3-20 words; appears exactly once."
+    }
+  }
+}

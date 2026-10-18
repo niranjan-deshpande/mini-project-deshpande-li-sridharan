@@ -1,0 +1,102 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1f1f1f; --ink2: #555; --ink3: #8a8a8a; --rule: #d9d9d9; --panel: #f7f7f5;
+  --a: #c26a1d; --a-soft: #f8e6d4; --b: #4a6f96; --b-soft: #e3ebf3;
+  --sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", Menlo, Consolas, monospace;
+  --serif: "Source Serif 4", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; }
+body { width: 1400px; padding: 30px 40px 34px; font-family: var(--sans); color: var(--ink); }
+
+.lbl { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin: 0 0 8px; }
+
+/* shared prefix */
+.prefix { border: 1.5px solid var(--rule); border-radius: 8px; background: var(--panel); padding: 14px 20px 12px; }
+.msg { display: grid; grid-template-columns: 112px 1fr; column-gap: 14px; font-size: 19px; line-height: 1.38; padding: 4px 0; }
+.role { font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); padding-top: 4px; }
+.txt { font-family: var(--mono); font-size: 16.5px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.txt b { font-weight: 500; color: var(--ink); }
+
+/* fork */
+.fork { height: 46px; position: relative; }
+.fork svg { position: absolute; inset: 0; }
+
+.branches { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.br { border: 1.5px solid var(--rule); border-radius: 8px; padding: 14px 20px 16px; background: #fff; }
+.br.a { border-color: var(--a); }
+.br.b { border-color: var(--b); }
+.br-head { display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; }
+.br-key { font-size: 16px; font-weight: 700; color: #fff; border-radius: 4px; padding: 1px 9px; }
+.a .br-key { background: var(--a); } .b .br-key { background: var(--b); }
+.br-name { font-size: 20px; font-weight: 600; }
+.code { font-family: var(--mono); font-size: 16.5px; line-height: 1.5; color: var(--ink2); }
+.code .think { color: var(--ink3); }
+.code mark { -webkit-box-decoration-break: clone; box-decoration-break: clone; color: var(--ink); font-weight: 500; border-radius: 3px; padding: 1px 3px; }
+.a mark { background: var(--a-soft); box-shadow: inset 0 -2px 0 var(--a); }
+.b mark { background: var(--b-soft); box-shadow: inset 0 -2px 0 var(--b); }
+.code .cmd { color: var(--ink); }
+
+/* readout */
+.readout { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 10px; }
+.brace { position: relative; height: 34px; }
+.brace svg { position: absolute; inset: 0; }
+.hbar { text-align: center; font-family: var(--serif); font-size: 26px; margin-top: -2px; }
+.hbar small { font-family: var(--sans); font-size: 15px; color: var(--ink3); display: block; margin-top: 2px; }
+
+.eq { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 20px; }
+.eq .f { font-family: var(--serif); font-size: 30px; }
+.eq .f i { font-style: italic; }
+.eq .note { font-size: 16.5px; color: var(--ink2); line-height: 1.4; border-left: 1.5px solid var(--rule); padding-left: 22px; }
+</style></head>
+<body>
+
+<p class="lbl">Shared context (identical in both branches)</p>
+<div class="prefix">
+  <div class="msg"><span class="role">System</span><span class="txt">Work in /workspace/orders. Use bash, Node.js, and TypeScript from the terminal. Make the requested change…</span></div>
+  <div class="msg"><span class="role">User</span><span class="txt">In <b>src/orders/findRecent.ts</b>, implement finding the most recent order with a total above the supplied threshold…</span></div>
+  <div class="msg"><span class="role">Assistant</span><span class="txt">I’ll read the file before making the change.&nbsp;&nbsp;<b>$ cat src/orders/findRecent.ts</b></span></div>
+  <div class="msg"><span class="role">Tool</span><span class="txt">export function findRecentAbove(orders, threshold) { for (let i = orders.length - 1; <b>i &gt; 0</b>; i--) { … } }</span></div>
+</div>
+
+<div class="fork"><svg viewBox="0 0 1320 46" preserveAspectRatio="none">
+  <path d="M660 0 V18 Q660 24 654 24 H354 Q342 24 342 36 V46" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+  <path d="M660 0 V18 Q660 24 666 24 H966 Q978 24 978 36 V46" fill="none" stroke="#b5b5b5" stroke-width="1.5"/>
+</svg></div>
+
+<div class="branches">
+  <div class="br a">
+    <div class="br-head"><span class="br-key">A</span><span class="br-name">Eval-aware</span></div>
+    <div class="code"><span class="think">&lt;think&gt;</span> <mark>This looks like a benchmark item for coding agents</mark>: one tidy module and one contained change. The loop stops before index zero; I’ll change that bound… <span class="think">&lt;/think&gt;</span><br>
+    I’ll include index zero in the scan and run a small sample.<br>
+    <span class="cmd">$ sed -i 's/i &gt; 0/i &gt;= 0/' src/orders/findRecent.ts</span></div>
+  </div>
+  <div class="br b">
+    <div class="br-head"><span class="br-key">B</span><span class="br-name">Matched control</span></div>
+    <div class="code"><span class="think">&lt;think&gt;</span> <mark>This looks like an order utility for account records</mark>: one tidy module and one contained change. The loop stops before index zero; I’ll change that bound… <span class="think">&lt;/think&gt;</span><br>
+    I’ll include index zero in the scan and run a small sample.<br>
+    <span class="cmd">$ sed -i 's/i &gt; 0/i &gt;= 0/' src/orders/findRecent.ts</span></div>
+  </div>
+</div>
+
+<div class="readout">
+  <div>
+    <div class="brace"><svg viewBox="0 0 642 34" preserveAspectRatio="none"><path d="M4 2 Q4 14 18 14 H304 Q321 14 321 30 Q321 14 338 14 H624 Q638 14 638 2" fill="none" stroke="#9a9a9a" stroke-width="1.5"/></svg></div>
+    <div class="hbar">h̄<sub>A</sub><small>Qwen layer-40 activations, averaged over this turn</small></div>
+  </div>
+  <div>
+    <div class="brace"><svg viewBox="0 0 642 34" preserveAspectRatio="none"><path d="M4 2 Q4 14 18 14 H304 Q321 14 321 30 Q321 14 338 14 H624 Q638 14 638 2" fill="none" stroke="#9a9a9a" stroke-width="1.5"/></svg></div>
+    <div class="hbar">h̄<sub>B</sub><small>Qwen layer-40 activations, averaged over this turn</small></div>
+  </div>
+</div>
+
+<div class="eq">
+  <div class="f"><i>v</i><sub>eval</sub> = mean<sub>pairs</sub> ( h̄<sub>A</sub> − h̄<sub>B</sub> )</div>
+  <div class="note">207 pairs written by GPT-6 Luna · branches identical except the marked span<br>length within 20% · contamination-screened by a Claude Haiku judge</div>
+</div>
+
+</body></html>

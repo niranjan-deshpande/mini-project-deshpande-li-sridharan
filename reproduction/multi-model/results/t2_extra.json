@@ -1,0 +1,7 @@
+{
+ "q_len": 0.7984882755049569,
+ "q_resid": 0.8869568813310655,
+ "q_tpr5": 0.5457227138643068,
+ "q_n": 271,
+ "q_drop": "Qwen stopped at 271 of 305 planned rollouts: the rest were cancelled by harness restarts, overflowed the 131k context, or were still running in the long tail when the run was cut."
+}

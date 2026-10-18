@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/raw/
+cache/
+*.npz
+data/gen/*/raw/
+data/judge/*/raw/
+data/gpu_test/out*/
+data/gpu/
+data/analysis/*.npz
+data/emotions/*/raw/
+!data/emotions/neutral_pilot/raw/

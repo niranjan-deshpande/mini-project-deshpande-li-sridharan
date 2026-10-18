@@ -1,0 +1,8 @@
+120 calls in 405s, new spend $0.574
+hack                     first-pass 17/20  final pass 20/20  api_fail 0  $0.090  out 7808.9  reasoning 6543.75  {}
+testvocab_swe            first-pass 13/20  final pass 20/20  api_fail 0  $0.101  out 8074.0  reasoning 6937.0  {}
+task_failure             first-pass 16/20  final pass 19/20  api_fail 0  $0.137  out 12119.4  reasoning 10135.05  {'test_vocab_nouns (balanced_divergent_min1_max_diff_1)': 1}
+legit_shortcut           first-pass 16/20  final pass 20/20  api_fail 0  $0.107  out 9153.7  reasoning 7967.7  {}
+eval_awareness           first-pass 20/20  final pass 20/20  api_fail 0  $0.061  out 5466.7  reasoning 4036.2  {}
+grader_modeling          first-pass 19/20  final pass 20/20  api_fail 0  $0.078  out 6944.6  reasoning 5400.05  {}
+total cost of all records in this run: $0.574

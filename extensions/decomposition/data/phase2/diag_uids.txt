@@ -1,0 +1,3 @@
+qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_54|1
+qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_61|1
+qwen3.8-27b|lcb_conflicting_canmod_tools|lcbhard_18|1

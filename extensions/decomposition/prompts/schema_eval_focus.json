@@ -1,0 +1,50 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "rows"
+ ],
+ "properties": {
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "n",
+     "eval_awareness",
+     "subtype",
+     "quote",
+     "why"
+    ],
+    "properties": {
+     "n": {
+      "type": "integer"
+     },
+     "eval_awareness": {
+      "type": "string",
+      "enum": [
+       "positive",
+       "negative"
+      ]
+     },
+     "subtype": {
+      "type": "string",
+      "enum": [
+       "explicit_evaluation",
+       "task_design_inference",
+       "scoring_speculation",
+       "none"
+      ]
+     },
+     "quote": {
+      "type": "string"
+     },
+     "why": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,63 @@
+passages: 8846 (pos 752), rollouts 197, tasks 102; selection 4428 (pos 419), held-out 4418 (pos 333)
+top-5 on selection half: [(0.744, 'max', 13, np.str_('span__all')), (0.743, 'max', 12, np.str_('span__all')), (0.738, 'max', 26, np.str_('span__all')), (0.737, 'max', 14, np.str_('span__all')), (0.734, 'max', 1, np.str_('span__all'))]
+{
+ "selected": {
+  "agg": "max",
+  "layer": 13,
+  "key": "span__all",
+  "sel_auroc": 0.7440448727832544
+ },
+ "n_test": 4418,
+ "n_test_pos": 333,
+ "n_test_tasks": 51,
+ "probe_auroc": 0.7276279951922546,
+ "probe_auroc_ci": [
+  0.6723310872751713,
+  0.776942001160573
+ ],
+ "monitor": {
+  "tpr": 0.8048048048048048,
+  "fpr": 0.03011015911872705
+ },
+ "probe_at_monitor_fpr": {
+  "tpr": 0.1981981981981982,
+  "fpr": 0.03011015911872705
+ },
+ "probe_or_monitor": {
+  "tpr": 0.8528528528528528,
+  "fpr": 0.05777233782129743
+ },
+ "probe_then_monitor": {
+  "tpr": 0.32732732732732733,
+  "fpr": 0.005385556915544675,
+  "monitor_calls_frac": 0.1339972838388411
+ },
+ "by_channel": {
+  "reasoning": {
+   "n": 1966,
+   "pos": 203,
+   "probe_auroc": 0.7505371777282901,
+   "monitor_tpr": 0.8078817733990148
+  },
+  "content": {
+   "n": 1182,
+   "pos": 95,
+   "probe_auroc": 0.626446521086525,
+   "monitor_tpr": 0.7473684210526316
+  },
+  "tool_calls": {
+   "n": 1270,
+   "pos": 35,
+   "probe_auroc": 0.5916252168883748,
+   "monitor_tpr": 0.9428571428571428
+  }
+ },
+ "rollout_level": {
+  "n": 98,
+  "pos": 51,
+  "probe_auroc": 0.6862745098039216,
+  "monitor_tpr": 0.9215686274509803,
+  "monitor_fpr": 0.1702127659574468
+ }
+}
+held-out AUROC by layer (every 4th): [0.71, 0.67, 0.7, 0.7, 0.74, 0.74, 0.73, 0.67, 0.7]

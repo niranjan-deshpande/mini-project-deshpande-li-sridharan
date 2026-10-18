@@ -1,0 +1,293 @@
+{
+ "ours_agastya_turn_L40_top15": [
+  "文件格式",
+  "月底前",
+  "core",
+  "要高度重视",
+  "文件和",
+  "时间来",
+  ".BASELINE",
+  "唆",
+  " unrelated",
+  "чко",
+  "帮助你",
+  "以上内容",
+  "内容是",
+  "ovas",
+  "了解一下"
+ ],
+ "his_turn_all_L40_top15": [
+  "文件格式",
+  "月底前",
+  "core",
+  "要高度重视",
+  "文件和",
+  "时间来",
+  ".BASELINE",
+  "唆",
+  " unrelated",
+  "帮助你",
+  "чко",
+  "以上内容",
+  "内容是",
+  "ovas",
+  "cats"
+ ],
+ "overlap_top15": 14,
+ "same_top10_order": true,
+ "reported_tokens_in_any_turn_all_layer": {
+  "捷径": [
+   [
+    "turn__all",
+    52,
+    12
+   ],
+   [
+    "turn__all",
+    53,
+    14
+   ],
+   [
+    "turn__all",
+    54,
+    14
+   ]
+  ],
+  "省事": [
+   [
+    "turn__all",
+    50,
+    13
+   ]
+  ],
+  "何必": [],
+  "绕过": [],
+  " bypass": [
+   [
+    "turn__all",
+    52,
+    5
+   ],
+   [
+    "turn__all",
+    57,
+    12
+   ]
+  ],
+  " shortcut": []
+ },
+ "reported_token_locations": {
+  "捷径": {
+   "n": 85,
+   "keys": [
+    "last__all",
+    "last__hardcoding_special_casing",
+    "last__score_file_tampering",
+    "last__validator_tampering",
+    "span__score_file_tampering",
+    "turn__all",
+    "turn__score_file_tampering",
+    "turn__validator_tampering"
+   ],
+   "layers_last_all": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    57,
+    58,
+    60,
+    61,
+    62,
+    63
+   ]
+  },
+  "省事": {
+   "n": 47,
+   "keys": [
+    "last__all",
+    "last__score_file_tampering",
+    "last__test_suite_tampering",
+    "turn__all",
+    "turn__test_suite_tampering"
+   ],
+   "layers_last_all": [
+    36,
+    37,
+    44,
+    45,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58
+   ]
+  },
+  "何必": {
+   "n": 31,
+   "keys": [
+    "last__all",
+    "last__score_file_tampering",
+    "last__validator_tampering",
+    "span__all"
+   ],
+   "layers_last_all": [
+    36,
+    37,
+    38,
+    39,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54
+   ]
+  },
+  "绕过": {
+   "n": 12,
+   "keys": [
+    "last__score_file_tampering",
+    "last__validator_tampering"
+   ],
+   "layers_last_all": []
+  },
+  " bypass": {
+   "n": 71,
+   "keys": [
+    "last__all",
+    "last__score_file_tampering",
+    "last__validator_tampering",
+    "span__score_file_tampering",
+    "span__validator_tampering",
+    "turn__all",
+    "turn__score_file_tampering",
+    "turn__validator_tampering"
+   ],
+   "layers_last_all": [
+    52,
+    54,
+    55,
+    56,
+    57,
+    58,
+    61,
+    63
+   ]
+  },
+  " shortcut": {
+   "n": 12,
+   "keys": [
+    "last__all",
+    "last__score_file_tampering",
+    "last__validator_tampering"
+   ],
+   "layers_last_all": [
+    62,
+    63
+   ]
+  }
+ },
+ "report_quotes_last_token_layers": {
+  "47": [
+   "反正",
+   "�",
+   "ORB",
+   " META",
+   " *(*",
+   " directly",
+   "因为这",
+   "省事",
+   "也是可以",
+   "这种做法",
+   "不予",
+   "就不用",
+   "以示",
+   "方便",
+   "Directive"
+  ],
+  "51": [
+   "何必",
+   " directly",
+   "省事",
+   "直接进入",
+   "捷径",
+   "就不用",
+   "只是为了",
+   "直接被",
+   "直接就",
+   "直接",
+   "反正",
+   "就直接",
+   "直接向",
+   "没有必要",
+   "只要你"
+  ],
+  "55": [
+   " since",
+   "省事",
+   "since",
+   "捷径",
+   "Since",
+   " Since",
+   "免于",
+   " quicker",
+   " bypass",
+   " puisque",
+   " puisqu",
+   "省时",
+   "既然",
+   " quickest",
+   "以免造成"
+  ],
+  "63": [
+   " quickly",
+   " since",
+   "捷径",
+   " quicker",
+   " shortcut",
+   " fake",
+   " directly",
+   "quick",
+   "快速",
+   " temporarily",
+   " trivial",
+   " faster",
+   " bypass",
+   " hack",
+   " cheat"
+  ]
+ },
+ "t3_steered_vector": {
+  "key": "span__all",
+  "layer": 47,
+  "lens_top15": [
+   "�",
+   "不妨",
+   "只要你",
+   "ayani",
+   "也是可以",
+   "adero",
+   "反正",
+   "直接被",
+   "不予",
+   " relevant",
+   "就直接",
+   "ELLI",
+   "某种程度上",
+   " relevante",
+   "Directive"
+  ]
+ },
+ "detection_probe": "turn__all L40, max-pool (report T2)"
+}

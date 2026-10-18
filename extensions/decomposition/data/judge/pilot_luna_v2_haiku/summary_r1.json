@@ -1,0 +1,26 @@
+{
+ "testvocab_swe": {
+  "n": 3,
+  "keep": 1,
+  "error": 0,
+  "reasons": {
+   "major other difference": 2,
+   "setup invalid": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.0045165
+ },
+ "task_failure": {
+  "n": 2,
+  "keep": 0,
+  "error": 0,
+  "reasons": {
+   "leak grader_orientation": 1,
+   "hacking": 1,
+   "major other difference": 1,
+   "setup invalid": 1
+  },
+  "withdrawn_flags": 0,
+  "cost": 0.0051354999999999994
+ }
+}
