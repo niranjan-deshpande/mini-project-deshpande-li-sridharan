@@ -2,7 +2,7 @@
 
 This repo contains our code for CS 2881R HW2. We reproduced Goodfire's *Monitoring and Discovering Reward Hacking with Internal Representations
 during LLM Evaluations* ([arXiv:2609.19101](https://arxiv.org/abs/2609.19101)) on open-weight models, and then extend it
-three ways. You can see our report at: **FILL THIS IN**. 
+three ways. You can see our report at [final_report.pdf](final_report.pdf).
 
 In brief, the paper builds a difference-of-means "reward-hacking direction" from synthetic hack/honest pairs of SWE-agent rollouts. They then use this direction as a probe and steering vector. We replicate the paper (this is non-trivial, because they do not publish source code and exclude many engineering choices) on smaller open-weight models. Then, we extend their results in three ways:
 1. We build a J-lens and use it to decode their reward-hacking vector.
